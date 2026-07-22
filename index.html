@@ -579,35 +579,19 @@
     .system-step .ss-equip { font-size: 12px; font-weight: 700; color: var(--c-primary); margin-top: 8px; padding-top: 8px; border-top: 1px dashed var(--c-n6); }
 
     /* ===== TECHNOLOGY ===== */
-    .tech-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .tech-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
     .tech-card {
       background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-lg);
-      padding: 28px; transition: all 0.3s; position: relative; overflow: hidden;
+      overflow: hidden; transition: all 0.3s; text-align: center;
+      box-shadow: var(--sh-sm);
     }
-    .tech-card::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-      background: var(--c-tech); transform: scaleX(0); transform-origin: left; transition: transform 0.3s;
+    .tech-card:hover { box-shadow: var(--sh-md); border-color: var(--c-primary); }
+    .tech-card .tc-fuel-img {
+      width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block;
+      background: var(--c-silver-bg); transition: transform 0.4s;
     }
-    .tech-card:hover::before { transform: scaleX(1); }
-    .tech-card:hover { box-shadow: var(--sh-md); border-color: var(--c-tech-light); }
-    .tech-card .tc-head { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
-    .tech-card .tc-icon {
-      width: 40px; height: 40px; border-radius: var(--r-sm);
-      display: flex; align-items: center; justify-content: center; font-size: 20px;
-    }
-    .tech-card .tc-icon.diesel { background: #FFF3E0; color: #E65100; }
-    .tech-card .tc-icon.biomass { background: #EFEBE9; color: #5D4037; }
-    .tech-card .tc-icon.husk { background: #FFF8E1; color: #F57F17; }
-    .tech-card .tc-icon.gas { background: #E3F2FD; color: #1565C0; }
-    .tech-card .tc-icon.wood { background: #EFEBE9; color: #5D4037; }
-    .tech-card .tc-icon.coal { background: #ECEFF1; color: #455A64; }
-    .tech-card .tc-title { font-size: 16px; font-weight: 700; }
-    .tech-card .tc-desc { font-size: 13px; color: var(--c-n3); line-height: 1.6; margin-bottom: 14px; }
-    .tech-card .tc-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-    .tech-card .tc-tag {
-      font-size: 11px; font-weight: 600; padding: 3px 8px;
-      border-radius: var(--r-sm); background: var(--c-tech-bg); color: var(--c-tech-dark);
-    }
+    .tech-card:hover .tc-fuel-img { transform: scale(1.05); }
+    .tech-card .tc-title { font-size: 13px; font-weight: 700; color: var(--c-n2); padding: 10px 12px; }
 
     /* ===== PROJECTS ===== */
     .projects-section { background: var(--c-n7); }
@@ -690,10 +674,110 @@
     }
     .form-textarea { min-height: 80px; padding: 10px 14px; resize: vertical; }
     .form-select {
+      width: 100%; height: 44px; padding: 0 40px 0 14px;
+      font-family: var(--font-body); font-size: 14px; font-weight: 600;
+      color: var(--c-n2);
+      background: #fff; border: 1.5px solid var(--c-n6); border-radius: var(--r-md);
+      transition: all 0.2s; outline: none;
       appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3e%3cpath d='M3 5l3 3 3-3' stroke='%236B6B6B' stroke-width='1.5' fill='none' stroke-linecap='round'/%3e%3c/svg%3e");
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24'%3e%3cpath d='M6 9l6 6 6-6' stroke='%236B6B6B' stroke-width='2' fill='none' stroke-linecap='round'/%3e%3c/svg%3e");
       background-repeat: no-repeat; background-position: right 14px center;
+      cursor: pointer;
+      display: flex; align-items: center;
     }
+    .form-select:focus {
+      border-color: var(--c-primary);
+      color: var(--c-primary);
+      box-shadow: 0 0 0 3px rgba(8,79,50,0.15);
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24'%3e%3cpath d='M6 15l6-6 6 6' stroke='%23084F32' stroke-width='2' fill='none' stroke-linecap='round'/%3e%3c/svg%3e");
+    }
+
+    /* ===== CUSTOM DROPDOWN ===== */
+    .dropdown {
+      position: relative;
+      width: 100%;
+    }
+    .dropdown-trigger {
+      width: 100%; height: 44px; padding: 0 40px 0 14px;
+      font-family: var(--font-body); font-size: 14px; font-weight: 600;
+      color: var(--c-n2);
+      background: #fff; border: 1.5px solid var(--c-n6); border-radius: var(--r-md);
+      cursor: pointer; position: relative;
+      display: flex; align-items: center;
+      transition: all 0.2s;
+    }
+    .dropdown-trigger::after {
+      content: ''; position: absolute; right: 14px; top: 50%;
+      width: 10px; height: 10px;
+      border-right: 2px solid var(--c-n3);
+      border-bottom: 2px solid var(--c-n3);
+      transform: translateY(-65%) rotate(45deg);
+      transition: transform 0.2s;
+    }
+    .dropdown-trigger:focus {
+      outline: none;
+      border-color: var(--c-primary);
+      color: var(--c-primary);
+      box-shadow: 0 0 0 3px rgba(8,79,50,0.15);
+    }
+    .dropdown-trigger:focus::after,
+    .dropdown-trigger.open::after {
+      border-color: var(--c-primary);
+      transform: translateY(-35%) rotate(-135deg);
+    }
+    .dropdown-trigger.has-value {
+      color: var(--c-n1);
+    }
+    .dropdown-menu {
+      position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+      background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-md);
+      box-shadow: var(--sh-lg);
+      overflow: hidden; z-index: 100;
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s;
+    }
+    .dropdown-menu.open {
+      max-height: 320px;
+      opacity: 1;
+      visibility: visible;
+    }
+    .dropdown-opt {
+      padding: 11px 14px;
+      font-family: var(--font-body); font-size: 14px; color: var(--c-n2);
+      cursor: pointer; transition: all 0.15s;
+      display: flex; align-items: center; gap: 10px;
+      border-bottom: 1px solid var(--c-n7);
+    }
+    .dropdown-opt:last-child { border-bottom: none; }
+    .dropdown-opt:hover {
+      background: var(--c-primary-bg);
+      color: var(--c-primary);
+    }
+    .dropdown-opt.selected {
+      background: var(--c-primary-bg);
+      color: var(--c-primary);
+      font-weight: 700;
+    }
+    .dropdown-opt .opt-check {
+      width: 16px; height: 16px; flex-shrink: 0;
+      border: 1.5px solid var(--c-n5); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dropdown-opt.selected .opt-check {
+      border-color: var(--c-primary);
+      background: var(--c-primary);
+    }
+    .dropdown-opt.selected .opt-check::after {
+      content: ''; width: 6px; height: 6px;
+      background: #fff; border-radius: 50%;
+    }
+    .dropdown-opt .opt-meta {
+      font-family: var(--font-mono); font-size: 11px; color: var(--c-n4);
+      margin-left: auto;
+    }
+    .dropdown-opt.selected .opt-meta { color: var(--c-primary); }
     .form-error {
       font-size: 12px; color: var(--c-error); margin-top: 6px; font-weight: 600;
     }
@@ -768,7 +852,7 @@
       .hero-badge { bottom: 160px; right: 24px; }
       .product-grid { grid-template-columns: repeat(2, 1fr); }
       .why-grid { grid-template-columns: repeat(2, 1fr); }
-      .tech-grid { grid-template-columns: repeat(2, 1fr); }
+      .tech-grid { grid-template-columns: repeat(3, 1fr); }
       .project-grid { grid-template-columns: repeat(2, 1fr); }
       .cta-inner { grid-template-columns: 1fr; gap: 32px; }
       .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
@@ -1096,70 +1180,37 @@
     <div class="container">
       <div class="section-head reveal">
         <div class="eyebrow">MULTI-FUEL TECHNOLOGY</div>
-        <h2>Choose the Most Cost-Effective Fuel</h2>
-        <p class="desc">GXON's multi-fuel heating technology lets you switch between fuel types based on local availability and cost — reducing operating expenses by up to 60%.</p>
+        <h2>Multi-Fuel Heating Technology</h2>
+        <p class="desc">Flexible fuel options to match local resources and reduce drying costs.</p>
       </div>
       <div class="tech-grid">
         <div class="tech-card reveal">
-          <div class="tc-head">
-            <div class="tc-icon diesel">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 22h12V4l4 2v16h2"/><path d="M3 10h12"/></svg>
-            </div>
-            <div class="tc-title">Diesel Heating</div>
-          </div>
-          <div class="tc-desc">High-efficiency diesel burner system. Fast heating response, ideal for areas with reliable diesel supply.</div>
-          <div class="tc-tags"><span class="tc-tag">High Efficiency</span><span class="tc-tag">Fast Response</span></div>
+          <img class="tc-fuel-img" src="assets/Diesel.webp" alt="Diesel burner with orange flame" onerror="this.style.display='none'">
+          <div class="tc-title">Diesel</div>
         </div>
         <div class="tech-card reveal">
-          <div class="tc-head">
-            <div class="tc-icon biomass">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 6 8 12 12 18M12 2c4 4 4 10 0 16"/><path d="M5 10c2 2 4 4 7 4s5-2 7-4"/></svg>
-            </div>
-            <div class="tc-title">Biomass Pellet Furnace</div>
-          </div>
-          <div class="tc-desc"> Eco-friendly biomass pellet combustion. 50% lower fuel cost than diesel with automated feeding.</div>
-          <div class="tc-tags"><span class="tc-tag">Eco-Friendly</span><span class="tc-tag">Cost Saving</span></div>
+          <img class="tc-fuel-img" src="assets/Natural_Gas.webp" alt="Natural gas blue flame" onerror="this.style.display='none'">
+          <div class="tc-title">Natural Gas</div>
         </div>
         <div class="tech-card reveal">
-          <div class="tc-head">
-            <div class="tc-icon husk">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="12" rx="4" ry="10"/><path d="M12 2v20"/></svg>
-            </div>
-            <div class="tc-title">Rice Husk Combustion</div>
-          </div>
-          <div class="tc-desc">Direct rice husk combustion system. Near-zero fuel cost for rice mills — turns waste into energy.</div>
-          <div class="tc-tags"><span class="tc-tag">Zero Fuel Cost</span><span class="tc-tag">Waste-to-Energy</span></div>
+          <img class="tc-fuel-img" src="assets/Rice_Husk.webp" alt="Rice husk pile" onerror="this.style.display='none'">
+          <div class="tc-title">Rice Husk</div>
         </div>
         <div class="tech-card reveal">
-          <div class="tc-head">
-            <div class="tc-icon gas">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 6 6 10 6 14a6 6 0 0 0 12 0c0-4-2-8-6-12z"/></svg>
-            </div>
-            <div class="tc-title">Natural Gas Heating</div>
-          </div>
-          <div class="tc-desc">Clean-burning natural gas system. Lowest emissions, ideal for areas with gas pipeline access.</div>
-          <div class="tc-tags"><span class="tc-tag">Low Emission</span><span class="tc-tag">Clean Burning</span></div>
+          <img class="tc-fuel-img" src="assets/Biomass_Pellet.webp" alt="Biomass pellets" onerror="this.style.display='none'">
+          <div class="tc-title">Biomass Pellet</div>
         </div>
         <div class="tech-card reveal">
-          <div class="tc-head">
-            <div class="tc-icon wood">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6m0 0c-3 0-5 2-5 5s2 5 5 5 5-2 5-5-2-5-5-5z"/></svg>
-            </div>
-            <div class="tc-title">Wood Fired Furnace</div>
-          </div>
-          <div class="tc-desc">Traditional wood-fired heating with modern efficiency. Best for remote areas with abundant timber.</div>
-          <div class="tc-tags"><span class="tc-tag">Remote Areas</span><span class="tc-tag">Low Cost</span></div>
+          <img class="tc-fuel-img" src="assets/Wood.webp" alt="Wood pile" onerror="this.style.display='none'">
+          <div class="tc-title">Wood</div>
         </div>
         <div class="tech-card reveal">
-          <div class="tc-head">
-            <div class="tc-icon coal">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/><line x1="12" y1="22" x2="12" y2="15.5"/><polyline points="22 8.5 12 15.5 2 8.5"/></svg>
-            </div>
-            <div class="tc-title">Coal Heating System</div>
-          </div>
-          <div class="tc-desc">Economical coal-fired heating for industrial-scale drying. Lowest cost per ton for large operations.</div>
-          <div class="tc-tags"><span class="tc-tag">Industrial Scale</span><span class="tc-tag">Lowest Cost/Ton</span></div>
+          <img class="tc-fuel-img" src="assets/Coal.webp" alt="Coal pile" onerror="this.style.display='none'">
+          <div class="tc-title">Coal</div>
         </div>
+      </div>
+      <div style="text-align:center; margin-top:32px;">
+        <a href="#contact" class="btn btn-primary">Explore Technology →</a>
       </div>
     </div>
   </section>
@@ -1297,38 +1348,56 @@
             </div>
             <div class="form-group">
               <label class="form-label">Crop *</label>
-              <select class="form-select" required>
-                <option value="">Select crop</option>
-                <option>Rice / Paddy</option>
-                <option>Maize / Corn</option>
-                <option>Wheat</option>
-                <option>Soybean</option>
-                <option>Other</option>
-              </select>
+              <div class="dropdown">
+                <button class="dropdown-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="dd-value">Select crop</span>
+                </button>
+                <div class="dropdown-menu" role="listbox">
+                  <div class="dropdown-opt" role="option" data-value="">Select crop</div>
+                  <div class="dropdown-opt" role="option" data-value="Rice">Rice / Paddy</div>
+                  <div class="dropdown-opt" role="option" data-value="Maize">Maize / Corn</div>
+                  <div class="dropdown-opt" role="option" data-value="Wheat">Wheat</div>
+                  <div class="dropdown-opt" role="option" data-value="Soybean">Soybean</div>
+                  <div class="dropdown-opt" role="option" data-value="Other">Other</div>
+                </div>
+                <input type="hidden" name="crop" required>
+              </div>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">Capacity (TPD) *</label>
-              <select class="form-select" required>
-                <option value="">Select capacity</option>
-                <option>Less than 20 TPD</option>
-                <option>20–50 TPD</option>
-                <option>50–100 TPD</option>
-                <option>100+ TPD</option>
-              </select>
+              <div class="dropdown">
+                <button class="dropdown-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="dd-value">Select capacity</span>
+                </button>
+                <div class="dropdown-menu" role="listbox">
+                  <div class="dropdown-opt" role="option" data-value="">Select capacity</div>
+                  <div class="dropdown-opt" role="option" data-value="lt20">Less than 20 TPD</div>
+                  <div class="dropdown-opt" role="option" data-value="20-50">20–50 TPD</div>
+                  <div class="dropdown-opt" role="option" data-value="50-100">50–100 TPD</div>
+                  <div class="dropdown-opt" role="option" data-value="gt100">100+ TPD</div>
+                </div>
+                <input type="hidden" name="capacity" required>
+              </div>
             </div>
             <div class="form-group">
               <label class="form-label">Fuel</label>
-              <select class="form-select">
-                <option value="">Select fuel (optional)</option>
-                <option>Diesel</option>
-                <option>Rice Husk</option>
-                <option>Biomass</option>
-                <option>Natural Gas</option>
-                <option>Wood</option>
-                <option>Coal</option>
-              </select>
+              <div class="dropdown">
+                <button class="dropdown-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="dd-value">Select fuel (optional)</span>
+                </button>
+                <div class="dropdown-menu" role="listbox">
+                  <div class="dropdown-opt" role="option" data-value="">Select fuel (optional)</div>
+                  <div class="dropdown-opt" role="option" data-value="Diesel">Diesel</div>
+                  <div class="dropdown-opt" role="option" data-value="RiceHusk">Rice Husk</div>
+                  <div class="dropdown-opt" role="option" data-value="Biomass">Biomass</div>
+                  <div class="dropdown-opt" role="option" data-value="NaturalGas">Natural Gas</div>
+                  <div class="dropdown-opt" role="option" data-value="Wood">Wood</div>
+                  <div class="dropdown-opt" role="option" data-value="Coal">Coal</div>
+                </div>
+                <input type="hidden" name="fuel">
+              </div>
             </div>
           </div>
           <div class="form-group full">
@@ -1485,6 +1554,67 @@
         }
       });
     });
+
+    // Custom dropdown interaction
+    var dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(function(dd) {
+      var trigger = dd.querySelector('.dropdown-trigger');
+      var menu = dd.querySelector('.dropdown-menu');
+      var options = dd.querySelectorAll('.dropdown-opt');
+      var hiddenInput = dd.querySelector('input[type="hidden"]');
+      var valueSpan = trigger.querySelector('.dd-value');
+
+      function openMenu() {
+        menu.classList.add('open');
+        trigger.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+
+      function closeMenu() {
+        menu.classList.remove('open');
+        trigger.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+
+      trigger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (menu.classList.contains('open')) {
+          closeMenu();
+        } else {
+          closeOtherMenus();
+          openMenu();
+        }
+      });
+
+      options.forEach(function(opt) {
+        opt.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var val = this.getAttribute('data-value');
+          var text = this.textContent.trim();
+
+          options.forEach(function(o) { o.classList.remove('selected'); });
+          this.classList.add('selected');
+
+          valueSpan.textContent = text;
+          if (hiddenInput) hiddenInput.value = val;
+          if (val) {
+            trigger.classList.add('has-value');
+          } else {
+            trigger.classList.remove('has-value');
+          }
+          closeMenu();
+        });
+      });
+    });
+
+    function closeOtherMenus() {
+      document.querySelectorAll('.dropdown-menu.open').forEach(function(m) {
+        m.classList.remove('open');
+        m.parentElement.querySelector('.dropdown-trigger').classList.remove('open');
+      });
+    }
+
+    document.addEventListener('click', closeOtherMenus);
   </script>
 
 </body>
