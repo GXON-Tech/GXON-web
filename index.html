@@ -495,6 +495,9 @@
       background: var(--c-primary-bg); border-color: var(--c-primary); color: var(--c-primary);
       font-weight: 700;
     }
+    .sf-opt.selected::before {
+      content: '✓ '; font-weight: 700;
+    }
     .sf-result {
       background: var(--c-primary-bg); border-radius: var(--r-md);
       border: 1px solid rgba(8,79,50,0.18);
@@ -743,6 +746,33 @@
       opacity: 1;
       visibility: visible;
     }
+    .dropdown-search .dropdown-menu {
+      max-height: 400px;
+    }
+    .dd-search {
+      padding: 8px 10px; border-bottom: 1px solid var(--c-n7);
+      background: var(--c-silver-bg);
+    }
+    .dd-search-input {
+      width: 100%; padding: 9px 12px;
+      font-family: var(--font-body); font-size: 13px;
+      border: 1px solid var(--c-n6); border-radius: var(--r-sm);
+      background: #fff; outline: none;
+    }
+    .dd-search-input:focus {
+      border-color: var(--c-primary);
+    }
+    .dd-options {
+      max-height: 260px; overflow-y: auto;
+    }
+    .dd-group-label {
+      padding: 8px 14px 4px;
+      font-size: 11px; font-weight: 700; color: var(--c-n3);
+      text-transform: uppercase; letter-spacing: 0.05em;
+      background: var(--c-silver-bg);
+      border-bottom: 1px solid var(--c-n7);
+    }
+    .dd-group-label:first-child { padding-top: 6px; }
     .dropdown-opt {
       padding: 11px 14px;
       font-family: var(--font-body); font-size: 14px; color: var(--c-n2);
@@ -765,6 +795,7 @@
       border: 1.5px solid var(--c-n5); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
     }
+    .dropdown-opt .opt-text { flex: 1; }
     .dropdown-opt.selected .opt-check {
       border-color: var(--c-primary);
       background: var(--c-primary);
@@ -1012,31 +1043,31 @@
         <div class="sf-steps">
           <div class="sf-step active">
             <div class="sf-step-label"><span class="sf-step-num">1</span> What grain do you want to dry?</div>
-            <div class="sf-options">
-              <button class="sf-opt selected" onclick="selectOption(this)">Rice</button>
-              <button class="sf-opt" onclick="selectOption(this)">Maize</button>
-              <button class="sf-opt" onclick="selectOption(this)">Wheat</button>
-              <button class="sf-opt" onclick="selectOption(this)">Soybean</button>
+            <div class="sf-options sf-multi">
+              <button class="sf-opt" data-value="Rice" onclick="toggleMultiOption(this, 'grain')">Rice</button>
+              <button class="sf-opt" data-value="Maize" onclick="toggleMultiOption(this, 'grain')">Maize</button>
+              <button class="sf-opt" data-value="Wheat" onclick="toggleMultiOption(this, 'grain')">Wheat</button>
+              <button class="sf-opt" data-value="Soybean" onclick="toggleMultiOption(this, 'grain')">Soybean</button>
             </div>
           </div>
           <div class="sf-step">
             <div class="sf-step-label"><span class="sf-step-num">2</span> How many tons per day?</div>
             <div class="sf-options">
-              <button class="sf-opt" onclick="selectOption(this)">&lt;20 tons/day</button>
-              <button class="sf-opt selected" onclick="selectOption(this)">20–50 tons/day</button>
-              <button class="sf-opt" onclick="selectOption(this)">50–100 tons/day</button>
-              <button class="sf-opt" onclick="selectOption(this)">100+ tons/day</button>
+              <button class="sf-opt" data-value="lt20" onclick="selectOption(this); syncToCTA('capacity', 'lt20', '&lt;20 tons/day')">&lt;20 tons/day</button>
+              <button class="sf-opt" data-value="20-50" onclick="selectOption(this); syncToCTA('capacity', '20-50', '20–50 tons/day')">20–50 tons/day</button>
+              <button class="sf-opt" data-value="50-100" onclick="selectOption(this); syncToCTA('capacity', '50-100', '50–100 tons/day')">50–100 tons/day</button>
+              <button class="sf-opt" data-value="gt100" onclick="selectOption(this); syncToCTA('capacity', 'gt100', '100+ tons/day')">100+ tons/day</button>
             </div>
           </div>
           <div class="sf-step">
             <div class="sf-step-label"><span class="sf-step-num">3</span> What fuel is available?</div>
             <div class="sf-options">
-              <button class="sf-opt" onclick="selectOption(this)">Diesel</button>
-              <button class="sf-opt selected" onclick="selectOption(this)">Rice Husk</button>
-              <button class="sf-opt" onclick="selectOption(this)">Biomass</button>
-              <button class="sf-opt" onclick="selectOption(this)">Natural Gas</button>
-              <button class="sf-opt" onclick="selectOption(this)">Wood</button>
-              <button class="sf-opt" onclick="selectOption(this)">Coal</button>
+              <button class="sf-opt" data-value="Diesel" onclick="selectOption(this); syncToCTA('fuel', 'Diesel', 'Diesel')">Diesel</button>
+              <button class="sf-opt" data-value="RiceHusk" onclick="selectOption(this); syncToCTA('fuel', 'RiceHusk', 'Rice Husk')">Rice Husk</button>
+              <button class="sf-opt" data-value="Biomass" onclick="selectOption(this); syncToCTA('fuel', 'Biomass', 'Biomass')">Biomass</button>
+              <button class="sf-opt" data-value="NaturalGas" onclick="selectOption(this); syncToCTA('fuel', 'NaturalGas', 'Natural Gas')">Natural Gas</button>
+              <button class="sf-opt" data-value="Wood" onclick="selectOption(this); syncToCTA('fuel', 'Wood', 'Wood')">Wood</button>
+              <button class="sf-opt" data-value="Coal" onclick="selectOption(this); syncToCTA('fuel', 'Coal', 'Coal')">Coal</button>
             </div>
           </div>
         </div>
@@ -1046,7 +1077,7 @@
             <div class="model">GXON BD-30T Batch Grain Dryer</div>
             <div class="meta">30 TPD · Rice Husk Furnace · Recirculating Type · Rice Drying</div>
           </div>
-          <a href="#contact" class="btn btn-cta">Get My Drying Solution</a>
+          <a href="#contact" class="btn btn-cta">Check my drying solution</a>
         </div>
       </div>
     </div>
@@ -1343,22 +1374,230 @@
         <form onsubmit="event.preventDefault(); alert('Thank you! Our team will contact you within 24 hours.');">
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">Country *</label>
-              <input class="form-input" type="text" placeholder="e.g. Bangladesh" required>
+              <label class="form-label">Country/Region *</label>
+              <div class="dropdown dropdown-search" id="cta-country-dropdown">
+                <button class="dropdown-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="dd-value">Select country/region</span>
+                </button>
+                <div class="dropdown-menu" role="listbox">
+                  <div class="dd-search">
+                    <input type="text" class="dd-search-input" placeholder="Search country..." oninput="filterCountryDropdown(this)">
+                  </div>
+                  <div class="dd-options" id="country-options">
+                    <div class="dd-group-label">Southeast Asia</div>
+                    <div class="dropdown-opt" role="option" data-value="BN">🇧🇳 Brunei</div>
+                    <div class="dropdown-opt" role="option" data-value="KH">🇰🇭 Cambodia</div>
+                    <div class="dropdown-opt" role="option" data-value="ID">🇮🇩 Indonesia</div>
+                    <div class="dropdown-opt" role="option" data-value="LA">🇱🇦 Laos</div>
+                    <div class="dropdown-opt" role="option" data-value="MY">🇲🇾 Malaysia</div>
+                    <div class="dropdown-opt" role="option" data-value="MM">🇲🇲 Myanmar</div>
+                    <div class="dropdown-opt" role="option" data-value="PH">🇵🇭 Philippines</div>
+                    <div class="dropdown-opt" role="option" data-value="SG">🇸🇬 Singapore</div>
+                    <div class="dropdown-opt" role="option" data-value="TH">🇹🇭 Thailand</div>
+                    <div class="dropdown-opt" role="option" data-value="TL">🇹🇱 Timor-Leste</div>
+                    <div class="dropdown-opt" role="option" data-value="VN">🇻🇳 Vietnam</div>
+                    <div class="dd-group-label">East Asia</div>
+                    <div class="dropdown-opt" role="option" data-value="CN">🇨🇳 China</div>
+                    <div class="dropdown-opt" role="option" data-value="JP">🇯🇵 Japan</div>
+                    <div class="dropdown-opt" role="option" data-value="KR">🇰🇷 South Korea</div>
+                    <div class="dropdown-opt" role="option" data-value="MN">🇲🇳 Mongolia</div>
+                    <div class="dropdown-opt" role="option" data-value="TW">🇹🇼 Taiwan</div>
+                    <div class="dd-group-label">South Asia</div>
+                    <div class="dropdown-opt" role="option" data-value="AF">🇦🇫 Afghanistan</div>
+                    <div class="dropdown-opt" role="option" data-value="BD">🇧🇩 Bangladesh</div>
+                    <div class="dropdown-opt" role="option" data-value="BT">🇧🇹 Bhutan</div>
+                    <div class="dropdown-opt" role="option" data-value="IN">🇮🇳 India</div>
+                    <div class="dropdown-opt" role="option" data-value="MV">🇲🇻 Maldives</div>
+                    <div class="dropdown-opt" role="option" data-value="NP">🇳🇵 Nepal</div>
+                    <div class="dropdown-opt" role="option" data-value="PK">🇵🇰 Pakistan</div>
+                    <div class="dropdown-opt" role="option" data-value="LK">🇱🇰 Sri Lanka</div>
+                    <div class="dd-group-label">Central Asia</div>
+                    <div class="dropdown-opt" role="option" data-value="KZ">🇰🇿 Kazakhstan</div>
+                    <div class="dropdown-opt" role="option" data-value="KG">🇰🇬 Kyrgyzstan</div>
+                    <div class="dropdown-opt" role="option" data-value="TJ">🇹🇯 Tajikistan</div>
+                    <div class="dropdown-opt" role="option" data-value="TM">🇹🇲 Turkmenistan</div>
+                    <div class="dropdown-opt" role="option" data-value="UZ">🇺🇿 Uzbekistan</div>
+                    <div class="dd-group-label">Middle East</div>
+                    <div class="dropdown-opt" role="option" data-value="BH">🇧🇭 Bahrain</div>
+                    <div class="dropdown-opt" role="option" data-value="IR">🇮🇷 Iran</div>
+                    <div class="dropdown-opt" role="option" data-value="IQ">🇮🇶 Iraq</div>
+                    <div class="dropdown-opt" role="option" data-value="IL">🇮🇱 Israel</div>
+                    <div class="dropdown-opt" role="option" data-value="JO">🇯🇴 Jordan</div>
+                    <div class="dropdown-opt" role="option" data-value="KW">🇰🇼 Kuwait</div>
+                    <div class="dropdown-opt" role="option" data-value="LB">🇱🇧 Lebanon</div>
+                    <div class="dropdown-opt" role="option" data-value="OM">🇴🇲 Oman</div>
+                    <div class="dropdown-opt" role="option" data-value="PS">🇵🇸 Palestine</div>
+                    <div class="dropdown-opt" role="option" data-value="QA">🇶🇦 Qatar</div>
+                    <div class="dropdown-opt" role="option" data-value="SA">🇸🇦 Saudi Arabia</div>
+                    <div class="dropdown-opt" role="option" data-value="SY">🇸🇾 Syria</div>
+                    <div class="dropdown-opt" role="option" data-value="TR">🇹🇷 Turkey</div>
+                    <div class="dropdown-opt" role="option" data-value="AE">🇦🇪 United Arab Emirates</div>
+                    <div class="dropdown-opt" role="option" data-value="YE">🇾🇪 Yemen</div>
+                    <div class="dd-group-label">Africa</div>
+                    <div class="dropdown-opt" role="option" data-value="DZ">🇩🇿 Algeria</div>
+                    <div class="dropdown-opt" role="option" data-value="AO">🇦🇴 Angola</div>
+                    <div class="dropdown-opt" role="option" data-value="BJ">🇧🇯 Benin</div>
+                    <div class="dropdown-opt" role="option" data-value="BW">🇧🇼 Botswana</div>
+                    <div class="dropdown-opt" role="option" data-value="BF">🇧🇫 Burkina Faso</div>
+                    <div class="dropdown-opt" role="option" data-value="BI">🇧🇮 Burundi</div>
+                    <div class="dropdown-opt" role="option" data-value="CM">🇨🇲 Cameroon</div>
+                    <div class="dropdown-opt" role="option" data-value="CV">🇨🇻 Cape Verde</div>
+                    <div class="dropdown-opt" role="option" data-value="TD">🇹🇩 Chad</div>
+                    <div class="dropdown-opt" role="option" data-value="KM">🇰🇲 Comoros</div>
+                    <div class="dropdown-opt" role="option" data-value="CG">🇨🇬 Congo</div>
+                    <div class="dropdown-opt" role="option" data-value="CI">🇨🇮 Côte d'Ivoire</div>
+                    <div class="dropdown-opt" role="option" data-value="EG">🇪🇬 Egypt</div>
+                    <div class="dropdown-opt" role="option" data-value="ET">🇪🇹 Ethiopia</div>
+                    <div class="dropdown-opt" role="option" data-value="GA">🇬🇦 Gabon</div>
+                    <div class="dropdown-opt" role="option" data-value="GM">🇬🇲 Gambia</div>
+                    <div class="dropdown-opt" role="option" data-value="GH">🇬🇭 Ghana</div>
+                    <div class="dropdown-opt" role="option" data-value="GN">🇬🇳 Guinea</div>
+                    <div class="dropdown-opt" role="option" data-value="KE">🇰🇪 Kenya</div>
+                    <div class="dropdown-opt" role="option" data-value="LS">🇱🇸 Lesotho</div>
+                    <div class="dropdown-opt" role="option" data-value="LR">🇱🇷 Liberia</div>
+                    <div class="dropdown-opt" role="option" data-value="LY">🇱🇾 Libya</div>
+                    <div class="dropdown-opt" role="option" data-value="MG">🇲🇬 Madagascar</div>
+                    <div class="dropdown-opt" role="option" data-value="MW">🇲🇼 Malawi</div>
+                    <div class="dropdown-opt" role="option" data-value="ML">🇲🇱 Mali</div>
+                    <div class="dropdown-opt" role="option" data-value="MR">🇲🇷 Mauritania</div>
+                    <div class="dropdown-opt" role="option" data-value="MU">🇲🇺 Mauritius</div>
+                    <div class="dropdown-opt" role="option" data-value="MA">🇲🇦 Morocco</div>
+                    <div class="dropdown-opt" role="option" data-value="MZ">🇲🇿 Mozambique</div>
+                    <div class="dropdown-opt" role="option" data-value="NA">🇳🇦 Namibia</div>
+                    <div class="dropdown-opt" role="option" data-value="NE">🇳🇪 Niger</div>
+                    <div class="dropdown-opt" role="option" data-value="NG">🇳🇬 Nigeria</div>
+                    <div class="dropdown-opt" role="option" data-value="RW">🇷🇼 Rwanda</div>
+                    <div class="dropdown-opt" role="option" data-value="SN">🇸🇳 Senegal</div>
+                    <div class="dropdown-opt" role="option" data-value="SC">🇸🇨 Seychelles</div>
+                    <div class="dropdown-opt" role="option" data-value="SL">🇸🇱 Sierra Leone</div>
+                    <div class="dropdown-opt" role="option" data-value="SO">🇸🇴 Somalia</div>
+                    <div class="dropdown-opt" role="option" data-value="ZA">🇿🇦 South Africa</div>
+                    <div class="dropdown-opt" role="option" data-value="SS">🇸🇸 South Sudan</div>
+                    <div class="dropdown-opt" role="option" data-value="SD">🇸🇩 Sudan</div>
+                    <div class="dropdown-opt" role="option" data-value="SZ">🇸🇿 Eswatini</div>
+                    <div class="dropdown-opt" role="option" data-value="TZ">🇹🇿 Tanzania</div>
+                    <div class="dropdown-opt" role="option" data-value="TG">🇹🇬 Togo</div>
+                    <div class="dropdown-opt" role="option" data-value="TN">🇹🇳 Tunisia</div>
+                    <div class="dropdown-opt" role="option" data-value="UG">🇺🇬 Uganda</div>
+                    <div class="dropdown-opt" role="option" data-value="ZM">🇿🇲 Zambia</div>
+                    <div class="dropdown-opt" role="option" data-value="ZW">🇿🇼 Zimbabwe</div>
+                    <div class="dd-group-label">Europe</div>
+                    <div class="dropdown-opt" role="option" data-value="AL">🇦🇱 Albania</div>
+                    <div class="dropdown-opt" role="option" data-value="AD">🇦🇩 Andorra</div>
+                    <div class="dropdown-opt" role="option" data-value="AT">🇦🇹 Austria</div>
+                    <div class="dropdown-opt" role="option" data-value="BY">🇧🇾 Belarus</div>
+                    <div class="dropdown-opt" role="option" data-value="BE">🇧🇪 Belgium</div>
+                    <div class="dropdown-opt" role="option" data-value="BA">🇧🇦 Bosnia and Herzegovina</div>
+                    <div class="dropdown-opt" role="option" data-value="BG">🇧🇬 Bulgaria</div>
+                    <div class="dropdown-opt" role="option" data-value="HR">🇭🇷 Croatia</div>
+                    <div class="dropdown-opt" role="option" data-value="CY">🇨🇾 Cyprus</div>
+                    <div class="dropdown-opt" role="option" data-value="CZ">🇨🇿 Czech Republic</div>
+                    <div class="dropdown-opt" role="option" data-value="DK">🇩🇰 Denmark</div>
+                    <div class="dropdown-opt" role="option" data-value="EE">🇪🇪 Estonia</div>
+                    <div class="dropdown-opt" role="option" data-value="FI">🇫🇮 Finland</div>
+                    <div class="dropdown-opt" role="option" data-value="FR">🇫🇷 France</div>
+                    <div class="dropdown-opt" role="option" data-value="DE">🇩🇪 Germany</div>
+                    <div class="dropdown-opt" role="option" data-value="GR">🇬🇷 Greece</div>
+                    <div class="dropdown-opt" role="option" data-value="HU">🇭🇺 Hungary</div>
+                    <div class="dropdown-opt" role="option" data-value="IS">🇮🇸 Iceland</div>
+                    <div class="dropdown-opt" role="option" data-value="IE">🇮🇪 Ireland</div>
+                    <div class="dropdown-opt" role="option" data-value="IT">🇮🇹 Italy</div>
+                    <div class="dropdown-opt" role="option" data-value="LV">🇱🇻 Latvia</div>
+                    <div class="dropdown-opt" role="option" data-value="LI">🇱🇮 Liechtenstein</div>
+                    <div class="dropdown-opt" role="option" data-value="LT">🇱🇹 Lithuania</div>
+                    <div class="dropdown-opt" role="option" data-value="LU">🇱🇺 Luxembourg</div>
+                    <div class="dropdown-opt" role="option" data-value="MT">🇲🇹 Malta</div>
+                    <div class="dropdown-opt" role="option" data-value="MD">🇲🇩 Moldova</div>
+                    <div class="dropdown-opt" role="option" data-value="MC">🇲🇨 Monaco</div>
+                    <div class="dropdown-opt" role="option" data-value="ME">🇲🇪 Montenegro</div>
+                    <div class="dropdown-opt" role="option" data-value="NL">🇳🇱 Netherlands</div>
+                    <div class="dropdown-opt" role="option" data-value="MK">🇲🇰 North Macedonia</div>
+                    <div class="dropdown-opt" role="option" data-value="NO">🇳🇴 Norway</div>
+                    <div class="dropdown-opt" role="option" data-value="PL">🇵🇱 Poland</div>
+                    <div class="dropdown-opt" role="option" data-value="PT">🇵🇹 Portugal</div>
+                    <div class="dropdown-opt" role="option" data-value="RO">🇷🇴 Romania</div>
+                    <div class="dropdown-opt" role="option" data-value="RU">🇷🇺 Russia</div>
+                    <div class="dropdown-opt" role="option" data-value="SM">🇸🇲 San Marino</div>
+                    <div class="dropdown-opt" role="option" data-value="RS">🇷🇸 Serbia</div>
+                    <div class="dropdown-opt" role="option" data-value="SK">🇸🇰 Slovakia</div>
+                    <div class="dropdown-opt" role="option" data-value="SI">🇸🇮 Slovenia</div>
+                    <div class="dropdown-opt" role="option" data-value="ES">🇪🇸 Spain</div>
+                    <div class="dropdown-opt" role="option" data-value="SE">🇸🇪 Sweden</div>
+                    <div class="dropdown-opt" role="option" data-value="CH">🇨🇭 Switzerland</div>
+                    <div class="dropdown-opt" role="option" data-value="UA">🇺🇦 Ukraine</div>
+                    <div class="dropdown-opt" role="option" data-value="GB">🇬🇧 United Kingdom</div>
+                    <div class="dropdown-opt" role="option" data-value="VA">🇻🇦 Vatican City</div>
+                    <div class="dd-group-label">North America</div>
+                    <div class="dropdown-opt" role="option" data-value="CA">🇨🇦 Canada</div>
+                    <div class="dropdown-opt" role="option" data-value="MX">🇲🇽 Mexico</div>
+                    <div class="dropdown-opt" role="option" data-value="US">🇺🇸 United States</div>
+                    <div class="dd-group-label">Central America & Caribbean</div>
+                    <div class="dropdown-opt" role="option" data-value="BZ">🇧🇿 Belize</div>
+                    <div class="dropdown-opt" role="option" data-value="CR">🇨🇷 Costa Rica</div>
+                    <div class="dropdown-opt" role="option" data-value="CU">🇨🇺 Cuba</div>
+                    <div class="dropdown-opt" role="option" data-value="DO">🇩🇴 Dominican Republic</div>
+                    <div class="dropdown-opt" role="option" data-value="SV">🇸🇻 El Salvador</div>
+                    <div class="dropdown-opt" role="option" data-value="GT">🇬🇹 Guatemala</div>
+                    <div class="dropdown-opt" role="option" data-value="HT">🇭🇹 Haiti</div>
+                    <div class="dropdown-opt" role="option" data-value="HN">🇭🇳 Honduras</div>
+                    <div class="dropdown-opt" role="option" data-value="JM">🇯🇲 Jamaica</div>
+                    <div class="dropdown-opt" role="option" data-value="NI">🇳🇮 Nicaragua</div>
+                    <div class="dropdown-opt" role="option" data-value="PA">🇵🇦 Panama</div>
+                    <div class="dd-group-label">South America</div>
+                    <div class="dropdown-opt" role="option" data-value="AR">🇦🇷 Argentina</div>
+                    <div class="dropdown-opt" role="option" data-value="BO">🇧🇴 Bolivia</div>
+                    <div class="dropdown-opt" role="option" data-value="BR">🇧🇷 Brazil</div>
+                    <div class="dropdown-opt" role="option" data-value="CL">🇨🇱 Chile</div>
+                    <div class="dropdown-opt" role="option" data-value="CO">🇨🇴 Colombia</div>
+                    <div class="dropdown-opt" role="option" data-value="EC">🇪🇨 Ecuador</div>
+                    <div class="dropdown-opt" role="option" data-value="GY">🇬🇾 Guyana</div>
+                    <div class="dropdown-opt" role="option" data-value="PY">🇵🇾 Paraguay</div>
+                    <div class="dropdown-opt" role="option" data-value="PE">🇵🇪 Peru</div>
+                    <div class="dropdown-opt" role="option" data-value="SR">🇸🇷 Suriname</div>
+                    <div class="dropdown-opt" role="option" data-value="UY">🇺🇾 Uruguay</div>
+                    <div class="dropdown-opt" role="option" data-value="VE">🇻🇪 Venezuela</div>
+                    <div class="dd-group-label">Oceania</div>
+                    <div class="dropdown-opt" role="option" data-value="AU">🇦🇺 Australia</div>
+                    <div class="dropdown-opt" role="option" data-value="FJ">🇫🇯 Fiji</div>
+                    <div class="dropdown-opt" role="option" data-value="KI">🇰🇮 Kiribati</div>
+                    <div class="dropdown-opt" role="option" data-value="MH">🇲🇭 Marshall Islands</div>
+                    <div class="dropdown-opt" role="option" data-value="FM">🇫🇲 Micronesia</div>
+                    <div class="dropdown-opt" role="option" data-value="NR">🇳🇷 Nauru</div>
+                    <div class="dropdown-opt" role="option" data-value="NZ">🇳🇿 New Zealand</div>
+                    <div class="dropdown-opt" role="option" data-value="PW">🇵🇼 Palau</div>
+                    <div class="dropdown-opt" role="option" data-value="PG">🇵🇬 Papua New Guinea</div>
+                    <div class="dropdown-opt" role="option" data-value="WS">🇼🇸 Samoa</div>
+                    <div class="dropdown-opt" role="option" data-value="SB">🇸🇧 Solomon Islands</div>
+                    <div class="dropdown-opt" role="option" data-value="TO">🇹🇴 Tonga</div>
+                    <div class="dropdown-opt" role="option" data-value="TV">🇹🇻 Tuvalu</div>
+                    <div class="dropdown-opt" role="option" data-value="VU">🇻🇺 Vanuatu</div>
+                  </div>
+                </div>
+                <input type="hidden" name="country" required>
+              </div>
             </div>
             <div class="form-group">
               <label class="form-label">Crop *</label>
-              <div class="dropdown">
+              <div class="dropdown dropdown-multi" id="cta-crop-dropdown">
                 <button class="dropdown-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
                   <span class="dd-value">Select crop</span>
                 </button>
-                <div class="dropdown-menu" role="listbox">
-                  <div class="dropdown-opt" role="option" data-value="">Select crop</div>
-                  <div class="dropdown-opt" role="option" data-value="Rice">Rice / Paddy</div>
-                  <div class="dropdown-opt" role="option" data-value="Maize">Maize / Corn</div>
-                  <div class="dropdown-opt" role="option" data-value="Wheat">Wheat</div>
-                  <div class="dropdown-opt" role="option" data-value="Soybean">Soybean</div>
-                  <div class="dropdown-opt" role="option" data-value="Other">Other</div>
+                <div class="dropdown-menu" role="listbox" aria-multiselectable="true">
+                  <div class="dropdown-opt" role="option" data-value="Rice">
+                    <span class="opt-check"></span><span class="opt-text">Rice / Paddy</span>
+                  </div>
+                  <div class="dropdown-opt" role="option" data-value="Maize">
+                    <span class="opt-check"></span><span class="opt-text">Maize / Corn</span>
+                  </div>
+                  <div class="dropdown-opt" role="option" data-value="Wheat">
+                    <span class="opt-check"></span><span class="opt-text">Wheat</span>
+                  </div>
+                  <div class="dropdown-opt" role="option" data-value="Soybean">
+                    <span class="opt-check"></span><span class="opt-text">Soybean</span>
+                  </div>
+                  <div class="dropdown-opt" role="option" data-value="Other">
+                    <span class="opt-check"></span><span class="opt-text">Other</span>
+                  </div>
                 </div>
                 <input type="hidden" name="crop" required>
               </div>
@@ -1367,7 +1606,7 @@
           <div class="form-row">
             <div class="form-group">
               <label class="form-label">Capacity (TPD) *</label>
-              <div class="dropdown">
+              <div class="dropdown" id="cta-capacity-dropdown">
                 <button class="dropdown-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
                   <span class="dd-value">Select capacity</span>
                 </button>
@@ -1383,7 +1622,7 @@
             </div>
             <div class="form-group">
               <label class="form-label">Fuel</label>
-              <div class="dropdown">
+              <div class="dropdown" id="cta-fuel-dropdown">
                 <button class="dropdown-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
                   <span class="dd-value">Select fuel (optional)</span>
                 </button>
@@ -1409,7 +1648,7 @@
             <input class="form-input" type="email" id="email-input" placeholder="e.g. your@email.com (optional)">
             <div class="form-error" id="email-error" style="display:none;">Please enter a valid email address.</div>
           </div>
-          <button type="submit" class="btn btn-cta btn-lg btn-block">Get Recommendation →</button>
+          <button type="submit" class="btn btn-cta btn-lg btn-block">Get my drying solution</button>
         </form>
       </div>
     </div>
@@ -1501,6 +1740,27 @@
       btn.classList.add('selected');
     }
 
+    // Sync Solution Finder selection to CTA dropdown
+    function syncToCTA(field, value, displayText) {
+      var dropdownId = field === 'capacity' ? 'cta-capacity-dropdown' : 'cta-fuel-dropdown';
+      var dd = document.getElementById(dropdownId);
+      if (!dd || !value) return;
+      var trigger = dd.querySelector('.dropdown-trigger');
+      var valueSpan = trigger.querySelector('.dd-value');
+      var hiddenInput = dd.querySelector('input[type="hidden"]');
+      var options = dd.querySelectorAll('.dropdown-opt');
+      options.forEach(function(opt) {
+        if (opt.getAttribute('data-value') === value) {
+          opt.classList.add('selected');
+        } else {
+          opt.classList.remove('selected');
+        }
+      });
+      valueSpan.textContent = displayText || value;
+      if (hiddenInput) hiddenInput.value = value;
+      trigger.classList.add('has-value');
+    }
+
     // Email format check (optional field)
     var emailInput = document.getElementById('email-input');
     var emailError = document.getElementById('email-error');
@@ -1563,6 +1823,7 @@
       var options = dd.querySelectorAll('.dropdown-opt');
       var hiddenInput = dd.querySelector('input[type="hidden"]');
       var valueSpan = trigger.querySelector('.dd-value');
+      var isMulti = dd.classList.contains('dropdown-multi');
 
       function openMenu() {
         menu.classList.add('open');
@@ -1590,24 +1851,121 @@
         opt.addEventListener('click', function(e) {
           e.stopPropagation();
           var val = this.getAttribute('data-value');
-          var text = this.textContent.trim();
+          var text = this.querySelector('.opt-text') ? this.querySelector('.opt-text').textContent.trim() : this.textContent.trim();
 
-          options.forEach(function(o) { o.classList.remove('selected'); });
-          this.classList.add('selected');
-
-          valueSpan.textContent = text;
-          if (hiddenInput) hiddenInput.value = val;
-          if (val) {
-            trigger.classList.add('has-value');
+          if (isMulti) {
+            this.classList.toggle('selected');
+            var selected = dd.querySelectorAll('.dropdown-opt.selected');
+            var values = [];
+            var texts = [];
+            selected.forEach(function(s) {
+              values.push(s.getAttribute('data-value'));
+              texts.push(s.querySelector('.opt-text') ? s.querySelector('.opt-text').textContent.trim() : s.textContent.trim());
+            });
+            valueSpan.textContent = texts.length > 0 ? texts.join(', ') : 'Select crop';
+            if (hiddenInput) hiddenInput.value = values.join(',');
+            if (texts.length > 0) {
+              trigger.classList.add('has-value');
+            } else {
+              trigger.classList.remove('has-value');
+            }
           } else {
-            trigger.classList.remove('has-value');
+            options.forEach(function(o) { o.classList.remove('selected'); });
+            this.classList.add('selected');
+            valueSpan.textContent = text;
+            if (hiddenInput) hiddenInput.value = val;
+            if (val) {
+              trigger.classList.add('has-value');
+            } else {
+              trigger.classList.remove('has-value');
+            }
+            closeMenu();
           }
-          closeMenu();
         });
       });
     });
 
-    function closeOtherMenus() {
+    // Solution Finder multi-select for grains
+    var selectedGrains = [];
+    function toggleMultiOption(btn, group) {
+      btn.classList.toggle('selected');
+      var val = btn.getAttribute('data-value');
+      if (group === 'grain') {
+        if (btn.classList.contains('selected')) {
+          if (!selectedGrains.includes(val)) selectedGrains.push(val);
+        } else {
+          selectedGrains = selectedGrains.filter(function(g) { return g !== val; });
+        }
+        syncGrainsToCTA();
+      }
+    }
+
+    // Sync grains to CTA dropdown
+    function syncGrainsToCTA() {
+      var ctaDropdown = document.getElementById('cta-crop-dropdown');
+      if (!ctaDropdown) return;
+      var trigger = ctaDropdown.querySelector('.dropdown-trigger');
+      var valueSpan = trigger.querySelector('.dd-value');
+      var hiddenInput = ctaDropdown.querySelector('input[type="hidden"]');
+      var options = ctaDropdown.querySelectorAll('.dropdown-opt');
+
+      options.forEach(function(opt) {
+        var val = opt.getAttribute('data-value');
+        if (selectedGrains.includes(val)) {
+          opt.classList.add('selected');
+        } else {
+          opt.classList.remove('selected');
+        }
+      });
+
+      if (selectedGrains.length > 0) {
+        var texts = [];
+        selectedGrains.forEach(function(g) {
+          var opt = ctaDropdown.querySelector('.dropdown-opt[data-value="' + g + '"]');
+          if (opt) {
+            var t = opt.querySelector('.opt-text');
+            texts.push(t ? t.textContent.trim() : opt.textContent.trim());
+          }
+        });
+        valueSpan.textContent = texts.join(', ');
+        hiddenInput.value = selectedGrains.join(',');
+        trigger.classList.add('has-value');
+      } else {
+        valueSpan.textContent = 'Select crop';
+        hiddenInput.value = '';
+        trigger.classList.remove('has-value');
+      }
+    }
+
+    // Make toggleMultiOption globally accessible
+    window.toggleMultiOption = toggleMultiOption;
+
+    // Country dropdown search filter
+    function filterCountryDropdown(input) {
+      var filter = input.value.toLowerCase();
+      var optionsContainer = input.closest('.dropdown-menu').querySelector('.dd-options');
+      var children = optionsContainer.children;
+      for (var i = 0; i < children.length; i++) {
+        var child = children[i];
+        if (child.classList.contains('dd-group-label')) {
+          child.style.display = 'flex';
+        } else {
+          var text = child.textContent.toLowerCase();
+          if (text.includes(filter)) {
+            child.style.display = 'flex';
+          } else {
+            child.style.display = 'none';
+          }
+        }
+      }
+    }
+    window.filterCountryDropdown = filterCountryDropdown;
+
+    function closeOtherMenus(e) {
+      if (e) {
+        var target = e.target;
+        if (target.closest('.dropdown')) return;
+      }
       document.querySelectorAll('.dropdown-menu.open').forEach(function(m) {
         m.classList.remove('open');
         m.parentElement.querySelector('.dropdown-trigger').classList.remove('open');
