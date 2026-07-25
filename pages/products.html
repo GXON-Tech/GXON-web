@@ -58,40 +58,21 @@
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "GXON AGRO Grain Dryer Products",
-    "description": "Complete lineup of grain drying equipment including mobile dryers, batch dryers, continuous towers, and complete post-harvest systems.",
+    "description": "Complete lineup of 12 grain drying equipment models across 4 product lines: mobile dryers, batch dryers, continuous towers, and complete post-harvest systems.",
     "url": "https://www.gxonagro.com/pages/products.html",
     "mainEntity": [
-      {
-        "@type": "Product",
-        "name": "Mobile Batch Grain Dryer",
-        "category": "Mobile Dryer",
-        "capacity": "5–20 TPD",
-        "description": "Portable tractor-driven grain dryer for farms and small-scale operations.",
-        "image": "https://www.gxonagro.com/assets/product-mobile.jpg"
-      },
-      {
-        "@type": "Product",
-        "name": "Fixed Batch Grain Dryer",
-        "category": "Batch Dryer",
-        "capacity": "5–30 TPD",
-        "description": "Recirculating batch dryer for rice mills and grain traders. Multi-fuel compatible.",
-        "image": "https://www.gxonagro.com/assets/product-batch.jpg"
-      },
-      {
-        "@type": "Product",
-        "name": "Continuous Drying Tower",
-        "category": "Continuous Dryer",
-        "capacity": "100–500 TPD",
-        "description": "Industrial-scale continuous drying tower for high-capacity grain processing centers.",
-        "image": "https://www.gxonagro.com/assets/product-tower.jpg"
-      },
-      {
-        "@type": "Product",
-        "name": "Complete Grain System",
-        "category": "Complete System",
-        "description": "Full post-harvest system: cleaning, drying, handling, and storage in one integrated solution.",
-        "image": "https://www.gxonagro.com/assets/product-system.jpg"
-      }
+      { "@type": "Product", "name": "G-MR-5", "category": "Mobile Batch Grain Dryer", "capacity": "5 T/batch, 10–20 TPD", "description": "5-ton-per-batch mobile dryer with foldable elevator.", "image": "https://www.gxonagro.com/assets/product-mobile.jpg" },
+      { "@type": "Product", "name": "G-MR-10", "category": "Mobile Batch Grain Dryer", "capacity": "10 T/batch, 20–40 TPD", "description": "10-ton-per-batch mobile dryer for medium farms.", "image": "https://www.gxonagro.com/assets/product-mobile.jpg" },
+      { "@type": "Product", "name": "G-MR-20", "category": "Mobile Batch Grain Dryer", "capacity": "20 T/batch, 70–80 TPD", "description": "PTO dual-power 20-ton mobile dryer, tractor-driven.", "image": "https://www.gxonagro.com/assets/product-mobile.jpg" },
+      { "@type": "Product", "name": "5T Batch Dryer", "category": "Fixed Batch Grain Dryer", "capacity": "5 T/batch", "description": "Compact fixed batch dryer for small grain stations.", "image": "https://www.gxonagro.com/assets/product-batch.jpg" },
+      { "@type": "Product", "name": "10T Batch Dryer", "category": "Fixed Batch Grain Dryer", "capacity": "10 T/batch", "description": "Fixed batch dryer for medium operations.", "image": "https://www.gxonagro.com/assets/product-batch.jpg" },
+      { "@type": "Product", "name": "G-SR-30", "category": "Fixed Batch Grain Dryer", "capacity": "30 T/batch", "description": "30-ton batch dryer with dual-use as storage silo.", "image": "https://www.gxonagro.com/assets/product-batch.jpg" },
+      { "@type": "Product", "name": "G-SR-32", "category": "Fixed Batch Grain Dryer", "capacity": "32 T/batch", "description": "32-ton batch dryer with dual-use as storage silo.", "image": "https://www.gxonagro.com/assets/product-batch.jpg" },
+      { "@type": "Product", "name": "G-CT-120", "category": "Continuous Drying Tower", "capacity": "120 MTPD", "description": "120 MTPD continuous drying tower for regional grain depots.", "image": "https://www.gxonagro.com/assets/product-tower.jpg" },
+      { "@type": "Product", "name": "G-CT-200", "category": "Continuous Drying Tower", "capacity": "200 MTPD", "description": "200 MTPD continuous drying tower for mid-large plants.", "image": "https://www.gxonagro.com/assets/product-tower.jpg" },
+      { "@type": "Product", "name": "G-CT-300", "category": "Continuous Drying Tower", "capacity": "300 MTPD", "description": "300 MTPD continuous drying tower for large processing centers.", "image": "https://www.gxonagro.com/assets/product-tower.jpg" },
+      { "@type": "Product", "name": "G-CT-500", "category": "Continuous Drying Tower", "capacity": "500 MTPD", "description": "500 MTPD industrial-scale continuous drying tower.", "image": "https://www.gxonagro.com/assets/product-tower.jpg" },
+      { "@type": "Product", "name": "Complete Grain System", "category": "Complete System", "capacity": "Custom", "description": "Turnkey post-harvest solution: cleaning, drying, handling, and storage.", "image": "https://www.gxonagro.com/assets/product-system.jpg" }
     ]
   }
   </script>
@@ -218,22 +199,147 @@
     .hero-stat .num { font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--c-orange-light); }
     .hero-stat .lbl { font-size: 13px; color: rgba(255,255,255,0.7); }
 
+    /* ===== FILTER CARD ===== */
+    .filter-card {
+      position: relative; z-index: 20;
+      background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-lg);
+      padding: 24px 28px; margin-bottom: 40px;
+      box-shadow: var(--sh-sm);
+    }
+    .filter-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    }
+    .filter-field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+    .filter-field-label {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      color: var(--c-primary); letter-spacing: 0.06em;
+      text-transform: uppercase; padding-left: 2px;
+    }
+
+    /* ===== CUSTOM DROPDOWN (mirrors homepage style) ===== */
+    .dropdown { position: relative; width: 100%; }
+    .dropdown-trigger {
+      width: 100%; height: 42px; padding: 0 36px 0 14px;
+      font-family: var(--font-body); font-size: 13px; font-weight: 600;
+      color: var(--c-n2);
+      background: #fff; border: 1.5px solid var(--c-n6); border-radius: var(--r-md);
+      cursor: pointer; position: relative;
+      display: flex; align-items: center;
+      transition: all 0.2s; overflow: hidden;
+    }
+    .dropdown-trigger .dd-value {
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1;
+    }
+    .dropdown-trigger::after {
+      content: ''; position: absolute; right: 14px; top: 50%;
+      width: 8px; height: 8px;
+      border-right: 2px solid var(--c-n3);
+      border-bottom: 2px solid var(--c-n3);
+      transform: translateY(-65%) rotate(45deg);
+      transition: transform 0.2s;
+    }
+    .dropdown-trigger:hover { border-color: var(--c-primary-light); }
+    .dropdown-trigger:focus,
+    .dropdown-trigger.open {
+      outline: none;
+      border-color: var(--c-primary);
+      color: var(--c-primary);
+    }
+    .dropdown-trigger.open {
+      box-shadow: 0 0 0 3px rgba(8,79,50,0.15);
+    }
+    .dropdown-trigger:focus::after,
+    .dropdown-trigger.open::after {
+      border-color: var(--c-primary);
+      transform: translateY(-35%) rotate(-135deg);
+    }
+    .dropdown-trigger.has-value { color: var(--c-n1); }
+    .dropdown-menu {
+      position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+      background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-md);
+      box-shadow: var(--sh-lg);
+      overflow: hidden; z-index: 100;
+      max-height: 0; opacity: 0; visibility: hidden;
+      transition: all 0.2s;
+    }
+    .dropdown-menu.open {
+      max-height: 320px; opacity: 1; visibility: visible;
+    }
+    .dd-options { max-height: 300px; overflow-y: auto; }
+    .dropdown-opt {
+      padding: 10px 14px;
+      font-family: var(--font-body); font-size: 13px; color: var(--c-n2);
+      cursor: pointer; transition: all 0.15s;
+      display: flex; align-items: center; gap: 10px;
+      border-bottom: 1px solid var(--c-n7);
+    }
+    .dropdown-opt:last-child { border-bottom: none; }
+    .dropdown-opt:hover { background: var(--c-primary-bg); color: var(--c-primary); }
+    .dropdown-opt.selected {
+      background: var(--c-primary-bg); color: var(--c-primary); font-weight: 700;
+    }
+    .dropdown-opt .opt-check {
+      width: 16px; height: 16px; flex-shrink: 0;
+      border: 1.5px solid var(--c-n5); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dropdown-opt .opt-text { flex: 1; }
+    .dropdown-opt.selected .opt-check {
+      border-color: var(--c-primary); background: var(--c-primary);
+    }
+    .dropdown-opt.selected .opt-check::after {
+      content: ''; width: 6px; height: 6px;
+      background: #fff; border-radius: 50%;
+    }
+    /* single-select without opt-check — hide the check circle */
+    .dropdown:not(.dropdown-multi) .opt-check { display: none; }
+
+    .filter-actions {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; margin-top: 20px; padding-top: 18px;
+      border-top: 1px solid var(--c-n7);
+    }
+    .filter-result-count { font-size: 14px; color: var(--c-n3); }
+    .filter-result-count strong {
+      font-family: var(--font-heading); font-size: 22px;
+      color: var(--c-primary); font-weight: 700; margin-right: 4px;
+    }
+    .filter-empty {
+      text-align: center; padding: 64px 24px;
+      background: #fff; border: 1px dashed var(--c-n6); border-radius: var(--r-lg);
+    }
+    .filter-empty-icon {
+      font-size: 48px; color: var(--c-n5); margin-bottom: 12px; line-height: 1;
+    }
+    .filter-empty-title {
+      font-family: var(--font-heading); font-size: 20px; font-weight: 700;
+      color: var(--c-dark); margin-bottom: 6px;
+    }
+    .filter-empty-desc { font-size: 14px; color: var(--c-n3); }
+
     /* ===== PRODUCT GRID ===== */
-    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
     .product-card { background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--sh-sm); transition: all 0.3s; display: flex; flex-direction: column; }
     .product-card:hover { box-shadow: var(--sh-lg); transform: translateY(-4px); border-color: var(--c-primary-light); }
-    .product-card .pc-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; background: var(--c-silver-bg); }
+    .product-card .pc-img { width: 100%; aspect-ratio: 4/3; overflow: hidden; background: var(--c-silver-bg); position: relative; }
     .product-card .pc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
     .product-card:hover .pc-img img { transform: scale(1.05); }
-    .product-card .pc-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-    .product-card .pc-tag { display: inline-block; font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--c-primary-dark); background: var(--c-primary-bg); padding: 3px 8px; border-radius: var(--r-sm); margin-bottom: 10px; align-self: flex-start; }
-    .product-card .pc-title { font-size: 17px; font-weight: 700; margin-bottom: 6px; line-height: 1.3; }
-    .product-card .pc-desc { font-size: 13px; color: var(--c-n3); line-height: 1.5; flex: 1; margin-bottom: 14px; }
-    .product-card .pc-specs { display: flex; gap: 12px; margin-bottom: 14px; }
-    .product-card .pc-spec { font-size: 11px; color: var(--c-n3); }
-    .product-card .pc-spec strong { display: block; font-family: var(--font-mono); font-size: 14px; color: var(--c-n1); font-weight: 700; }
-    .product-card .pc-link { font-size: 13px; font-weight: 700; color: var(--c-orange-dark); display: flex; align-items: center; gap: 4px; }
-    .product-card .pc-link:hover { gap: 8px; transition: gap 0.2s; }
+    .product-card .pc-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+    .product-card .pc-tag { display: inline-block; font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--c-primary-dark); background: var(--c-primary-bg); padding: 4px 10px; border-radius: var(--r-sm); margin-bottom: 12px; align-self: flex-start; letter-spacing: 0.04em; }
+    .product-card .pc-title { font-family: var(--font-heading); font-size: 22px; font-weight: 700; margin-bottom: 4px; line-height: 1.2; color: var(--c-dark); }
+    .product-card .pc-subtitle { font-size: 12px; color: var(--c-n3); margin-bottom: 12px; font-weight: 600; }
+    .product-card .pc-desc { font-size: 13px; color: var(--c-n3); line-height: 1.55; flex: 1; margin-bottom: 16px; }
+    .product-card .pc-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; padding: 14px 0; margin-bottom: 16px; border-top: 1px solid var(--c-n7); border-bottom: 1px solid var(--c-n7); }
+    .product-card .pc-spec { font-size: 11px; color: var(--c-n3); display: flex; flex-direction: column; gap: 2px; }
+    .product-card .pc-spec strong { display: block; font-family: var(--font-mono); font-size: 13px; color: var(--c-n1); font-weight: 700; }
+    .product-card .pc-spec .spec-label { font-size: 10px; color: var(--c-n4); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+    .product-card .pc-link {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 10px 16px; font-family: var(--font-body); font-size: 13px; font-weight: 700;
+      color: #fff; background: var(--c-primary); border-radius: var(--r-md);
+      transition: all 0.2s; text-decoration: none; align-self: flex-start;
+    }
+    .product-card .pc-link:hover { background: var(--c-primary-dark); transform: translateY(-1px); gap: 10px; }
 
     /* ===== PRODUCT DETAIL ===== */
     .product-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
@@ -306,6 +412,14 @@
       .footer-grid .footer-col { display: none; }
       .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
       section.block { padding: 56px 0; }
+      .filter-card { padding: 18px; margin-bottom: 28px; }
+      .filter-grid { grid-template-columns: 1fr; gap: 12px; }
+      .filter-actions { flex-direction: column; align-items: stretch; gap: 12px; }
+      .filter-result-count { text-align: center; }
+      #resetFilter { width: 100%; }
+    }
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .filter-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -346,6 +460,7 @@
         <h1>Grain Drying Equipment<br>for Every Operation</h1>
         <p class="hero-sub">From mobile farm dryers to industrial continuous drying towers. Multi-fuel heating technology, 5–500 TPD capacity range.</p>
         <div class="hero-stats">
+          <div class="hero-stat"><span class="num">12</span><br><span class="lbl">Product Models</span></div>
           <div class="hero-stat"><span class="num">4</span><br><span class="lbl">Product Lines</span></div>
           <div class="hero-stat"><span class="num">5–500</span><br><span class="lbl">TPD Capacity</span></div>
           <div class="hero-stat"><span class="num">6</span><br><span class="lbl">Fuel Options</span></div>
@@ -360,61 +475,351 @@
       <div class="section-head reveal">
         <div class="eyebrow">OUR PRODUCTS</div>
         <h2>Complete Grain Dryer Lineup</h2>
-        <p class="desc">Four product lines covering all drying needs — from small farms to industrial processing centers.</p>
+        <p class="desc">12 product models across 4 lines — from 5-ton mobile dryers to 500 MTPD industrial towers. Use the filters below to find your match.</p>
       </div>
-      <div class="product-grid">
-        <div class="product-card reveal">
-          <div class="pc-img"><img src="../assets/product-mobile.jpg" alt="Mobile Batch Grain Dryer"></div>
+
+      <!-- ===== FILTER BAR ===== -->
+      <div class="filter-card reveal" id="filterCard">
+        <div class="filter-grid">
+          <!-- 01 Product Type (single-select) -->
+          <div class="filter-field">
+            <label class="filter-field-label">Product Type</label>
+            <div class="dropdown" data-filter-type="category" data-multi="false" id="dd-category">
+              <button class="dropdown-trigger has-value" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="dd-value">All Products</span>
+              </button>
+              <div class="dropdown-menu" role="listbox">
+                <div class="dd-options">
+                  <div class="dropdown-opt selected" role="option" data-value="all"><span class="opt-text">All Products</span></div>
+                  <div class="dropdown-opt" role="option" data-value="mobile"><span class="opt-text">Mobile Batch Grain Dryer</span></div>
+                  <div class="dropdown-opt" role="option" data-value="batch"><span class="opt-text">Fixed Batch Grain Dryer</span></div>
+                  <div class="dropdown-opt" role="option" data-value="continuous"><span class="opt-text">Continuous Drying Tower</span></div>
+                  <div class="dropdown-opt" role="option" data-value="system"><span class="opt-text">Complete Grain System</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02 Grain Type (multi-select) -->
+          <div class="filter-field">
+            <label class="filter-field-label">Grain Type</label>
+            <div class="dropdown dropdown-multi" data-filter-type="crop" data-multi="true" id="dd-crop">
+              <button class="dropdown-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="dd-value">All Grains</span>
+              </button>
+              <div class="dropdown-menu" role="listbox">
+                <div class="dd-options">
+                  <div class="dropdown-opt" role="option" data-value="Paddy"><span class="opt-check"></span><span class="opt-text">Paddy / Rice</span></div>
+                  <div class="dropdown-opt" role="option" data-value="Maize"><span class="opt-check"></span><span class="opt-text">Maize</span></div>
+                  <div class="dropdown-opt" role="option" data-value="Wheat"><span class="opt-check"></span><span class="opt-text">Wheat</span></div>
+                  <div class="dropdown-opt" role="option" data-value="Sorghum"><span class="opt-check"></span><span class="opt-text">Sorghum</span></div>
+                  <div class="dropdown-opt" role="option" data-value="Soybeans"><span class="opt-check"></span><span class="opt-text">Soybeans</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03 Daily Capacity (multi-select) -->
+          <div class="filter-field">
+            <label class="filter-field-label">Daily Capacity</label>
+            <div class="dropdown dropdown-multi" data-filter-type="capacity" data-multi="true" id="dd-capacity">
+              <button class="dropdown-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="dd-value">All Capacities</span>
+              </button>
+              <div class="dropdown-menu" role="listbox">
+                <div class="dd-options">
+                  <div class="dropdown-opt" role="option" data-value="small"><span class="opt-check"></span><span class="opt-text">5–20 TPD</span></div>
+                  <div class="dropdown-opt" role="option" data-value="medium"><span class="opt-check"></span><span class="opt-text">20–100 TPD</span></div>
+                  <div class="dropdown-opt" role="option" data-value="large"><span class="opt-check"></span><span class="opt-text">100–500 TPD</span></div>
+                  <div class="dropdown-opt" role="option" data-value="custom"><span class="opt-check"></span><span class="opt-text">Custom</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 04 Fuel Type (multi-select) -->
+          <div class="filter-field">
+            <label class="filter-field-label">Fuel Type</label>
+            <div class="dropdown dropdown-multi" data-filter-type="fuel" data-multi="true" id="dd-fuel">
+              <button class="dropdown-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span class="dd-value">All Fuels</span>
+              </button>
+              <div class="dropdown-menu" role="listbox">
+                <div class="dd-options">
+                  <div class="dropdown-opt" role="option" data-value="Diesel"><span class="opt-check"></span><span class="opt-text">Diesel</span></div>
+                  <div class="dropdown-opt" role="option" data-value="LPG"><span class="opt-check"></span><span class="opt-text">LPG</span></div>
+                  <div class="dropdown-opt" role="option" data-value="Natural Gas"><span class="opt-check"></span><span class="opt-text">Natural Gas</span></div>
+                  <div class="dropdown-opt" role="option" data-value="Biomass"><span class="opt-check"></span><span class="opt-text">Biomass</span></div>
+                  <div class="dropdown-opt" role="option" data-value="Wood"><span class="opt-check"></span><span class="opt-text">Wood</span></div>
+                  <div class="dropdown-opt" role="option" data-value="Coal"><span class="opt-check"></span><span class="opt-text">Coal</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-actions">
+          <div class="filter-result-count">
+            <strong id="filterCount">12</strong>
+            <span id="filterCountLabel">products found</span>
+          </div>
+          <button class="btn btn-outline btn-sm" id="resetFilter" type="button">Reset Filters</button>
+        </div>
+      </div>
+
+      <div class="product-grid" id="productGrid">
+        <!-- ===== MOBILE (3 models) ===== -->
+        <div class="product-card reveal"
+             data-category="mobile"
+             data-crops="Paddy,Maize,Wheat,Sorghum,Soybeans"
+             data-capacity="small"
+             data-fuel="Diesel,LPG,Natural Gas,Biomass,Wood,Coal">
+          <div class="pc-img"><img src="../assets/product-mobile.jpg" alt="GXON G-MR-5 Mobile Batch Grain Dryer"></div>
           <div class="pc-body">
             <span class="pc-tag">MOBILE</span>
-            <div class="pc-title">Mobile Batch Grain Dryer</div>
-            <div class="pc-desc">Portable drying solution for farms and small-scale operations. Tractor-driven, easy relocation.</div>
+            <div class="pc-title">G-MR-5</div>
+            <div class="pc-subtitle">5-Ton Mobile Batch Grain Dryer</div>
+            <div class="pc-desc">Portable tractor-driven dryer for small farms. Foldable elevator, transport height under 4.5m, deploys in 30 minutes.</div>
             <div class="pc-specs">
-              <div class="pc-spec"><strong>5–20</strong>TPD</div>
-              <div class="pc-spec"><strong>Diesel</strong>Fuel</div>
+              <div class="pc-spec"><span class="spec-label">Capacity</span><strong>5 T</strong>/batch</div>
+              <div class="pc-spec"><span class="spec-label">Daily Output</span><strong>10–20</strong>TPD</div>
+              <div class="pc-spec"><span class="spec-label">Hopper</span><strong>7.5</strong>m³</div>
+              <div class="pc-spec"><span class="spec-label">Fuels</span><strong>6</strong>types</div>
             </div>
-            <a href="#mobile" class="pc-link">View Details →</a>
+            <a href="products/G-MR-5.html" class="pc-link">View Details →</a>
           </div>
         </div>
-        <div class="product-card reveal">
-          <div class="pc-img"><img src="../assets/product-batch.jpg" alt="Fixed Batch Grain Dryer"></div>
+        <div class="product-card reveal"
+             data-category="mobile"
+             data-crops="Paddy,Maize,Wheat,Sorghum,Soybeans"
+             data-capacity="medium"
+             data-fuel="Diesel,LPG,Natural Gas,Biomass,Wood,Coal">
+          <div class="pc-img"><img src="../assets/product-mobile.jpg" alt="GXON G-MR-10 Mobile Batch Grain Dryer"></div>
+          <div class="pc-body">
+            <span class="pc-tag">MOBILE</span>
+            <div class="pc-title">G-MR-10</div>
+            <div class="pc-subtitle">10-Ton Mobile Batch Grain Dryer</div>
+            <div class="pc-desc">Larger hopper for medium-scale farms and grain traders. Same foldable, fast-deploy design as G-MR-5.</div>
+            <div class="pc-specs">
+              <div class="pc-spec"><span class="spec-label">Capacity</span><strong>10 T</strong>/batch</div>
+              <div class="pc-spec"><span class="spec-label">Daily Output</span><strong>20–40</strong>TPD</div>
+              <div class="pc-spec"><span class="spec-label">Hopper</span><strong>16.4</strong>m³</div>
+              <div class="pc-spec"><span class="spec-label">Fuels</span><strong>6</strong>types</div>
+            </div>
+            <a href="products/G-MR-10.html" class="pc-link">View Details →</a>
+          </div>
+        </div>
+        <div class="product-card reveal"
+             data-category="mobile"
+             data-crops="Paddy,Maize,Wheat,Sorghum,Soybeans"
+             data-capacity="medium"
+             data-fuel="Diesel,LPG,Natural Gas,Biomass,Wood,Coal">
+          <div class="pc-img"><img src="../assets/product-mobile.jpg" alt="GXON G-MR-20 PTO Dual-Power Mobile Grain Dryer"></div>
+          <div class="pc-body">
+            <span class="pc-tag">MOBILE · PTO</span>
+            <div class="pc-title">G-MR-20</div>
+            <div class="pc-subtitle">20-Ton PTO Dual-Power Mobile Dryer</div>
+            <div class="pc-desc">Highest capacity in mobile series. PTO + electric dual-power, tractor-driven (90HP, 500 RPM). 900,000 KCAL/H heat output.</div>
+            <div class="pc-specs">
+              <div class="pc-spec"><span class="spec-label">Capacity</span><strong>20 T</strong>/batch</div>
+              <div class="pc-spec"><span class="spec-label">Daily Output</span><strong>70–80</strong>TPD</div>
+              <div class="pc-spec"><span class="spec-label">Hopper</span><strong>31.5</strong>m³</div>
+              <div class="pc-spec"><span class="spec-label">Power</span><strong>PTO+Ele</strong>dual</div>
+            </div>
+            <a href="products/G-MR-20.html" class="pc-link">View Details →</a>
+          </div>
+        </div>
+
+        <!-- ===== BATCH (4 models) ===== -->
+        <div class="product-card reveal"
+             data-category="batch"
+             data-crops="Paddy,Maize,Wheat,Sorghum,Soybeans"
+             data-capacity="small"
+             data-fuel="Diesel,LPG,Natural Gas,Biomass,Wood,Coal">
+          <div class="pc-img"><img src="../assets/product-batch.jpg" alt="GXON 5T Fixed Batch Grain Dryer"></div>
           <div class="pc-body">
             <span class="pc-tag">BATCH</span>
-            <div class="pc-title">Fixed Batch Grain Dryer</div>
-            <div class="pc-desc">Recirculating batch dryer for rice mills and grain traders. Multi-fuel compatible.</div>
+            <div class="pc-title">5T Batch Dryer</div>
+            <div class="pc-subtitle">5-Ton Fixed Batch Grain Dryer</div>
+            <div class="pc-desc">Compact fixed batch dryer for small grain stations. Bucket elevator ensures low grain breakage rate.</div>
             <div class="pc-specs">
-              <div class="pc-spec"><strong>5–30</strong>TPD</div>
-              <div class="pc-spec"><strong>Multi-Fuel</strong>System</div>
+              <div class="pc-spec"><span class="spec-label">Capacity</span><strong>5 T</strong>/batch</div>
+              <div class="pc-spec"><span class="spec-label">Lifting</span><strong>Bucket</strong>elevator</div>
+              <div class="pc-spec"><span class="spec-label">Power</span><strong>3-Ph</strong>50/60Hz</div>
+              <div class="pc-spec"><span class="spec-label">Fuels</span><strong>6</strong>types</div>
             </div>
-            <a href="#batch" class="pc-link">View Details →</a>
+            <a href="products/5T-batch-dryer.html" class="pc-link">View Details →</a>
           </div>
         </div>
-        <div class="product-card reveal">
-          <div class="pc-img"><img src="../assets/product-tower.jpg" alt="Continuous Drying Tower"></div>
+        <div class="product-card reveal"
+             data-category="batch"
+             data-crops="Paddy,Maize,Wheat,Sorghum,Soybeans"
+             data-capacity="medium"
+             data-fuel="Diesel,LPG,Natural Gas,Biomass,Wood,Coal">
+          <div class="pc-img"><img src="../assets/product-batch.jpg" alt="GXON 10T Fixed Batch Grain Dryer"></div>
+          <div class="pc-body">
+            <span class="pc-tag">BATCH</span>
+            <div class="pc-title">10T Batch Dryer</div>
+            <div class="pc-subtitle">10-Ton Fixed Batch Grain Dryer</div>
+            <div class="pc-desc">Fixed batch dryer for medium operations. Bucket elevator, low breakage. Higher throughput than 5T model.</div>
+            <div class="pc-specs">
+              <div class="pc-spec"><span class="spec-label">Capacity</span><strong>10 T</strong>/batch</div>
+              <div class="pc-spec"><span class="spec-label">Lifting</span><strong>Bucket</strong>elevator</div>
+              <div class="pc-spec"><span class="spec-label">Power</span><strong>3-Ph</strong>50/60Hz</div>
+              <div class="pc-spec"><span class="spec-label">Fuels</span><strong>6</strong>types</div>
+            </div>
+            <a href="products/10T-batch-dryer.html" class="pc-link">View Details →</a>
+          </div>
+        </div>
+        <div class="product-card reveal"
+             data-category="batch"
+             data-crops="Paddy,Maize,Wheat,Sorghum,Soybeans"
+             data-capacity="medium"
+             data-fuel="Diesel,LPG,Natural Gas,Biomass,Wood,Coal">
+          <div class="pc-img"><img src="../assets/product-batch.jpg" alt="GXON G-SR-30 Fixed Batch Grain Dryer"></div>
+          <div class="pc-body">
+            <span class="pc-tag">BATCH · DUAL-USE</span>
+            <div class="pc-title">G-SR-30</div>
+            <div class="pc-subtitle">30-Ton Dual-Use Dryer & Silo</div>
+            <div class="pc-desc">Dual-use design: serves as both batch dryer and long-term storage silo. 15.2 kW power.</div>
+            <div class="pc-specs">
+              <div class="pc-spec"><span class="spec-label">Capacity</span><strong>30 T</strong>/batch</div>
+              <div class="pc-spec"><span class="spec-label">Power</span><strong>15.2</strong>kW</div>
+              <div class="pc-spec"><span class="spec-label">Lifting</span><strong>Bucket</strong>elevator</div>
+              <div class="pc-spec"><span class="spec-label">Fuels</span><strong>6</strong>types</div>
+            </div>
+            <a href="products/G-SR-30.html" class="pc-link">View Details →</a>
+          </div>
+        </div>
+        <div class="product-card reveal"
+             data-category="batch"
+             data-crops="Paddy,Maize,Wheat,Sorghum,Soybeans"
+             data-capacity="medium"
+             data-fuel="Diesel,LPG,Natural Gas,Biomass,Wood,Coal">
+          <div class="pc-img"><img src="../assets/product-batch.jpg" alt="GXON G-SR-32 Fixed Batch Grain Dryer"></div>
+          <div class="pc-body">
+            <span class="pc-tag">BATCH · DUAL-USE</span>
+            <div class="pc-title">G-SR-32</div>
+            <div class="pc-subtitle">32-Ton Dual-Use Dryer & Silo</div>
+            <div class="pc-desc">Largest in batch series. Dual-use as dryer and storage silo. 19.4 kW power.</div>
+            <div class="pc-specs">
+              <div class="pc-spec"><span class="spec-label">Capacity</span><strong>32 T</strong>/batch</div>
+              <div class="pc-spec"><span class="spec-label">Power</span><strong>19.4</strong>kW</div>
+              <div class="pc-spec"><span class="spec-label">Lifting</span><strong>Bucket</strong>elevator</div>
+              <div class="pc-spec"><span class="spec-label">Fuels</span><strong>6</strong>types</div>
+            </div>
+            <a href="products/G-SR-32.html" class="pc-link">View Details →</a>
+          </div>
+        </div>
+
+        <!-- ===== CONTINUOUS (4 models) ===== -->
+        <div class="product-card reveal"
+             data-category="continuous"
+             data-crops="Paddy,Maize,Wheat,Sorghum,Soybeans"
+             data-capacity="large"
+             data-fuel="Coal,Biomass,Wood">
+          <div class="pc-img"><img src="../assets/product-tower.jpg" alt="GXON G-CT-120 Continuous Drying Tower"></div>
           <div class="pc-body">
             <span class="pc-tag">CONTINUOUS</span>
-            <div class="pc-title">Continuous Drying Tower</div>
-            <div class="pc-desc">Industrial-scale continuous drying tower for high-capacity grain processing centers.</div>
+            <div class="pc-title">G-CT-120</div>
+            <div class="pc-subtitle">120 MTPD Continuous Drying Tower</div>
+            <div class="pc-desc">For regional grain depots. Indirect heating with heat exchanger ensures grain purity. 24/7 unattended operation.</div>
             <div class="pc-specs">
-              <div class="pc-spec"><strong>100–500</strong>TPD</div>
-              <div class="pc-spec"><strong>Multi-Fuel</strong>System</div>
+              <div class="pc-spec"><span class="spec-label">Capacity</span><strong>120</strong>MTPD</div>
+              <div class="pc-spec"><span class="spec-label">Power</span><strong>48</strong>kW</div>
+              <div class="pc-spec"><span class="spec-label">Fuels</span><strong>3</strong>types</div>
+              <div class="pc-spec"><span class="spec-label">Operation</span><strong>24/7</strong>auto</div>
             </div>
-            <a href="#continuous" class="pc-link">View Details →</a>
+            <a href="products/G-CT-120.html" class="pc-link">View Details →</a>
           </div>
         </div>
-        <div class="product-card reveal">
-          <div class="pc-img"><img src="../assets/product-system.jpg" alt="Complete Grain System"></div>
+        <div class="product-card reveal"
+             data-category="continuous"
+             data-crops="Paddy,Maize,Wheat,Sorghum,Soybeans"
+             data-capacity="large"
+             data-fuel="Coal,Biomass,Wood">
+          <div class="pc-img"><img src="../assets/product-tower.jpg" alt="GXON G-CT-200 Continuous Drying Tower"></div>
+          <div class="pc-body">
+            <span class="pc-tag">CONTINUOUS</span>
+            <div class="pc-title">G-CT-200</div>
+            <div class="pc-subtitle">200 MTPD Continuous Drying Tower</div>
+            <div class="pc-desc">For mid-large processing plants. Automated feed & discharge. 8-15% fuel saving vs. batch dryers.</div>
+            <div class="pc-specs">
+              <div class="pc-spec"><span class="spec-label">Capacity</span><strong>200</strong>MTPD</div>
+              <div class="pc-spec"><span class="spec-label">Power</span><strong>102.7</strong>kW</div>
+              <div class="pc-spec"><span class="spec-label">Fuels</span><strong>3</strong>types</div>
+              <div class="pc-spec"><span class="spec-label">Saving</span><strong>8–15%</strong>fuel</div>
+            </div>
+            <a href="products/G-CT-200.html" class="pc-link">View Details →</a>
+          </div>
+        </div>
+        <div class="product-card reveal"
+             data-category="continuous"
+             data-crops="Paddy,Maize,Wheat,Sorghum,Soybeans"
+             data-capacity="large"
+             data-fuel="Coal,Biomass,Wood">
+          <div class="pc-img"><img src="../assets/product-tower.jpg" alt="GXON G-CT-300 Continuous Drying Tower"></div>
+          <div class="pc-body">
+            <span class="pc-tag">CONTINUOUS</span>
+            <div class="pc-title">G-CT-300</div>
+            <div class="pc-subtitle">300 MTPD Continuous Drying Tower</div>
+            <div class="pc-desc">For large grain processing centers. 24/7 unattended operation. 125.5 kW total power.</div>
+            <div class="pc-specs">
+              <div class="pc-spec"><span class="spec-label">Capacity</span><strong>300</strong>MTPD</div>
+              <div class="pc-spec"><span class="spec-label">Power</span><strong>125.5</strong>kW</div>
+              <div class="pc-spec"><span class="spec-label">Fuels</span><strong>3</strong>types</div>
+              <div class="pc-spec"><span class="spec-label">Operation</span><strong>24/7</strong>auto</div>
+            </div>
+            <a href="products/G-CT-300.html" class="pc-link">View Details →</a>
+          </div>
+        </div>
+        <div class="product-card reveal"
+             data-category="continuous"
+             data-crops="Paddy,Maize,Wheat,Sorghum,Soybeans"
+             data-capacity="large"
+             data-fuel="Coal,Biomass,Wood">
+          <div class="pc-img"><img src="../assets/product-tower.jpg" alt="GXON G-CT-500 Continuous Drying Tower"></div>
+          <div class="pc-body">
+            <span class="pc-tag">CONTINUOUS · INDUSTRIAL</span>
+            <div class="pc-title">G-CT-500</div>
+            <div class="pc-subtitle">500 MTPD Industrial Drying Tower</div>
+            <div class="pc-desc">Highest capacity for major grain hubs and national reserves. Industrial-scale, 211 kW.</div>
+            <div class="pc-specs">
+              <div class="pc-spec"><span class="spec-label">Capacity</span><strong>500</strong>MTPD</div>
+              <div class="pc-spec"><span class="spec-label">Power</span><strong>211</strong>kW</div>
+              <div class="pc-spec"><span class="spec-label">Fuels</span><strong>3</strong>types</div>
+              <div class="pc-spec"><span class="spec-label">Scale</span><strong>Industrial</strong>hub</div>
+            </div>
+            <a href="products/G-CT-500.html" class="pc-link">View Details →</a>
+          </div>
+        </div>
+
+        <!-- ===== COMPLETE SYSTEM (1) ===== -->
+        <div class="product-card reveal"
+             data-category="system"
+             data-crops="Paddy,Maize,Wheat,Sorghum,Soybeans"
+             data-capacity="custom"
+             data-fuel="Diesel,LPG,Natural Gas,Biomass,Wood,Coal">
+          <div class="pc-img"><img src="../assets/product-system.jpg" alt="GXON Complete Grain System"></div>
           <div class="pc-body">
             <span class="pc-tag">SYSTEM</span>
             <div class="pc-title">Complete Grain System</div>
-            <div class="pc-desc">Full post-harvest system: cleaning, drying, handling, and storage in one integrated solution.</div>
+            <div class="pc-subtitle">Turnkey Post-Harvest Solution</div>
+            <div class="pc-desc">One-stop solution: pre-cleaning, conveying, drying, and storage. Customized to your farm scale.</div>
             <div class="pc-specs">
-              <div class="pc-spec"><strong>Cleaning</strong>+ Conveying</div>
-              <div class="pc-spec"><strong>+ Storage</strong>Turnkey</div>
+              <div class="pc-spec"><span class="spec-label">Capacity</span><strong>Custom</strong></div>
+              <div class="pc-spec"><span class="spec-label">Stages</span><strong>4</strong>integrated</div>
+              <div class="pc-spec"><span class="spec-label">Fuels</span><strong>6</strong>types</div>
+              <div class="pc-spec"><span class="spec-label">Type</span><strong>Turnkey</strong>solution</div>
             </div>
-            <a href="#system" class="pc-link">View Details →</a>
+            <a href="products/complete-grain-system.html" class="pc-link">View Details →</a>
           </div>
         </div>
+      </div>
+      <div class="filter-empty" id="filterEmpty" style="display:none;">
+        <div class="filter-empty-icon">⊘</div>
+        <div class="filter-empty-title">No products match your filters</div>
+        <div class="filter-empty-desc">Try removing some filter options or click "Reset Filters".</div>
       </div>
     </div>
   </section>
@@ -427,30 +832,71 @@
         <div class="pd-content">
           <div class="pd-eyebrow">MOBILE DRYER</div>
           <h3>Mobile Batch Grain Dryer</h3>
-          <p class="pd-desc">Portable tractor-driven grain dryer designed for farms and small-scale operations. Easy relocation between fields, drying yards, and storage facilities.</p>
+          <p class="pd-desc">Portable design for multi-site operations. Equipped with foldable elevator and hopper, transport height under 4.5m, deploys in 30 minutes. Dual-power option (PTO + electric) available on G-MR-20.</p>
           <div class="pd-specs">
-            <div class="pd-spec-row"><div class="pd-spec-label">Capacity</div><div class="pd-spec-value"><strong>5–20 TPD</strong></div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Fuel Type</div><div class="pd-spec-value">Diesel, Rice Husk, Biomass</div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Grain Type</div><div class="pd-spec-value">Rice, Maize, Wheat, Soybean</div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Moisture Reduction</div><div class="pd-spec-value">10–15% per batch</div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Power</div><div class="pd-spec-value">5–15 kW</div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Dimension</div><div class="pd-spec-value">6.5m × 2.2m × 3.0m</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Capacity</div><div class="pd-spec-value"><strong>5–20 T/batch</strong> (10–80 TPD)</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Fuel Type</div><div class="pd-spec-value">Diesel / LPG / Natural Gas / Biomass Pellet / Wood / Coal</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Heating</div><div class="pd-spec-value">Direct combustion or indirect heat exchanger</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Grain Type</div><div class="pd-spec-value">Paddy, Maize, Wheat, Sorghum, Soybeans</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Power</div><div class="pd-spec-value">3-Phase 50/60Hz (grid or diesel generator)</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Mobility</div><div class="pd-spec-value">Foldable, transport height &lt; 4.5m</div></div>
           </div>
           <div class="pd-features">
             <h4>Key Features</h4>
             <ul>
-              <li>Tractor-driven mobility</li>
-              <li>Quick setup & relocation</li>
-              <li>Compact design</li>
-              <li>Low power consumption</li>
-              <li>Easy operation</li>
+              <li>Foldable elevator & hopper</li>
+              <li>30-minute deployment</li>
+              <li>PTO dual-power (G-MR-20)</li>
               <li>Multi-grain compatibility</li>
+              <li>6 fuel options</li>
+              <li>Grid or generator power</li>
             </ul>
           </div>
           <div style="margin-top: 24px;">
             <a href="../index.html#contact" class="btn btn-primary">Get Quote</a>
           </div>
         </div>
+      </div>
+      <!-- Model table -->
+      <div class="compare-wrap reveal" style="margin-top: 48px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Capacity</th>
+              <th>Daily Output</th>
+              <th>Hopper Volume</th>
+              <th>Power</th>
+              <th>Dimension (L×W×H)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>G-MR-5</td>
+              <td>5 T/batch</td>
+              <td>10–20 T/day</td>
+              <td>7.5 m³</td>
+              <td>3-Phase 50/60Hz</td>
+              <td>5600 × 2500 × 5800 mm</td>
+            </tr>
+            <tr>
+              <td>G-MR-10</td>
+              <td>10 T/batch</td>
+              <td>20–40 T/day</td>
+              <td>16.4 m³</td>
+              <td>3-Phase 50/60Hz</td>
+              <td>6100 × 3100 × 8400 mm</td>
+            </tr>
+            <tr>
+              <td>G-MR-20</td>
+              <td>20 T/batch</td>
+              <td>70–80 T/day</td>
+              <td>31.5 m³</td>
+              <td>PTO 90HP / AC380V 49.2kW</td>
+              <td>7300 × 3150 × 8450 mm</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -462,24 +908,24 @@
         <div class="pd-content">
           <div class="pd-eyebrow">BATCH DRYER</div>
           <h3>Fixed Batch Grain Dryer</h3>
-          <p class="pd-desc">Recirculating batch dryer for rice mills, grain traders, and medium-scale operations. Multi-fuel compatible with precise moisture control.</p>
+          <p class="pd-desc">Fixed installation for medium-large farms or grain stations. More compact than mobile models, no chassis required. Bucket elevator ensures low grain breakage. G-SR-30/32 can double as long-term storage silo.</p>
           <div class="pd-specs">
-            <div class="pd-spec-row"><div class="pd-spec-label">Capacity</div><div class="pd-spec-value"><strong>5–30 TPD</strong></div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Fuel Type</div><div class="pd-spec-value">Diesel, Rice Husk, Biomass, Gas</div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Grain Type</div><div class="pd-spec-value">Rice, Maize, Wheat, Soybean</div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Moisture Reduction</div><div class="pd-spec-value">8–12% per batch</div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Power</div><div class="pd-spec-value">10–30 kW</div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Dimension</div><div class="pd-spec-value">8m × 3m × 4m</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Capacity</div><div class="pd-spec-value"><strong>5–32 T/batch</strong></div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Fuel Type</div><div class="pd-spec-value">Diesel / LPG / Natural Gas / Biomass Pellet / Wood / Coal</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Grain Type</div><div class="pd-spec-value">Maize, Wheat, Sorghum, Soybeans, Paddy</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Elevator</div><div class="pd-spec-value">Bucket elevator (low breakage)</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Power</div><div class="pd-spec-value">3-Phase 50/60Hz</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Special</div><div class="pd-spec-value">G-SR-30/32: dual-use as storage silo</div></div>
           </div>
           <div class="pd-features">
             <h4>Key Features</h4>
             <ul>
-              <li>Recirculating drying</li>
+              <li>Bucket elevator, low breakage</li>
+              <li>No chassis, compact structure</li>
+              <li>Dual-use: dryer + storage</li>
+              <li>6 fuel options</li>
               <li>Precise moisture control</li>
-              <li>Uniform grain quality</li>
-              <li>Multi-fuel burner</li>
               <li>Automatic temperature control</li>
-              <li>Energy efficient</li>
             </ul>
           </div>
           <div style="margin-top: 24px;">
@@ -487,6 +933,50 @@
           </div>
         </div>
         <div class="pd-img"><img src="../assets/product-batch.jpg" alt="Fixed Batch Grain Dryer"></div>
+      </div>
+      <!-- Model table -->
+      <div class="compare-wrap reveal" style="margin-top: 48px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Capacity</th>
+              <th>Fuel Type</th>
+              <th>Power</th>
+              <th>Special Feature</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>5T Batch</td>
+              <td>5 T/batch</td>
+              <td>Diesel / LPG / Gas / Biomass / Wood / Coal</td>
+              <td>3-Phase 50/60Hz</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>10T Batch</td>
+              <td>10 T/batch</td>
+              <td>Diesel / LPG / Gas / Biomass / Wood / Coal</td>
+              <td>3-Phase 50/60Hz</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td>G-SR-30</td>
+              <td>30 T/batch</td>
+              <td>Diesel / LPG / Gas / Biomass / Wood / Coal</td>
+              <td>15.2 kW</td>
+              <td class="highlight">Dual-use: dryer + storage silo</td>
+            </tr>
+            <tr>
+              <td>G-SR-32</td>
+              <td>32 T/batch</td>
+              <td>Diesel / LPG / Gas / Biomass / Wood / Coal</td>
+              <td>19.4 kW</td>
+              <td class="highlight">Dual-use: dryer + storage silo</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -499,30 +989,79 @@
         <div class="pd-content">
           <div class="pd-eyebrow">CONTINUOUS DRYER</div>
           <h3>Continuous Drying Tower</h3>
-          <p class="pd-desc">Industrial-scale continuous drying tower for high-capacity grain processing centers. Automated operation with real-time monitoring.</p>
+          <p class="pd-desc">Continuous drying for large grain depots and processing plants. 24/7 operation with automated feed and discharge. Indirect heating with heat exchanger ensures grain purity — no contamination from fuel.</p>
           <div class="pd-specs">
-            <div class="pd-spec-row"><div class="pd-spec-label">Capacity</div><div class="pd-spec-value"><strong>100–500 TPD</strong></div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Fuel Type</div><div class="pd-spec-value">Diesel, Rice Husk, Biomass, Gas, Coal</div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Grain Type</div><div class="pd-spec-value">Rice, Maize, Wheat, Soybean</div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Moisture Reduction</div><div class="pd-spec-value">10–18% per pass</div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Power</div><div class="pd-spec-value">50–200 kW</div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Dimension</div><div class="pd-spec-value">12m × 6m × 15m</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Capacity</div><div class="pd-spec-value"><strong>120–500 MTPD</strong></div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Fuel Type</div><div class="pd-spec-value">Coal / Biomass / Wood (indirect heating + heat exchanger)</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Grain Type</div><div class="pd-spec-value">Maize, Wheat, Sorghum, Soybeans, Paddy</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Moisture Reduction</div><div class="pd-spec-value">14–16% per pass</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Drying Speed</div><div class="pd-spec-value">8 hours per tower cycle</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Fuel Saving</div><div class="pd-spec-value">8–15% more efficient</div></div>
           </div>
           <div class="pd-features">
             <h4>Key Features</h4>
             <ul>
-              <li>Continuous flow operation</li>
-              <li>Multi-stage drying</li>
+              <li>24/7 continuous operation</li>
+              <li>Indirect heating, grain purity</li>
+              <li>Automated feed & discharge</li>
+              <li>8–15% fuel savings</li>
               <li>Real-time monitoring</li>
-              <li>High capacity throughput</li>
-              <li>Full automation</li>
-              <li>Multiple fuel options</li>
+              <li>Heat exchanger system</li>
             </ul>
           </div>
           <div style="margin-top: 24px;">
             <a href="../index.html#contact" class="btn btn-primary">Get Quote</a>
           </div>
         </div>
+      </div>
+      <!-- Model table -->
+      <div class="compare-wrap reveal" style="margin-top: 48px;">
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Capacity</th>
+              <th>Moisture Reduction</th>
+              <th>Drying Speed</th>
+              <th>Power</th>
+              <th>Fuel Saving</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>G-CT-120</td>
+              <td>120 MTPD</td>
+              <td>14–16%</td>
+              <td>8 hrs/cycle</td>
+              <td>48 kW</td>
+              <td>8–15%</td>
+            </tr>
+            <tr>
+              <td>G-CT-200</td>
+              <td>200 MTPD</td>
+              <td>14–16%</td>
+              <td>8 hrs/cycle</td>
+              <td>102.7 kW</td>
+              <td>8–15%</td>
+            </tr>
+            <tr>
+              <td>G-CT-300</td>
+              <td>300 MTPD</td>
+              <td>14–16%</td>
+              <td>8 hrs/cycle</td>
+              <td>125.5 kW</td>
+              <td>8–15%</td>
+            </tr>
+            <tr>
+              <td>G-CT-500</td>
+              <td>500 MTPD</td>
+              <td>14–16%</td>
+              <td>8 hrs/cycle</td>
+              <td>211 kW</td>
+              <td>8–15%</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
@@ -534,24 +1073,24 @@
         <div class="pd-content">
           <div class="pd-eyebrow">COMPLETE SYSTEM</div>
           <h3>Complete Grain System</h3>
-          <p class="pd-desc">Full post-harvest system integrating pre-cleaning, drying, handling, and storage into one turnkey solution. Engineered to work together seamlessly.</p>
+          <p class="pd-desc">One-stop grain handling solution from cleaning to storage. Customized configuration based on your farm scale and requirements. All components engineered to work together seamlessly.</p>
           <div class="pd-specs">
-            <div class="pd-spec-row"><div class="pd-spec-label">Components</div><div class="pd-spec-value">Cleaning + Drying + Handling + Storage</div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Capacity</div><div class="pd-spec-value"><strong>Customizable</strong></div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Fuel Type</div><div class="pd-spec-value">Multi-fuel options available</div></div>
-            <div class="pd-spec-row"><div class="pd-spec-label">Grain Type</div><div class="pd-spec-value">Rice, Maize, Wheat, Soybean</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Capacity</div><div class="pd-spec-value"><strong>Custom</strong> (based on selected dryer models)</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Fuel Type</div><div class="pd-spec-value">Custom (matches selected dryer fuel)</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Grain Type</div><div class="pd-spec-value">Paddy, Maize, Wheat, Sorghum, Soybeans</div></div>
+            <div class="pd-spec-row"><div class="pd-spec-label">Power</div><div class="pd-spec-value">Custom (based on total system load)</div></div>
             <div class="pd-spec-row"><div class="pd-spec-label">Turnkey</div><div class="pd-spec-value">Full installation & training</div></div>
             <div class="pd-spec-row"><div class="pd-spec-label">Warranty</div><div class="pd-spec-value">12 months on equipment</div></div>
           </div>
           <div class="pd-features">
             <h4>System Components</h4>
             <ul>
-              <li>Pre-cleaning equipment</li>
-              <li>Conveyors & elevators</li>
-              <li>Grain dryer</li>
-              <li>Storage silos</li>
-              <li>Control panel</li>
-              <li>Complete engineering</li>
+              <li>Pre-cleaner (impurity removal)</li>
+              <li>Bucket elevator & conveyors</li>
+              <li>Grain dryer (mobile/batch/tower)</li>
+              <li>Steel silo / flat / cone silo</li>
+              <li>Control panel & automation</li>
+              <li>Complete engineering design</li>
             </ul>
           </div>
           <div style="margin-top: 24px;">
@@ -583,13 +1122,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>Capacity Range</td><td>5–20 TPD</td><td>5–30 TPD</td><td class="highlight">100–500 TPD</td><td>Custom</td></tr>
-            <tr><td>Fuel Options</td><td>3</td><td>4</td><td>5</td><td class="highlight">6</td></tr>
-            <tr><td>Power</td><td>5–15 kW</td><td>10–30 kW</td><td>50–200 kW</td><td>Custom</td></tr>
-            <tr><td>Footprint</td><td>Small</td><td>Medium</td><td>Large</td><td>Custom</td></tr>
-            <tr><td>Mobility</td><td class="highlight">Yes</td><td>No</td><td>No</td><td>No</td></tr>
+            <tr><td>Models</td><td>G-MR-5/10/20</td><td>5T, 10T, G-SR-30/32</td><td>G-CT-120/200/300/500</td><td>Custom</td></tr>
+            <tr><td>Capacity</td><td>5–20 T/batch</td><td>5–32 T/batch</td><td class="highlight">120–500 MTPD</td><td>Custom</td></tr>
+            <tr><td>Daily Output</td><td>10–80 TPD</td><td>5–32 TPD</td><td>120–500 TPD</td><td>Custom</td></tr>
+            <tr><td>Fuel Options</td><td class="highlight">6</td><td class="highlight">6</td><td>3 (Coal/Biomass/Wood)</td><td>Custom</td></tr>
+            <tr><td>Heating</td><td>Direct or indirect</td><td>Direct or indirect</td><td>Indirect + heat exchanger</td><td>Custom</td></tr>
+            <tr><td>Mobility</td><td class="highlight">Yes (foldable)</td><td>No</td><td>No</td><td>No</td></tr>
+            <tr><td>Storage Dual-use</td><td>No</td><td class="highlight">Yes (G-SR-30/32)</td><td>No</td><td>Yes</td></tr>
             <tr><td>Automation</td><td>Basic</td><td>Medium</td><td class="highlight">Advanced</td><td class="highlight">Advanced</td></tr>
-            <tr><td>Best For</td><td>Small Farms</td><td>Rice Mills</td><td>Large Processors</td><td>New Facilities</td></tr>
+            <tr><td>Best For</td><td>Multi-site farms</td><td>Grain stations</td><td>Large processors</td><td>New facilities</td></tr>
           </tbody>
         </table>
       </div>
@@ -669,6 +1210,186 @@
     window.addEventListener('scroll', function() {
       header.classList.toggle('scrolled', window.scrollY > 20);
     });
+
+    // ===== PRODUCT FILTER =====
+    (function() {
+      var filterCard = document.getElementById('filterCard');
+      var productGrid = document.getElementById('productGrid');
+      var productCards = productGrid ? productGrid.querySelectorAll('.product-card') : [];
+      var emptyState = document.getElementById('filterEmpty');
+      var countEl = document.getElementById('filterCount');
+      var countLabelEl = document.getElementById('filterCountLabel');
+      var resetBtn = document.getElementById('resetFilter');
+      var dropdowns = filterCard ? filterCard.querySelectorAll('.dropdown') : [];
+
+      // Default trigger labels for each filter type (used on reset / clear-all)
+      var defaultLabels = {
+        category: 'All Products',
+        crop: 'All Grains',
+        capacity: 'All Capacities',
+        fuel: 'All Fuels'
+      };
+
+      // state: category single-select ("all" default); others multi-select arrays
+      var state = { category: 'all', crop: [], capacity: [], fuel: [] };
+
+      function splitAttr(v) { return (v || '').split(',').map(function(s){return s.trim();}).filter(Boolean); }
+      function arrayIntersection(a, b) { return a.filter(function(x){ return b.indexOf(x) !== -1; }); }
+
+      function cardMatches(card) {
+        if (state.category !== 'all' && card.getAttribute('data-category') !== state.category) return false;
+        if (state.crop.length > 0) {
+          var cardCrops = splitAttr(card.getAttribute('data-crops'));
+          if (arrayIntersection(state.crop, cardCrops).length === 0) return false;
+        }
+        if (state.capacity.length > 0) {
+          var cardCap = splitAttr(card.getAttribute('data-capacity'));
+          if (arrayIntersection(state.capacity, cardCap).length === 0) return false;
+        }
+        if (state.fuel.length > 0) {
+          var cardFuel = splitAttr(card.getAttribute('data-fuel'));
+          if (arrayIntersection(state.fuel, cardFuel).length === 0) return false;
+        }
+        return true;
+      }
+
+      function applyFilter() {
+        var visible = 0;
+        productCards.forEach(function(card) {
+          var match = cardMatches(card);
+          card.style.display = match ? '' : 'none';
+          if (match) visible++;
+        });
+        if (countEl) countEl.textContent = visible;
+        if (countLabelEl) countLabelEl.textContent = visible === 1 ? 'product found' : 'products found';
+        if (emptyState) emptyState.style.display = visible === 0 ? 'block' : 'none';
+        if (productGrid) productGrid.style.display = visible === 0 ? 'none' : 'grid';
+      }
+
+      // ===== Dropdown open/close =====
+      function openMenu(dd) {
+        var menu = dd.querySelector('.dropdown-menu');
+        var trigger = dd.querySelector('.dropdown-trigger');
+        menu.classList.add('open');
+        trigger.classList.add('open');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+      function closeMenu(dd) {
+        var menu = dd.querySelector('.dropdown-menu');
+        var trigger = dd.querySelector('.dropdown-trigger');
+        menu.classList.remove('open');
+        trigger.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+      function closeAllMenus() {
+        dropdowns.forEach(function(dd) { closeMenu(dd); });
+      }
+
+      // ===== Update trigger label from selected options =====
+      function updateTriggerLabel(dd) {
+        var type = dd.getAttribute('data-filter-type');
+        var isMulti = dd.getAttribute('data-multi') === 'true';
+        var trigger = dd.querySelector('.dropdown-trigger');
+        var valueSpan = trigger.querySelector('.dd-value');
+
+        if (isMulti) {
+          var selected = dd.querySelectorAll('.dropdown-opt.selected');
+          if (selected.length === 0) {
+            valueSpan.textContent = defaultLabels[type];
+            trigger.classList.remove('has-value');
+          } else if (selected.length === 1) {
+            valueSpan.textContent = selected[0].querySelector('.opt-text').textContent.trim();
+            trigger.classList.add('has-value');
+          } else {
+            valueSpan.textContent = selected.length + ' selected';
+            trigger.classList.add('has-value');
+          }
+        } else {
+          // single-select: state drives label
+          var sel = dd.querySelector('.dropdown-opt.selected');
+          if (sel) {
+            valueSpan.textContent = sel.querySelector('.opt-text').textContent.trim();
+            trigger.classList.add('has-value');
+          } else {
+            valueSpan.textContent = defaultLabels[type];
+            trigger.classList.remove('has-value');
+          }
+        }
+      }
+
+      // ===== Wire each dropdown =====
+      dropdowns.forEach(function(dd) {
+        var type = dd.getAttribute('data-filter-type');
+        var isMulti = dd.getAttribute('data-multi') === 'true';
+        var trigger = dd.querySelector('.dropdown-trigger');
+        var options = dd.querySelectorAll('.dropdown-opt');
+
+        trigger.addEventListener('click', function(e) {
+          e.stopPropagation();
+          var isOpen = dd.querySelector('.dropdown-menu').classList.contains('open');
+          if (isOpen) {
+            closeMenu(dd);
+          } else {
+            closeAllMenus();
+            openMenu(dd);
+          }
+        });
+
+        options.forEach(function(opt) {
+          opt.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var val = opt.getAttribute('data-value');
+
+            if (isMulti) {
+              opt.classList.toggle('selected');
+              var idx = state[type].indexOf(val);
+              if (idx === -1) state[type].push(val);
+              else state[type].splice(idx, 1);
+              updateTriggerLabel(dd);
+            } else {
+              // single-select: clear others, set this one
+              options.forEach(function(o) { o.classList.remove('selected'); });
+              opt.classList.add('selected');
+              state[type] = val;
+              updateTriggerLabel(dd);
+              closeMenu(dd);
+            }
+            applyFilter();
+          });
+        });
+      });
+
+      // ===== Close menus on outside click =====
+      document.addEventListener('click', function(e) {
+        var target = e.target;
+        if (target.closest('.dropdown')) return;
+        closeAllMenus();
+      });
+
+      // ===== Reset =====
+      if (resetBtn) {
+        resetBtn.addEventListener('click', function() {
+          state = { category: 'all', crop: [], capacity: [], fuel: [] };
+          dropdowns.forEach(function(dd) {
+            var type = dd.getAttribute('data-filter-type');
+            var isMulti = dd.getAttribute('data-multi') === 'true';
+            var options = dd.querySelectorAll('.dropdown-opt');
+            options.forEach(function(opt) {
+              var val = opt.getAttribute('data-value');
+              opt.classList.remove('selected');
+              if (!isMulti && val === 'all') {
+                opt.classList.add('selected'); // restore "All Products" default
+              }
+            });
+            updateTriggerLabel(dd);
+          });
+          applyFilter();
+        });
+      }
+
+      // initial render
+      applyFilter();
+    })();
   </script>
 </body>
 </html>
