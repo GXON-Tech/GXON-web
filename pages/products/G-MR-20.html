@@ -64,6 +64,22 @@
   }
   </script>
 
+  <!-- ===== JSON-LD: FAQPage ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What power supply is required?", "acceptedAnswer": { "@type": "Answer", "text": "The G-MR-20 supports both 3-phase electric power and PTO tractor drive (90HP, 500 RPM). This dual-power design allows operation in remote areas without grid electricity." } },
+      { "@type": "Question", "name": "How many people are needed for setup?", "acceptedAnswer": { "@type": "Answer", "text": "Two to three operators can deploy the dryer in approximately 45 minutes. The larger hopper and elevator require slightly more time than smaller models, but no crane is needed." } },
+      { "@type": "Question", "name": "Do I need special transport permits?", "acceptedAnswer": { "@type": "Answer", "text": "No. The folded transport height is 4.5 meters, within standard truck dimension limits. The working height extends to 8.45 meters during operation." } },
+      { "@type": "Question", "name": "What maintenance is required?", "acceptedAnswer": { "@type": "Answer", "text": "Daily: clean dust filters and check fuel lines. Weekly: lubricate elevator chain and PTO driveline. Annually: full heating system and PTO gearbox inspection by certified technician." } },
+      { "@type": "Question", "name": "What warranty is included?", "acceptedAnswer": { "@type": "Answer", "text": "12 months from delivery date, covering manufacturing defects in materials and workmanship. Extended warranty and spare parts packages available." } },
+      { "@type": "Question", "name": "Can it dry grain to storage moisture level?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Each pass reduces moisture by 3-5%. For paddy at 22% moisture, two passes typically achieve safe storage moisture of 14% or below. The larger batch size (20T) allows higher daily throughput per pass." } }
+    ]
+  }
+  </script>
+
   <style>
     @font-face { font-family:'BigShoulders'; src:url('../../_shared/fonts/BigShoulders-Bold.ttf') format('truetype'); font-weight:700; }
     @font-face { font-family:'BigShoulders'; src:url('../../_shared/fonts/BigShoulders-Regular.ttf') format('truetype'); font-weight:400; }
@@ -136,6 +152,20 @@
     .header-nav { display: flex; gap: 4px; }
     .header-nav a { font-size: 14px; font-weight: 700; color: var(--c-n1); padding: 8px 16px; border-radius: var(--r-sm); transition: all 0.2s; }
     .header-nav a:hover { background: var(--c-n7); color: var(--c-primary); }
+    .nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
+    .nav-dropdown {
+      position: absolute; top: 100%; left: 0; min-width: 220px;
+      background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-md);
+      box-shadow: var(--sh-lg); padding: 6px; z-index: 1100;
+      opacity: 0; visibility: hidden; transform: translateY(8px);
+      transition: all 0.2s;
+    }
+    .nav-dropdown-wrap:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown a {
+      display: block; padding: 9px 14px; font-size: 13px; font-weight: 600;
+      color: var(--c-n2); border-radius: var(--r-sm); transition: all 0.15s; white-space: nowrap;
+    }
+    .nav-dropdown a:hover { background: var(--c-primary-bg); color: var(--c-primary); }
     .header-nav a.active { background: var(--c-primary-bg); color: var(--c-primary); }
     .header-cta { display: flex; align-items: center; gap: 12px; }
     .header-cta .lang { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--c-n2); padding: 6px 10px; border: 1px solid var(--c-n5); border-radius: var(--r-sm); }
@@ -235,6 +265,45 @@
     .footer-col ul li a:hover { color: var(--c-orange-light); }
     .footer-bottom { max-width: var(--max-w); margin: 0 auto; padding: 20px 24px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.4); }
 
+    /* ===== APPLICATIONS ===== */
+    .apps-section { background: #fff; }
+    .apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1000px; margin: 0 auto; }
+    .app-item { background: var(--c-silver-bg); border: 1px solid var(--c-n6); border-radius: var(--r-md); padding: 20px 24px; }
+    .app-item .app-icon { font-size: 28px; margin-bottom: 8px; }
+    .app-item h4 { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--c-dark); margin-bottom: 4px; }
+    .app-item p { font-size: 13px; color: var(--c-n3); line-height: 1.5; }
+
+    /* ===== PERFORMANCE DATA ===== */
+    .perf-section { background: var(--c-n7); }
+    .perf-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1000px; margin: 0 auto; }
+    .perf-item { background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-md); padding: 20px; text-align: center; }
+    .perf-item .perf-value { font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--c-primary); line-height: 1.1; }
+    .perf-item .perf-unit { font-size: 14px; color: var(--c-n3); font-weight: 400; }
+    .perf-item .perf-label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--c-n3); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 8px; }
+
+    /* ===== FAQ ===== */
+    .faq-section { background: var(--c-n7); }
+    .faq-wrap { max-width: 800px; margin: 0 auto; }
+    .faq-item { border: 1px solid var(--c-n6); border-radius: var(--r-md); margin-bottom: 12px; overflow: hidden; background: #fff; }
+    .faq-item summary { padding: 18px 24px; font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--c-dark); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; font-size: 24px; color: var(--c-n3); transition: transform 0.2s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item[open] summary { border-bottom: 1px solid var(--c-n7); }
+    .faq-answer { padding: 16px 24px; font-size: 14px; color: var(--c-n2); line-height: 1.7; }
+
+    /* ===== RELATED PRODUCTS ===== */
+    .related-section { background: #fff; }
+    .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+    .related-card { background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-md); overflow: hidden; transition: all 0.2s; text-decoration: none; display: block; }
+    .related-card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); border-color: var(--c-primary); }
+    .related-card .rc-img { aspect-ratio: 4/3; overflow: hidden; background: var(--c-n7); }
+    .related-card .rc-img img { width: 100%; height: 100%; object-fit: cover; }
+    .related-card .rc-body { padding: 14px 16px; }
+    .related-card .rc-cat { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--c-n3); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 4px; }
+    .related-card .rc-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--c-dark); margin-bottom: 4px; }
+    .related-card .rc-spec { font-size: 12px; color: var(--c-n3); }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .header-nav { display: none; }
@@ -244,6 +313,9 @@
       .product-hero-content h1 { font-size: 36px; }
       .pd-highlights { grid-template-columns: 1fr; }
       .features-grid { grid-template-columns: 1fr; }
+      .apps-grid { grid-template-columns: 1fr; }
+      .perf-grid { grid-template-columns: repeat(2, 1fr); }
+      .related-grid { grid-template-columns: repeat(2, 1fr); }
       .section-head h2 { font-size: 28px; }
       .cta-inner { flex-direction: column; text-align: center; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -267,11 +339,21 @@
         <a href="../../index.html#technology">Technology</a>
         <a href="../../index.html#projects">Projects</a>
         <a href="../../index.html#company">Company</a>
-        <a href="../../index.html#contact">Contact</a>
+        <div class="nav-dropdown-wrap">
+          <a href="../contact.html">Contact ▾</a>
+          <div class="nav-dropdown">
+            <a href="../contact.html#sendquote">Request Solution</a>
+            <a href="../contact.html#sales-team">Sales Team</a>
+            <a href="../contact.html#partnership">Become Distributor</a>
+            <a href="../contact.html#partners">Global Partners</a>
+            <a href="../contact.html#exhibition">Exhibition</a>
+            <a href="../contact.html#social">Social Media</a>
+          </div>
+        </div>
       </nav>
       <div class="header-cta">
         <span class="lang">EN</span>
-        <a href="../../index.html#contact" class="btn btn-primary btn-sm">Get Quote</a>
+        <a href="../contact.html" class="btn btn-primary btn-sm">Get Quote</a>
       </div>
       <div class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></div>
     </div>
@@ -319,7 +401,10 @@
             </div>
           </div>
           <div class="pd-cta-row">
-            <a href="../../index.html#contact" class="btn btn-cta btn-lg">Request Quote</a>
+            <button type="button" class="btn btn-cta btn-lg" data-quote-trigger
+                    data-product-name="Mobile Batch Grain Dryer"
+                    data-product-model="G-MR-20"
+                    data-product-capacity="20 T/batch, 70-80 TPD">Request Quote</button>
             <a href="#comparison" class="btn btn-outline btn-lg">Compare Models</a>
           </div>
         </div>
@@ -402,6 +487,94 @@
     </div>
   </section>
 
+  <!-- ===== APPLICATIONS ===== -->
+  <section class="block apps-section" id="applications">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">APPLICATIONS</div>
+        <h2>Where G-MR-20 Shines</h2>
+        <p class="desc">Built for scenarios where mobility and flexibility matter most.</p>
+      </div>
+      <div class="apps-grid">
+        <div class="app-item">
+          <div class="app-icon">🌾</div>
+          <h4>Small-to-Medium Farms</h4>
+          <p>On-site drying without transporting wet grain to a distant facility. Reduces post-harvest losses and transport costs.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">🚚</div>
+          <h4>Agricultural Contractors</h4>
+          <p>Move between multiple farm sites in a single season. Maximize equipment utilization across different client locations.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">🌧️</div>
+          <h4>Emergency Harvest Drying</h4>
+          <p>Rapid deployment after unexpected rain. Prevent grain spoilage in the field when weather threatens harvested crops.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">🏔️</div>
+          <h4>Remote Area Operations</h4>
+          <p>Diesel generator compatible. Operates where grid power is unavailable — ideal for off-grid farming regions.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">📦</div>
+          <h4>Multi-Grain Processing</h4>
+          <p>Switch between paddy, maize, wheat, sorghum, and soybeans with adjustable drying parameters per grain type.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">💼</div>
+          <h4>Drying Service Business</h4>
+          <p>Provide mobile drying services to surrounding farms as a revenue stream. Low barrier to entry, high demand in harvest season.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PERFORMANCE DATA ===== -->
+  <section class="block perf-section" id="performance">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">PERFORMANCE</div>
+        <h2>Key Performance Metrics</h2>
+        <p class="desc">Quantified results from field operations across multiple grain types.</p>
+      </div>
+      <div class="perf-grid">
+        <div class="perf-item">
+          <div class="perf-value">45 <span class="perf-unit">min</span></div>
+          <div class="perf-label">Deployment Time</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">8.45 <span class="perf-unit">m</span></div>
+          <div class="perf-label">Working Height</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">3–5 <span class="perf-unit">%/pass</span></div>
+          <div class="perf-label">Moisture Reduction</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">&lt;0.5 <span class="perf-unit">%</span></div>
+          <div class="perf-label">Grain Breakage</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">70–80 <span class="perf-unit">TPD</span></div>
+          <div class="perf-label">Daily Output</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">PTO + Electric</div>
+          <div class="perf-label">Power Mode</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">5 <span class="perf-unit">types</span></div>
+          <div class="perf-label">Compatible Grains</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">15–25 <span class="perf-unit">kg/t</span></div>
+          <div class="perf-label">Fuel Consumption</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== MODEL COMPARISON ===== -->
   <section class="block compare-section" id="comparison">
     <div class="container">
@@ -434,6 +607,88 @@
     </div>
   </section>
 
+  <!-- ===== FAQ ===== -->
+  <section class="block faq-section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">FAQ</div>
+        <h2>Frequently Asked Questions</h2>
+        <p class="desc">Common questions about the G-MR-20 PTO dual-power mobile grain dryer.</p>
+      </div>
+      <div class="faq-wrap">
+        <details class="faq-item">
+          <summary>What power supply is required?</summary>
+          <div class="faq-answer">The G-MR-20 supports both 3-phase electric power and PTO tractor drive (90HP, 500 RPM). This dual-power design allows operation in remote areas without grid electricity.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How many people are needed for setup?</summary>
+          <div class="faq-answer">Two to three operators can deploy the dryer in approximately 45 minutes. The larger hopper and elevator require slightly more time than smaller models, but no crane is needed.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need special transport permits?</summary>
+          <div class="faq-answer">No. The folded transport height is 4.5 meters, within standard truck dimension limits. The working height extends to 8.45 meters during operation.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What maintenance is required?</summary>
+          <div class="faq-answer"><strong>Daily:</strong> Clean dust filters and check fuel lines.<br><strong>Weekly:</strong> Lubricate elevator chain and PTO driveline.<br><strong>Annually:</strong> Full heating system and PTO gearbox inspection by certified technician.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What warranty is included?</summary>
+          <div class="faq-answer">12 months from delivery date, covering manufacturing defects in materials and workmanship. Extended warranty and spare parts packages available.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can it dry grain to storage moisture level?</summary>
+          <div class="faq-answer">Yes. Each pass reduces moisture by 3–5%. For paddy at 22% moisture, two passes typically achieve safe storage moisture of ≤14%. The larger batch size (20T) allows higher daily throughput per pass.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RELATED PRODUCTS ===== -->
+  <section class="block related-section" id="related">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">EXPLORE MORE</div>
+        <h2>Related Products</h2>
+        <p class="desc">Other dryers you might consider for your operation.</p>
+      </div>
+      <div class="related-grid">
+        <a href="G-MR-5.html" class="related-card">
+          <div class="rc-img"><img src="../../assets/product-mobile.jpg" alt="G-MR-5"></div>
+          <div class="rc-body">
+            <div class="rc-cat">Mobile Dryer</div>
+            <div class="rc-title">G-MR-5</div>
+            <div class="rc-spec">5 T/batch · 10–20 TPD</div>
+          </div>
+        </a>
+        <a href="G-MR-10.html" class="related-card">
+          <div class="rc-img"><img src="../../assets/product-mobile.jpg" alt="G-MR-10"></div>
+          <div class="rc-body">
+            <div class="rc-cat">Mobile Dryer</div>
+            <div class="rc-title">G-MR-10</div>
+            <div class="rc-spec">10 T/batch · 20–40 TPD</div>
+          </div>
+        </a>
+        <a href="G-SR-32.html" class="related-card">
+          <div class="rc-img"><img src="../../assets/product-batch.jpg" alt="G-SR-32"></div>
+          <div class="rc-body">
+            <div class="rc-cat">Batch Dryer</div>
+            <div class="rc-title">G-SR-32</div>
+            <div class="rc-spec">32 T/batch · Dual-use silo</div>
+          </div>
+        </a>
+        <a href="G-CT-200.html" class="related-card">
+          <div class="rc-img"><img src="../../assets/product-tower.jpg" alt="G-CT-200"></div>
+          <div class="rc-body">
+            <div class="rc-cat">Continuous Tower</div>
+            <div class="rc-title">G-CT-200</div>
+            <div class="rc-spec">200 MTPD</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== CTA SECTION ===== -->
   <section class="cta-section">
     <div class="cta-inner">
@@ -442,7 +697,10 @@
         <p>Get a custom quote for the G-MR-20 PTO dual-power mobile grain dryer. 24-hour response guaranteed.</p>
       </div>
       <div class="pd-cta-row">
-        <a href="../../index.html#contact" class="btn btn-cta btn-lg">Request Quote</a>
+        <button type="button" class="btn btn-cta btn-lg" data-quote-trigger
+                data-product-name="Mobile Batch Grain Dryer"
+                data-product-model="G-MR-20"
+                data-product-capacity="20 T/batch, 70-80 TPD">Request Quote</button>
         <a href="../products.html" class="btn btn-outline btn-lg" style="color:#fff;border-color:rgba(255,255,255,0.3);">← Back to Products</a>
       </div>
     </div>
@@ -479,7 +737,7 @@
         <ul>
           <li><a href="../../index.html#company">About GXON</a></li>
           <li><a href="../../index.html#projects">Case Studies</a></li>
-          <li><a href="../../index.html#contact">Contact</a></li>
+          <li><a href="../contact.html">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -511,5 +769,6 @@
       header.classList.toggle('scrolled', window.scrollY > 20);
     });
   </script>
+  <script src="../../_shared/js/quote-modal.js" defer></script>
 </body>
 </html>

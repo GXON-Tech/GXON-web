@@ -64,6 +64,22 @@
   }
   </script>
 
+  <!-- ===== JSON-LD: FAQPage ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What foundation is required?", "acceptedAnswer": { "@type": "Answer", "text": "A reinforced concrete pad sized to the dryer footprint, with anchor bolts per the installation drawing. Soil bearing capacity should be at least 150 kPa." } },
+      { "@type": "Question", "name": "Can the G-SR-30/32 really be used as a silo?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. When drying is complete, the unit seals and functions as a storage silo, preserving grain quality for months with proper aeration." } },
+      { "@type": "Question", "name": "How do I switch between fuel types?", "acceptedAnswer": { "@type": "Answer", "text": "The multi-fuel burner allows quick changeover between diesel, LPG, natural gas, biomass, wood, and coal. Typical switch time is under 30 minutes." } },
+      { "@type": "Question", "name": "What is the expected service life?", "acceptedAnswer": { "@type": "Answer", "text": "10-15 years with proper maintenance. The galvanized steel body resists corrosion in humid environments." } },
+      { "@type": "Question", "name": "Is installation included?", "acceptedAnswer": { "@type": "Answer", "text": "Installation supervision is included. The buyer provides crane, concrete pad, and local labor. Typical installation time is 2-3 days." } },
+      { "@type": "Question", "name": "What after-sales support is available?", "acceptedAnswer": { "@type": "Answer", "text": "WhatsApp technical support, video-guided troubleshooting, spare parts express shipping, and optional annual on-site inspection service contract." } }
+    ]
+  }
+  </script>
+
   <style>
     @font-face { font-family:'BigShoulders'; src:url('../../_shared/fonts/BigShoulders-Bold.ttf') format('truetype'); font-weight:700; }
     @font-face { font-family:'BigShoulders'; src:url('../../_shared/fonts/BigShoulders-Regular.ttf') format('truetype'); font-weight:400; }
@@ -136,6 +152,20 @@
     .header-nav { display: flex; gap: 4px; }
     .header-nav a { font-size: 14px; font-weight: 700; color: var(--c-n1); padding: 8px 16px; border-radius: var(--r-sm); transition: all 0.2s; }
     .header-nav a:hover { background: var(--c-n7); color: var(--c-primary); }
+    .nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
+    .nav-dropdown {
+      position: absolute; top: 100%; left: 0; min-width: 220px;
+      background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-md);
+      box-shadow: var(--sh-lg); padding: 6px; z-index: 1100;
+      opacity: 0; visibility: hidden; transform: translateY(8px);
+      transition: all 0.2s;
+    }
+    .nav-dropdown-wrap:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown a {
+      display: block; padding: 9px 14px; font-size: 13px; font-weight: 600;
+      color: var(--c-n2); border-radius: var(--r-sm); transition: all 0.15s; white-space: nowrap;
+    }
+    .nav-dropdown a:hover { background: var(--c-primary-bg); color: var(--c-primary); }
     .header-nav a.active { background: var(--c-primary-bg); color: var(--c-primary); }
     .header-cta { display: flex; align-items: center; gap: 12px; }
     .header-cta .lang { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--c-n2); padding: 6px 10px; border: 1px solid var(--c-n5); border-radius: var(--r-sm); }
@@ -235,6 +265,45 @@
     .footer-col ul li a:hover { color: var(--c-orange-light); }
     .footer-bottom { max-width: var(--max-w); margin: 0 auto; padding: 20px 24px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.4); }
 
+    /* ===== APPLICATIONS ===== */
+    .apps-section { background: #fff; }
+    .apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1000px; margin: 0 auto; }
+    .app-item { background: var(--c-silver-bg); border: 1px solid var(--c-n6); border-radius: var(--r-md); padding: 20px 24px; }
+    .app-item .app-icon { font-size: 28px; margin-bottom: 8px; }
+    .app-item h4 { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--c-dark); margin-bottom: 4px; }
+    .app-item p { font-size: 13px; color: var(--c-n3); line-height: 1.5; }
+
+    /* ===== PERFORMANCE DATA ===== */
+    .perf-section { background: var(--c-n7); }
+    .perf-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1000px; margin: 0 auto; }
+    .perf-item { background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-md); padding: 20px; text-align: center; }
+    .perf-item .perf-value { font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--c-primary); line-height: 1.1; }
+    .perf-item .perf-unit { font-size: 14px; color: var(--c-n3); font-weight: 400; }
+    .perf-item .perf-label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--c-n3); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 8px; }
+
+    /* ===== FAQ ===== */
+    .faq-section { background: var(--c-n7); }
+    .faq-wrap { max-width: 800px; margin: 0 auto; }
+    .faq-item { border: 1px solid var(--c-n6); border-radius: var(--r-md); margin-bottom: 12px; overflow: hidden; background: #fff; }
+    .faq-item summary { padding: 18px 24px; font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--c-dark); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; font-size: 24px; color: var(--c-n3); transition: transform 0.2s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item[open] summary { border-bottom: 1px solid var(--c-n7); }
+    .faq-answer { padding: 16px 24px; font-size: 14px; color: var(--c-n2); line-height: 1.7; }
+
+    /* ===== RELATED PRODUCTS ===== */
+    .related-section { background: #fff; }
+    .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+    .related-card { background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-md); overflow: hidden; transition: all 0.2s; text-decoration: none; display: block; }
+    .related-card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); border-color: var(--c-primary); }
+    .related-card .rc-img { aspect-ratio: 4/3; overflow: hidden; background: var(--c-n7); }
+    .related-card .rc-img img { width: 100%; height: 100%; object-fit: cover; }
+    .related-card .rc-body { padding: 14px 16px; }
+    .related-card .rc-cat { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--c-n3); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 4px; }
+    .related-card .rc-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--c-dark); margin-bottom: 4px; }
+    .related-card .rc-spec { font-size: 12px; color: var(--c-n3); }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .header-nav { display: none; }
@@ -244,6 +313,9 @@
       .product-hero-content h1 { font-size: 36px; }
       .pd-highlights { grid-template-columns: 1fr; }
       .features-grid { grid-template-columns: 1fr; }
+      .apps-grid { grid-template-columns: 1fr; }
+      .perf-grid { grid-template-columns: repeat(2, 1fr); }
+      .related-grid { grid-template-columns: repeat(2, 1fr); }
       .section-head h2 { font-size: 28px; }
       .cta-inner { flex-direction: column; text-align: center; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -267,11 +339,21 @@
         <a href="../../index.html#technology">Technology</a>
         <a href="../../index.html#projects">Projects</a>
         <a href="../../index.html#company">Company</a>
-        <a href="../../index.html#contact">Contact</a>
+        <div class="nav-dropdown-wrap">
+          <a href="../contact.html">Contact ▾</a>
+          <div class="nav-dropdown">
+            <a href="../contact.html#sendquote">Request Solution</a>
+            <a href="../contact.html#sales-team">Sales Team</a>
+            <a href="../contact.html#partnership">Become Distributor</a>
+            <a href="../contact.html#partners">Global Partners</a>
+            <a href="../contact.html#exhibition">Exhibition</a>
+            <a href="../contact.html#social">Social Media</a>
+          </div>
+        </div>
       </nav>
       <div class="header-cta">
         <span class="lang">EN</span>
-        <a href="../../index.html#contact" class="btn btn-primary btn-sm">Get Quote</a>
+        <a href="../contact.html" class="btn btn-primary btn-sm">Get Quote</a>
       </div>
       <div class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></div>
     </div>
@@ -319,7 +401,10 @@
             </div>
           </div>
           <div class="pd-cta-row">
-            <a href="../../index.html#contact" class="btn btn-cta btn-lg">Request Quote</a>
+            <button type="button" class="btn btn-cta btn-lg" data-quote-trigger
+                    data-product-name="Fixed Batch Grain Dryer"
+                    data-product-model="G-SR-32"
+                    data-product-capacity="32 T/batch, 19.4 kW">Request Quote</button>
             <a href="#comparison" class="btn btn-outline btn-lg">Compare Models</a>
           </div>
         </div>
@@ -393,6 +478,94 @@
     </div>
   </section>
 
+  <!-- ===== APPLICATIONS ===== -->
+  <section class="block apps-section" id="applications">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">APPLICATIONS</div>
+        <h2>Where G-SR-32 Shines</h2>
+        <p class="desc">Built for grain stations and medium-scale processing operations.</p>
+      </div>
+      <div class="apps-grid">
+        <div class="app-item">
+          <div class="app-icon">🏢</div>
+          <h4>Grain Stations & Cooperatives</h4>
+          <p>Fixed installation for community grain drying at centralized collection points. Serves multiple surrounding farms efficiently.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">🏭</div>
+          <h4>Rice Mills & Processing Plants</h4>
+          <p>Integrate with existing processing lines for continuous grain supply. Reduces waiting time and spoilage during peak season.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">🌾</div>
+          <h4>Medium-Scale Farms</h4>
+          <p>Dedicated drying facility for farms with 50–500 hectares of grain production. Lower per-ton cost than mobile drying.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">💰</div>
+          <h4>Dual-Use Investment</h4>
+          <p>G-SR-30/32 doubles as storage silo when not drying, maximizing equipment ROI. Other models offer compact footprint.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">🔄</div>
+          <h4>Batch Processing Flexibility</h4>
+          <p>Handle different grain types and moisture levels in separate batches. Ideal for mixed-grain operations.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">⚡</div>
+          <h4>Energy-Efficient Operation</h4>
+          <p>Lower per-ton energy cost than mobile dryers for consistent daily output. Optimized heat circulation design.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PERFORMANCE DATA ===== -->
+  <section class="block perf-section" id="performance">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">PERFORMANCE</div>
+        <h2>Key Performance Metrics</h2>
+        <p class="desc">Quantified results from field operations across multiple grain types.</p>
+      </div>
+      <div class="perf-grid">
+        <div class="perf-item">
+          <div class="perf-value">3–4 <span class="perf-unit">hours</span></div>
+          <div class="perf-label">Batch Cycle Time</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">64–85 <span class="perf-unit">TPD</span></div>
+          <div class="perf-label">Daily Output</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">&lt;0.5 <span class="perf-unit">%</span></div>
+          <div class="perf-label">Grain Breakage</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">32 <span class="perf-unit">T</span></div>
+          <div class="perf-label">Dual-Use Storage</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">6 <span class="perf-unit">types</span></div>
+          <div class="perf-label">Fuel Options</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">19.4 <span class="perf-unit">kW</span></div>
+          <div class="perf-label">Power</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">5 <span class="perf-unit">types</span></div>
+          <div class="perf-label">Compatible Grains</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">10–15 <span class="perf-unit">years</span></div>
+          <div class="perf-label">Service Life</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== MODEL COMPARISON ===== -->
   <section class="block compare-section" id="comparison">
     <div class="container">
@@ -425,6 +598,88 @@
     </div>
   </section>
 
+  <!-- ===== FAQ -->
+  <section class="block faq-section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">FAQ</div>
+        <h2>Frequently Asked Questions</h2>
+        <p class="desc">Common questions about batch grain dryers.</p>
+      </div>
+      <div class="faq-wrap">
+        <details class="faq-item">
+          <summary>What foundation is required?</summary>
+          <div class="faq-answer">A reinforced concrete pad sized to the dryer footprint, with anchor bolts per the installation drawing. Soil bearing capacity should be ≥150 kPa. GXON provides complete foundation drawings upon order confirmation.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can the G-SR-30/32 really be used as a silo?</summary>
+          <div class="faq-answer">Yes. When drying is complete, the unit seals and functions as a storage silo, preserving grain quality for months with proper aeration. This dual-use design eliminates the need for a separate storage silo, saving both space and investment. (Applies to G-SR-30 and G-SR-32 models.)</div>
+        </details>
+        <details class="faq-item">
+          <summary>How do I switch between fuel types?</summary>
+          <div class="faq-answer">The multi-fuel burner allows quick changeover between diesel, LPG, natural gas, biomass, wood, and coal. Typical switch time is under 30 minutes. The burner automatically adjusts combustion parameters for each fuel type.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What is the expected service life?</summary>
+          <div class="faq-answer">10–15 years with proper maintenance. The galvanized steel body resists corrosion in humid environments. Key wear parts (belts, bearings, burner components) are replaceable and available as spare parts.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Is installation included?</summary>
+          <div class="faq-answer">Installation supervision is included with purchase. The buyer provides crane, concrete pad, and local labor. Typical installation time is 2–3 days for standard models. GXON engineers guide the process via on-site visit or video call.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What after-sales support is available?</summary>
+          <div class="faq-answer">WhatsApp technical support, video-guided troubleshooting, spare parts express shipping, and optional annual on-site inspection service contract. First-year maintenance is free.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RELATED PRODUCTS ===== -->
+  <section class="block related-section" id="related">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">EXPLORE MORE</div>
+        <h2>Related Products</h2>
+        <p class="desc">Other dryers you might consider for your operation.</p>
+      </div>
+      <div class="related-grid">
+        <a href="G-SR-30.html" class="related-card">
+          <div class="rc-img"><img src="../../assets/product-batch.jpg" alt="G-SR-30"></div>
+          <div class="rc-body">
+            <div class="rc-cat">Batch Dryer</div>
+            <div class="rc-title">G-SR-30</div>
+            <div class="rc-spec">30 T/batch · Dual-use silo</div>
+          </div>
+        </a>
+        <a href="10T-batch-dryer.html" class="related-card">
+          <div class="rc-img"><img src="../../assets/product-batch.jpg" alt="10T Batch Dryer"></div>
+          <div class="rc-body">
+            <div class="rc-cat">Batch Dryer</div>
+            <div class="rc-title">10T Batch Dryer</div>
+            <div class="rc-spec">10 T/batch · 40–60 TPD</div>
+          </div>
+        </a>
+        <a href="G-MR-20.html" class="related-card">
+          <div class="rc-img"><img src="../../assets/product-mobile.jpg" alt="G-MR-20"></div>
+          <div class="rc-body">
+            <div class="rc-cat">Mobile Dryer</div>
+            <div class="rc-title">G-MR-20</div>
+            <div class="rc-spec">20 T/batch · 70–80 TPD</div>
+          </div>
+        </a>
+        <a href="G-CT-200.html" class="related-card">
+          <div class="rc-img"><img src="../../assets/product-tower.jpg" alt="G-CT-200"></div>
+          <div class="rc-body">
+            <div class="rc-cat">Continuous Tower</div>
+            <div class="rc-title">G-CT-200</div>
+            <div class="rc-spec">200 MTPD</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== CTA SECTION ===== -->
   <section class="cta-section">
     <div class="cta-inner">
@@ -433,7 +688,10 @@
         <p>Get a custom quote for the G-SR-32 dual-use batch dryer. 24-hour response guaranteed.</p>
       </div>
       <div class="pd-cta-row">
-        <a href="../../index.html#contact" class="btn btn-cta btn-lg">Request Quote</a>
+        <button type="button" class="btn btn-cta btn-lg" data-quote-trigger
+                data-product-name="Fixed Batch Grain Dryer"
+                data-product-model="G-SR-32"
+                data-product-capacity="32 T/batch, 19.4 kW">Request Quote</button>
         <a href="../products.html" class="btn btn-outline btn-lg" style="color:#fff;border-color:rgba(255,255,255,0.3);">← Back to Products</a>
       </div>
     </div>
@@ -470,7 +728,7 @@
         <ul>
           <li><a href="../../index.html#company">About GXON</a></li>
           <li><a href="../../index.html#projects">Case Studies</a></li>
-          <li><a href="../../index.html#contact">Contact</a></li>
+          <li><a href="../contact.html">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -502,5 +760,6 @@
       header.classList.toggle('scrolled', window.scrollY > 20);
     });
   </script>
+  <script src="../../_shared/js/quote-modal.js" defer></script>
 </body>
 </html>

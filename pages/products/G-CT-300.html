@@ -64,6 +64,22 @@
   }
   </script>
 
+  <!-- ===== JSON-LD: FAQPage ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What civil engineering work is required?", "acceptedAnswer": { "@type": "Answer", "text": "A reinforced concrete foundation, supporting steel structure, and utility connections. GXON provides complete engineering drawings upon order confirmation." } },
+      { "@type": "Question", "name": "How does 24/7 unattended operation work?", "acceptedAnswer": { "@type": "Answer", "text": "Automated grain feed, moisture sensing, temperature control, and discharge via PLC. The system triggers alarms for out-of-range conditions." } },
+      { "@type": "Question", "name": "How often does the heat exchanger need maintenance?", "acceptedAnswer": { "@type": "Answer", "text": "Inspection every 500 operating hours, deep cleaning every 2,000 hours. The indirect heat exchanger prevents flue gas contact with grain." } },
+      { "@type": "Question", "name": "What is the installation timeline?", "acceptedAnswer": { "@type": "Answer", "text": "15-30 days depending on model size. GXON sends engineers for installation supervision and commissioning." } },
+      { "@type": "Question", "name": "What spare parts should be kept on hand?", "acceptedAnswer": { "@type": "Answer", "text": "Recommended spares: temperature sensors, belts, bearings, burner nozzles. A starter spare parts kit is included with purchase." } },
+      { "@type": "Question", "name": "Can the tower handle different grain types?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Handles paddy, maize, wheat, sorghum, and soybeans. Parameters adjusted via PLC. Changeover takes approximately 30 minutes." } }
+    ]
+  }
+  </script>
+
   <style>
     @font-face { font-family:'BigShoulders'; src:url('../../_shared/fonts/BigShoulders-Bold.ttf') format('truetype'); font-weight:700; }
     @font-face { font-family:'BigShoulders'; src:url('../../_shared/fonts/BigShoulders-Regular.ttf') format('truetype'); font-weight:400; }
@@ -136,6 +152,20 @@
     .header-nav { display: flex; gap: 4px; }
     .header-nav a { font-size: 14px; font-weight: 700; color: var(--c-n1); padding: 8px 16px; border-radius: var(--r-sm); transition: all 0.2s; }
     .header-nav a:hover { background: var(--c-n7); color: var(--c-primary); }
+    .nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
+    .nav-dropdown {
+      position: absolute; top: 100%; left: 0; min-width: 220px;
+      background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-md);
+      box-shadow: var(--sh-lg); padding: 6px; z-index: 1100;
+      opacity: 0; visibility: hidden; transform: translateY(8px);
+      transition: all 0.2s;
+    }
+    .nav-dropdown-wrap:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown a {
+      display: block; padding: 9px 14px; font-size: 13px; font-weight: 600;
+      color: var(--c-n2); border-radius: var(--r-sm); transition: all 0.15s; white-space: nowrap;
+    }
+    .nav-dropdown a:hover { background: var(--c-primary-bg); color: var(--c-primary); }
     .header-nav a.active { background: var(--c-primary-bg); color: var(--c-primary); }
     .header-cta { display: flex; align-items: center; gap: 12px; }
     .header-cta .lang { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--c-n2); padding: 6px 10px; border: 1px solid var(--c-n5); border-radius: var(--r-sm); }
@@ -235,6 +265,45 @@
     .footer-col ul li a:hover { color: var(--c-orange-light); }
     .footer-bottom { max-width: var(--max-w); margin: 0 auto; padding: 20px 24px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.4); }
 
+    /* ===== APPLICATIONS ===== */
+    .apps-section { background: #fff; }
+    .apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1000px; margin: 0 auto; }
+    .app-item { background: var(--c-silver-bg); border: 1px solid var(--c-n6); border-radius: var(--r-md); padding: 20px 24px; }
+    .app-item .app-icon { font-size: 28px; margin-bottom: 8px; }
+    .app-item h4 { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--c-dark); margin-bottom: 4px; }
+    .app-item p { font-size: 13px; color: var(--c-n3); line-height: 1.5; }
+
+    /* ===== PERFORMANCE DATA ===== */
+    .perf-section { background: var(--c-n7); }
+    .perf-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1000px; margin: 0 auto; }
+    .perf-item { background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-md); padding: 20px; text-align: center; }
+    .perf-item .perf-value { font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--c-primary); line-height: 1.1; }
+    .perf-item .perf-unit { font-size: 14px; color: var(--c-n3); font-weight: 400; }
+    .perf-item .perf-label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--c-n3); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 8px; }
+
+    /* ===== FAQ ===== */
+    .faq-section { background: var(--c-n7); }
+    .faq-wrap { max-width: 800px; margin: 0 auto; }
+    .faq-item { border: 1px solid var(--c-n6); border-radius: var(--r-md); margin-bottom: 12px; overflow: hidden; background: #fff; }
+    .faq-item summary { padding: 18px 24px; font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--c-dark); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; font-size: 24px; color: var(--c-n3); transition: transform 0.2s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item[open] summary { border-bottom: 1px solid var(--c-n7); }
+    .faq-answer { padding: 16px 24px; font-size: 14px; color: var(--c-n2); line-height: 1.7; }
+
+    /* ===== RELATED PRODUCTS ===== */
+    .related-section { background: #fff; }
+    .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+    .related-card { background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-md); overflow: hidden; transition: all 0.2s; text-decoration: none; display: block; }
+    .related-card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); border-color: var(--c-primary); }
+    .related-card .rc-img { aspect-ratio: 4/3; overflow: hidden; background: var(--c-n7); }
+    .related-card .rc-img img { width: 100%; height: 100%; object-fit: cover; }
+    .related-card .rc-body { padding: 14px 16px; }
+    .related-card .rc-cat { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--c-n3); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 4px; }
+    .related-card .rc-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--c-dark); margin-bottom: 4px; }
+    .related-card .rc-spec { font-size: 12px; color: var(--c-n3); }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .header-nav { display: none; }
@@ -244,6 +313,9 @@
       .product-hero-content h1 { font-size: 36px; }
       .pd-highlights { grid-template-columns: 1fr; }
       .features-grid { grid-template-columns: 1fr; }
+      .apps-grid { grid-template-columns: 1fr; }
+      .perf-grid { grid-template-columns: repeat(2, 1fr); }
+      .related-grid { grid-template-columns: repeat(2, 1fr); }
       .section-head h2 { font-size: 28px; }
       .cta-inner { flex-direction: column; text-align: center; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -267,11 +339,21 @@
         <a href="../../index.html#technology">Technology</a>
         <a href="../../index.html#projects">Projects</a>
         <a href="../../index.html#company">Company</a>
-        <a href="../../index.html#contact">Contact</a>
+        <div class="nav-dropdown-wrap">
+          <a href="../contact.html">Contact ▾</a>
+          <div class="nav-dropdown">
+            <a href="../contact.html#sendquote">Request Solution</a>
+            <a href="../contact.html#sales-team">Sales Team</a>
+            <a href="../contact.html#partnership">Become Distributor</a>
+            <a href="../contact.html#partners">Global Partners</a>
+            <a href="../contact.html#exhibition">Exhibition</a>
+            <a href="../contact.html#social">Social Media</a>
+          </div>
+        </div>
       </nav>
       <div class="header-cta">
         <span class="lang">EN</span>
-        <a href="../../index.html#contact" class="btn btn-primary btn-sm">Get Quote</a>
+        <a href="../contact.html" class="btn btn-primary btn-sm">Get Quote</a>
       </div>
       <div class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></div>
     </div>
@@ -319,7 +401,10 @@
             </div>
           </div>
           <div class="pd-cta-row">
-            <a href="../../index.html#contact" class="btn btn-cta btn-lg">Request Quote</a>
+            <button type="button" class="btn btn-cta btn-lg" data-quote-trigger
+                    data-product-name="Continuous Drying Tower"
+                    data-product-model="G-CT-300"
+                    data-product-capacity="300 MTPD, 125.5 kW">Request Quote</button>
             <a href="#comparison" class="btn btn-outline btn-lg">Compare Models</a>
           </div>
         </div>
@@ -396,6 +481,94 @@
     </div>
   </section>
 
+  <!-- ===== APPLICATIONS ===== -->
+  <section class="block apps-section" id="applications">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">APPLICATIONS</div>
+        <h2>Where G-CT-300 Shines</h2>
+        <p class="desc">Engineered for high-capacity, quality-critical grain drying operations.</p>
+      </div>
+      <div class="apps-grid">
+        <div class="app-item">
+          <div class="app-icon">🏬</div>
+          <h4>Regional Grain Depots</h4>
+          <p>High-capacity drying for government and cooperative grain collection centers. Handles peak harvest volumes without bottleneck.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">🏭</div>
+          <h4>Large Processing Plants</h4>
+          <p>Continuous inline drying integrated with milling, cleaning, and packaging lines. 24/7 operation matches industrial throughput.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">🚢</div>
+          <h4>Port Terminal Facilities</h4>
+          <p>Dry imported or exported grain to international trade moisture standards. Meet phytosanitary requirements for cross-border shipments.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">🏛️</div>
+          <h4>National Grain Reserves</h4>
+          <p>24/7 unattended operation for strategic grain storage programs. Automated moisture control ensures long-term preservation.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">⚡</div>
+          <h4>Energy-Sensitive Operations</h4>
+          <p>8–15% fuel savings vs. batch dryers through heat recovery and continuous flow design. Lower operating cost per ton.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">📊</div>
+          <h4>Quality-Critical Processing</h4>
+          <p>Indirect heating with heat exchanger ensures zero fuel contamination in grain. Meets food-grade and export quality standards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PERFORMANCE DATA ===== -->
+  <section class="block perf-section" id="performance">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">PERFORMANCE</div>
+        <h2>Key Performance Metrics</h2>
+        <p class="desc">Quantified results from industrial-scale drying operations.</p>
+      </div>
+      <div class="perf-grid">
+        <div class="perf-item">
+          <div class="perf-value">300 <span class="perf-unit">MTPD</span></div>
+          <div class="perf-label">Capacity</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">125.5 <span class="perf-unit">kW</span></div>
+          <div class="perf-label">Total Power</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">8–15 <span class="perf-unit">%</span></div>
+          <div class="perf-label">Fuel Savings vs Batch</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">24/7</div>
+          <div class="perf-label">Unattended Operation</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">±0.5 <span class="perf-unit">%</span></div>
+          <div class="perf-label">Moisture Uniformity</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">Indirect</div>
+          <div class="perf-label">Heat Exchange</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">3 <span class="perf-unit">types</span></div>
+          <div class="perf-label">Fuel Options</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">5 <span class="perf-unit">types</span></div>
+          <div class="perf-label">Compatible Grains</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== MODEL COMPARISON ===== -->
   <section class="block compare-section" id="comparison">
     <div class="container">
@@ -428,6 +601,88 @@
     </div>
   </section>
 
+  <!-- ===== FAQ ===== -->
+  <section class="block faq-section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">FAQ</div>
+        <h2>Frequently Asked Questions</h2>
+        <p class="desc">Common questions about continuous drying towers.</p>
+      </div>
+      <div class="faq-wrap">
+        <details class="faq-item">
+          <summary>What civil engineering work is required?</summary>
+          <div class="faq-answer">A reinforced concrete foundation, supporting steel structure, and utility connections (power, fuel, dust collection). GXON provides complete engineering drawings and site specifications upon order confirmation. Soil bearing capacity ≥200 kPa recommended.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How does 24/7 unattended operation work?</summary>
+          <div class="faq-answer">Automated grain feed, moisture sensing, temperature control, and discharge. Operators monitor via PLC panel with remote alarm capability. The system automatically adjusts drying parameters and triggers alarms for out-of-range conditions. One operator can supervise multiple towers simultaneously.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How often does the heat exchanger need maintenance?</summary>
+          <div class="faq-answer">Inspection every 500 operating hours, deep cleaning every 2,000 hours. The indirect heat exchanger prevents flue gas contact with grain, ensuring zero contamination. Maintenance takes approximately 4–6 hours and can be scheduled during off-peak periods.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What is the installation timeline?</summary>
+          <div class="faq-answer">15–30 days depending on model size and site readiness. GXON sends engineers for installation supervision and commissioning. Civil works should be completed before equipment arrival. Commissioning includes performance testing and operator training.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What spare parts should be kept on hand?</summary>
+          <div class="faq-answer">Recommended spares: temperature sensors, belts, bearings, burner nozzles, and PLC backup battery. A starter spare parts kit is included with purchase. Critical spares are available for express shipping worldwide within 5–7 days.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can the tower handle different grain types?</summary>
+          <div class="faq-answer">Yes. The continuous flow design handles paddy, maize, wheat, sorghum, and soybeans. Parameters are adjusted via the PLC for each grain type. Changeover between grain types takes approximately 30 minutes, including cleaning and parameter adjustment.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RELATED PRODUCTS ===== -->
+  <section class="block related-section" id="related">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">EXPLORE MORE</div>
+        <h2>Related Products</h2>
+        <p class="desc">Other dryers you might consider for your operation.</p>
+      </div>
+      <div class="related-grid">
+        <a href="G-CT-200.html" class="related-card">
+          <div class="rc-img"><img src="../../assets/product-tower.jpg" alt="G-CT-200"></div>
+          <div class="rc-body">
+            <div class="rc-cat">Continuous Tower</div>
+            <div class="rc-title">G-CT-200</div>
+            <div class="rc-spec">200 MTPD</div>
+          </div>
+        </a>
+        <a href="G-CT-500.html" class="related-card">
+          <div class="rc-img"><img src="../../assets/product-tower.jpg" alt="G-CT-500"></div>
+          <div class="rc-body">
+            <div class="rc-cat">Continuous Tower</div>
+            <div class="rc-title">G-CT-500</div>
+            <div class="rc-spec">500 MTPD</div>
+          </div>
+        </a>
+        <a href="G-CT-120.html" class="related-card">
+          <div class="rc-img"><img src="../../assets/product-tower.jpg" alt="G-CT-120"></div>
+          <div class="rc-body">
+            <div class="rc-cat">Continuous Tower</div>
+            <div class="rc-title">G-CT-120</div>
+            <div class="rc-spec">120 MTPD</div>
+          </div>
+        </a>
+        <a href="complete-grain-system.html" class="related-card">
+          <div class="rc-img"><img src="../../assets/product-system.jpg" alt="Complete Grain System"></div>
+          <div class="rc-body">
+            <div class="rc-cat">Complete System</div>
+            <div class="rc-title">Complete Grain System</div>
+            <div class="rc-spec">Custom configuration</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== CTA SECTION ===== -->
   <section class="cta-section">
     <div class="cta-inner">
@@ -436,7 +691,10 @@
         <p>Get a custom quote for the G-CT-300 continuous drying tower. 24-hour response guaranteed.</p>
       </div>
       <div class="pd-cta-row">
-        <a href="../../index.html#contact" class="btn btn-cta btn-lg">Request Quote</a>
+        <button type="button" class="btn btn-cta btn-lg" data-quote-trigger
+                data-product-name="Continuous Drying Tower"
+                data-product-model="G-CT-300"
+                data-product-capacity="300 MTPD, 125.5 kW">Request Quote</button>
         <a href="../products.html" class="btn btn-outline btn-lg" style="color:#fff;border-color:rgba(255,255,255,0.3);">← Back to Products</a>
       </div>
     </div>
@@ -473,7 +731,7 @@
         <ul>
           <li><a href="../../index.html#company">About GXON</a></li>
           <li><a href="../../index.html#projects">Case Studies</a></li>
-          <li><a href="../../index.html#contact">Contact</a></li>
+          <li><a href="../contact.html">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -505,5 +763,6 @@
       header.classList.toggle('scrolled', window.scrollY > 20);
     });
   </script>
+  <script src="../../_shared/js/quote-modal.js" defer></script>
 </body>
 </html>

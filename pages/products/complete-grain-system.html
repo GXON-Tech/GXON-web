@@ -64,6 +64,22 @@
   }
   </script>
 
+  <!-- ===== JSON-LD: FAQPage ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How is the system customized to my needs?", "acceptedAnswer": { "@type": "Answer", "text": "GXON engineers conduct a site assessment, analyze grain types, daily volume, fuels, and space constraints, then design a complete system specification. Customization takes 2-4 weeks." } },
+      { "@type": "Question", "name": "What is the typical project timeline?", "acceptedAnswer": { "@type": "Answer", "text": "Design 2-4 weeks, manufacturing 6-10 weeks, installation 4-8 weeks. Total 3-5 months depending on scope." } },
+      { "@type": "Question", "name": "What modules are included?", "acceptedAnswer": { "@type": "Answer", "text": "Grain reception, pre-cleaning, drying, post-cooling, storage silos, and automated handling. Optional weighing, bagging, dust collection." } },
+      { "@type": "Question", "name": "Is training provided?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. On-site operator training 3-5 days and maintenance training 2-3 days during commissioning. Documentation in English provided." } },
+      { "@type": "Question", "name": "What about after-sales service?", "acceptedAnswer": { "@type": "Answer", "text": "First-year free maintenance. Optional annual service contract, remote monitoring via PLC, guaranteed spare parts for 10 years." } },
+      { "@type": "Question", "name": "Can the system be expanded later?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Modular design allows adding capacity, storage, or cleaning modules in phases. PLC pre-configured for expansion." } }
+    ]
+  }
+  </script>
+
   <style>
     @font-face { font-family:'BigShoulders'; src:url('../../_shared/fonts/BigShoulders-Bold.ttf') format('truetype'); font-weight:700; }
     @font-face { font-family:'BigShoulders'; src:url('../../_shared/fonts/BigShoulders-Regular.ttf') format('truetype'); font-weight:400; }
@@ -136,6 +152,20 @@
     .header-nav { display: flex; gap: 4px; }
     .header-nav a { font-size: 14px; font-weight: 700; color: var(--c-n1); padding: 8px 16px; border-radius: var(--r-sm); transition: all 0.2s; }
     .header-nav a:hover { background: var(--c-n7); color: var(--c-primary); }
+    .nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
+    .nav-dropdown {
+      position: absolute; top: 100%; left: 0; min-width: 220px;
+      background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-md);
+      box-shadow: var(--sh-lg); padding: 6px; z-index: 1100;
+      opacity: 0; visibility: hidden; transform: translateY(8px);
+      transition: all 0.2s;
+    }
+    .nav-dropdown-wrap:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown a {
+      display: block; padding: 9px 14px; font-size: 13px; font-weight: 600;
+      color: var(--c-n2); border-radius: var(--r-sm); transition: all 0.15s; white-space: nowrap;
+    }
+    .nav-dropdown a:hover { background: var(--c-primary-bg); color: var(--c-primary); }
     .header-nav a.active { background: var(--c-primary-bg); color: var(--c-primary); }
     .header-cta { display: flex; align-items: center; gap: 12px; }
     .header-cta .lang { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--c-n2); padding: 6px 10px; border: 1px solid var(--c-n5); border-radius: var(--r-sm); }
@@ -235,6 +265,45 @@
     .footer-col ul li a:hover { color: var(--c-orange-light); }
     .footer-bottom { max-width: var(--max-w); margin: 0 auto; padding: 20px 24px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.4); }
 
+    /* ===== APPLICATIONS ===== */
+    .apps-section { background: #fff; }
+    .apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1000px; margin: 0 auto; }
+    .app-item { background: var(--c-silver-bg); border: 1px solid var(--c-n6); border-radius: var(--r-md); padding: 20px 24px; }
+    .app-item .app-icon { font-size: 28px; margin-bottom: 8px; }
+    .app-item h4 { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--c-dark); margin-bottom: 4px; }
+    .app-item p { font-size: 13px; color: var(--c-n3); line-height: 1.5; }
+
+    /* ===== PERFORMANCE DATA ===== */
+    .perf-section { background: var(--c-n7); }
+    .perf-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1000px; margin: 0 auto; }
+    .perf-item { background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-md); padding: 20px; text-align: center; }
+    .perf-item .perf-value { font-family: var(--font-heading); font-size: 32px; font-weight: 700; color: var(--c-primary); line-height: 1.1; }
+    .perf-item .perf-unit { font-size: 14px; color: var(--c-n3); font-weight: 400; }
+    .perf-item .perf-label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--c-n3); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 8px; }
+
+    /* ===== FAQ ===== */
+    .faq-section { background: var(--c-n7); }
+    .faq-wrap { max-width: 800px; margin: 0 auto; }
+    .faq-item { border: 1px solid var(--c-n6); border-radius: var(--r-md); margin-bottom: 12px; overflow: hidden; background: #fff; }
+    .faq-item summary { padding: 18px 24px; font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--c-dark); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: '+'; font-size: 24px; color: var(--c-n3); transition: transform 0.2s; }
+    .faq-item[open] summary::after { transform: rotate(45deg); }
+    .faq-item[open] summary { border-bottom: 1px solid var(--c-n7); }
+    .faq-answer { padding: 16px 24px; font-size: 14px; color: var(--c-n2); line-height: 1.7; }
+
+    /* ===== RELATED PRODUCTS ===== */
+    .related-section { background: #fff; }
+    .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+    .related-card { background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-md); overflow: hidden; transition: all 0.2s; text-decoration: none; display: block; }
+    .related-card:hover { box-shadow: var(--sh-md); transform: translateY(-2px); border-color: var(--c-primary); }
+    .related-card .rc-img { aspect-ratio: 4/3; overflow: hidden; background: var(--c-n7); }
+    .related-card .rc-img img { width: 100%; height: 100%; object-fit: cover; }
+    .related-card .rc-body { padding: 14px 16px; }
+    .related-card .rc-cat { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--c-n3); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 4px; }
+    .related-card .rc-title { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--c-dark); margin-bottom: 4px; }
+    .related-card .rc-spec { font-size: 12px; color: var(--c-n3); }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .header-nav { display: none; }
@@ -244,6 +313,9 @@
       .product-hero-content h1 { font-size: 36px; }
       .pd-highlights { grid-template-columns: 1fr; }
       .features-grid { grid-template-columns: 1fr; }
+      .apps-grid { grid-template-columns: 1fr; }
+      .perf-grid { grid-template-columns: repeat(2, 1fr); }
+      .related-grid { grid-template-columns: repeat(2, 1fr); }
       .section-head h2 { font-size: 28px; }
       .cta-inner { flex-direction: column; text-align: center; }
       .footer-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -267,11 +339,21 @@
         <a href="../../index.html#technology">Technology</a>
         <a href="../../index.html#projects">Projects</a>
         <a href="../../index.html#company">Company</a>
-        <a href="../../index.html#contact">Contact</a>
+        <div class="nav-dropdown-wrap">
+          <a href="../contact.html">Contact ▾</a>
+          <div class="nav-dropdown">
+            <a href="../contact.html#sendquote">Request Solution</a>
+            <a href="../contact.html#sales-team">Sales Team</a>
+            <a href="../contact.html#partnership">Become Distributor</a>
+            <a href="../contact.html#partners">Global Partners</a>
+            <a href="../contact.html#exhibition">Exhibition</a>
+            <a href="../contact.html#social">Social Media</a>
+          </div>
+        </div>
       </nav>
       <div class="header-cta">
         <span class="lang">EN</span>
-        <a href="../../index.html#contact" class="btn btn-primary btn-sm">Get Quote</a>
+        <a href="../contact.html" class="btn btn-primary btn-sm">Get Quote</a>
       </div>
       <div class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></div>
     </div>
@@ -319,7 +401,10 @@
             </div>
           </div>
           <div class="pd-cta-row">
-            <a href="../../index.html#contact" class="btn btn-cta btn-lg">Request Quote</a>
+            <button type="button" class="btn btn-cta btn-lg" data-quote-trigger
+                    data-product-name="Complete Grain System"
+                    data-product-model="Custom"
+                    data-product-capacity="Custom configuration">Request Quote</button>
             <a href="#components" class="btn btn-outline btn-lg">View Components</a>
           </div>
         </div>
@@ -394,6 +479,94 @@
     </div>
   </section>
 
+  <!-- ===== APPLICATIONS ===== -->
+  <section class="block apps-section" id="applications">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">APPLICATIONS</div>
+        <h2>Where Complete Grain System Shines</h2>
+        <p class="desc">Turnkey solutions for large-scale, integrated grain handling operations.</p>
+      </div>
+      <div class="apps-grid">
+        <div class="app-item">
+          <div class="app-icon">🏗️</div>
+          <h4>Agricultural Industrial Parks</h4>
+          <p>Integrated grain handling for large-scale agricultural zones. Centralized drying, storage, and dispatch serve multiple processing units.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">🚂</div>
+          <h4>Grain Logistics Hubs</h4>
+          <p>Rail-connected or port-adjacent facilities for bulk grain receiving, drying, and dispatch. Minimize turnaround time for high-volume trade.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">🏛️</div>
+          <h4>Government Strategic Reserves</h4>
+          <p>National and provincial grain reserve facilities with multi-stage drying. Meet strict quality and preservation standards for long-term storage.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">🏭</div>
+          <h4>Integrated Processing Complexes</h4>
+          <p>Combined cleaning, drying, storage, and milling under one system. Eliminate material handling between separate machines.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">🌍</div>
+          <h4>Export-Oriented Facilities</h4>
+          <p>Meet international export moisture and quality standards with controlled drying. Phytosanitary compliance for cross-border grain trade.</p>
+        </div>
+        <div class="app-item">
+          <div class="app-icon">📈</div>
+          <h4>Scalable Operations</h4>
+          <p>Modular design allows phased expansion as throughput requirements grow. Start with core modules and add capacity over time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PERFORMANCE DATA ===== -->
+  <section class="block perf-section" id="performance">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">PERFORMANCE</div>
+        <h2>System Performance Metrics</h2>
+        <p class="desc">Integrated performance across all system modules.</p>
+      </div>
+      <div class="perf-grid">
+        <div class="perf-item">
+          <div class="perf-value">Custom <span class="perf-unit">50–1000+ MTPD</span></div>
+          <div class="perf-label">System Capacity</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">4+ <span class="perf-unit">modules</span></div>
+          <div class="perf-label">Integrated Modules</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">Full <span class="perf-unit">PLC/SCADA</span></div>
+          <div class="perf-label">Automation Level</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">Site <span class="perf-unit">specific</span></div>
+          <div class="perf-label">Footprint</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">Multi <span class="perf-unit">stage</span></div>
+          <div class="perf-label">Drying Stages</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">Integrated <span class="perf-unit">silo</span></div>
+          <div class="perf-label">Storage</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">5 <span class="perf-unit">types</span></div>
+          <div class="perf-label">Compatible Grains</div>
+        </div>
+        <div class="perf-item">
+          <div class="perf-value">6 <span class="perf-unit">types</span></div>
+          <div class="perf-label">Fuel Options</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== SYSTEM COMPONENTS ===== -->
   <section class="block compare-section" id="components">
     <div class="container">
@@ -435,6 +608,88 @@
     </div>
   </section>
 
+  <!-- ===== FAQ ===== -->
+  <section class="block faq-section" id="faq">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">FAQ</div>
+        <h2>Frequently Asked Questions</h2>
+        <p class="desc">Common questions about complete grain systems.</p>
+      </div>
+      <div class="faq-wrap">
+        <details class="faq-item">
+          <summary>How is the system customized to my needs?</summary>
+          <div class="faq-answer">GXON engineers conduct a site assessment, analyze your grain types, daily volume, available fuels, and space constraints, then design a complete system specification. The process includes flow diagram design, equipment selection, and layout optimization. Customization typically takes 2–4 weeks.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What is the typical project timeline?</summary>
+          <div class="faq-answer">Design: 2–4 weeks. Manufacturing: 6–10 weeks. Installation & commissioning: 4–8 weeks. Total project duration: 3–5 months depending on system scope and site readiness. Civil works run parallel to manufacturing.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What modules are included?</summary>
+          <div class="faq-answer">Standard modules: grain reception pit, pre-cleaning (sieve + destoner), drying (batch or continuous), post-cooling, storage silos, and automated material handling (bucket elevators, chain conveyors, augers). Optional: weighing, bagging, dust collection, and fire suppression systems.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Is training provided?</summary>
+          <div class="faq-answer">Yes. GXON provides on-site operator training (3–5 days) and maintenance training (2–3 days) during commissioning. Training covers PLC operation, daily maintenance, troubleshooting, and safety procedures. Documentation in English provided. Refresher training available on request.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What about after-sales service?</summary>
+          <div class="faq-answer">First-year free maintenance included. Optional annual service contract with on-site inspection, remote monitoring via PLC, and guaranteed spare parts availability for 10 years. WhatsApp technical support and video-guided troubleshooting available worldwide.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Can the system be expanded later?</summary>
+          <div class="faq-answer">Yes. The modular design allows adding drying capacity, storage silos, or cleaning modules in phases as your operation grows. The PLC system is pre-configured for expansion. Typical expansion projects take 4–6 weeks without disrupting existing operations.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RELATED PRODUCTS ===== -->
+  <section class="block related-section" id="related">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">EXPLORE MORE</div>
+        <h2>Related Products</h2>
+        <p class="desc">Core components that can be integrated into your system.</p>
+      </div>
+      <div class="related-grid">
+        <a href="G-CT-300.html" class="related-card">
+          <div class="rc-img"><img src="../../assets/product-tower.jpg" alt="G-CT-300"></div>
+          <div class="rc-body">
+            <div class="rc-cat">Continuous Tower</div>
+            <div class="rc-title">G-CT-300</div>
+            <div class="rc-spec">300 MTPD · 24/7 operation</div>
+          </div>
+        </a>
+        <a href="G-CT-500.html" class="related-card">
+          <div class="rc-img"><img src="../../assets/product-tower.jpg" alt="G-CT-500"></div>
+          <div class="rc-body">
+            <div class="rc-cat">Continuous Tower</div>
+            <div class="rc-title">G-CT-500</div>
+            <div class="rc-spec">500 MTPD · Industrial scale</div>
+          </div>
+        </a>
+        <a href="G-SR-32.html" class="related-card">
+          <div class="rc-img"><img src="../../assets/product-batch.jpg" alt="G-SR-32"></div>
+          <div class="rc-body">
+            <div class="rc-cat">Batch Dryer</div>
+            <div class="rc-title">G-SR-32</div>
+            <div class="rc-spec">32 T/batch · Dual-use silo</div>
+          </div>
+        </a>
+        <a href="G-CT-200.html" class="related-card">
+          <div class="rc-img"><img src="../../assets/product-tower.jpg" alt="G-CT-200"></div>
+          <div class="rc-body">
+            <div class="rc-cat">Continuous Tower</div>
+            <div class="rc-title">G-CT-200</div>
+            <div class="rc-spec">200 MTPD · Mid-large plants</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ===== CTA SECTION ===== -->
   <section class="cta-section">
     <div class="cta-inner">
@@ -443,7 +698,10 @@
         <p>Get a custom engineered quote for the Complete Grain System. 24-hour response guaranteed.</p>
       </div>
       <div class="pd-cta-row">
-        <a href="../../index.html#contact" class="btn btn-cta btn-lg">Request Quote</a>
+        <button type="button" class="btn btn-cta btn-lg" data-quote-trigger
+                data-product-name="Complete Grain System"
+                data-product-model="Custom"
+                data-product-capacity="Custom configuration">Request Quote</button>
         <a href="../products.html" class="btn btn-outline btn-lg" style="color:#fff;border-color:rgba(255,255,255,0.3);">← Back to Products</a>
       </div>
     </div>
@@ -480,7 +738,7 @@
         <ul>
           <li><a href="../../index.html#company">About GXON</a></li>
           <li><a href="../../index.html#projects">Case Studies</a></li>
-          <li><a href="../../index.html#contact">Contact</a></li>
+          <li><a href="../contact.html">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -512,5 +770,6 @@
       header.classList.toggle('scrolled', window.scrollY > 20);
     });
   </script>
+  <script src="../../_shared/js/quote-modal.js" defer></script>
 </body>
 </html>

@@ -156,6 +156,20 @@
     .header-nav { display: flex; gap: 4px; }
     .header-nav a { font-size: 14px; font-weight: 700; color: var(--c-n1); padding: 8px 16px; border-radius: var(--r-sm); transition: all 0.2s; }
     .header-nav a:hover { background: var(--c-n7); color: var(--c-primary); }
+    .nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
+    .nav-dropdown {
+      position: absolute; top: 100%; left: 0; min-width: 220px;
+      background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-md);
+      box-shadow: var(--sh-lg); padding: 6px; z-index: 1100;
+      opacity: 0; visibility: hidden; transform: translateY(8px);
+      transition: all 0.2s;
+    }
+    .nav-dropdown-wrap:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown a {
+      display: block; padding: 9px 14px; font-size: 13px; font-weight: 600;
+      color: var(--c-n2); border-radius: var(--r-sm); transition: all 0.15s; white-space: nowrap;
+    }
+    .nav-dropdown a:hover { background: var(--c-primary-bg); color: var(--c-primary); }
     .header-nav a.active { background: var(--c-primary-bg); color: var(--c-primary); }
     .header-cta { display: flex; align-items: center; gap: 12px; }
     .header-cta .lang { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--c-n2); padding: 6px 10px; border: 1px solid var(--c-n5); border-radius: var(--r-sm); }
@@ -333,13 +347,21 @@
     .product-card .pc-spec { font-size: 11px; color: var(--c-n3); display: flex; flex-direction: column; gap: 2px; }
     .product-card .pc-spec strong { display: block; font-family: var(--font-mono); font-size: 13px; color: var(--c-n1); font-weight: 700; }
     .product-card .pc-spec .spec-label { font-size: 10px; color: var(--c-n4); text-transform: uppercase; letter-spacing: 0.04em; font-weight: 600; }
+    .product-card .pc-actions { display: flex; gap: 8px; align-self: flex-start; }
     .product-card .pc-link {
       display: inline-flex; align-items: center; justify-content: center; gap: 6px;
       padding: 10px 16px; font-family: var(--font-body); font-size: 13px; font-weight: 700;
       color: #fff; background: var(--c-primary); border-radius: var(--r-md);
-      transition: all 0.2s; text-decoration: none; align-self: flex-start;
+      transition: all 0.2s; text-decoration: none;
     }
     .product-card .pc-link:hover { background: var(--c-primary-dark); transform: translateY(-1px); gap: 10px; }
+    .product-card .pc-quote {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 10px 16px; font-family: var(--font-body); font-size: 13px; font-weight: 700;
+      color: var(--c-primary-dark); background: var(--c-primary-bg); border: 1px solid var(--c-primary);
+      border-radius: var(--r-md); transition: all 0.2s; cursor: pointer;
+    }
+    .product-card .pc-quote:hover { background: var(--c-primary); color: #fff; transform: translateY(-1px); }
 
     /* ===== PRODUCT DETAIL ===== */
     .product-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
@@ -438,11 +460,21 @@
         <a href="../index.html#technology">Technology</a>
         <a href="../index.html#projects">Resources</a>
         <a href="../index.html#company">Company</a>
-        <a href="../index.html#contact">Contact</a>
+        <div class="nav-dropdown-wrap">
+          <a href="contact.html">Contact ▾</a>
+          <div class="nav-dropdown">
+            <a href="contact.html#sendquote">Request Solution</a>
+            <a href="contact.html#sales-team">Sales Team</a>
+            <a href="contact.html#partnership">Become Distributor</a>
+            <a href="contact.html#partners">Global Partners</a>
+            <a href="contact.html#exhibition">Exhibition</a>
+            <a href="contact.html#social">Social Media</a>
+          </div>
+        </div>
       </nav>
       <div class="header-cta">
         <span class="lang">EN / 中</span>
-        <a href="../index.html#contact" class="btn btn-cta btn-sm">Get My Drying Solution</a>
+        <a href="contact.html" class="btn btn-cta btn-sm">Get My Drying Solution</a>
         <div class="mobile-toggle" onclick="this.classList.toggle('open')">
           <span></span><span></span><span></span>
         </div>
@@ -586,7 +618,13 @@
               <div class="pc-spec"><span class="spec-label">Hopper</span><strong>7.5</strong>m³</div>
               <div class="pc-spec"><span class="spec-label">Fuels</span><strong>6</strong>types</div>
             </div>
-            <a href="products/G-MR-5.html" class="pc-link">View Details →</a>
+            <div class="pc-actions">
+              <a href="products/G-MR-5.html" class="pc-link">View Details →</a>
+              <button type="button" class="pc-quote" data-quote-trigger
+                      data-product-name="Mobile Batch Grain Dryer"
+                      data-product-model="G-MR-5"
+                      data-product-capacity="5 T/batch, 10-20 TPD">Request Quote</button>
+            </div>
           </div>
         </div>
         <div class="product-card reveal"
@@ -606,7 +644,13 @@
               <div class="pc-spec"><span class="spec-label">Hopper</span><strong>16.4</strong>m³</div>
               <div class="pc-spec"><span class="spec-label">Fuels</span><strong>6</strong>types</div>
             </div>
-            <a href="products/G-MR-10.html" class="pc-link">View Details →</a>
+            <div class="pc-actions">
+              <a href="products/G-MR-10.html" class="pc-link">View Details →</a>
+              <button type="button" class="pc-quote" data-quote-trigger
+                      data-product-name="Mobile Batch Grain Dryer"
+                      data-product-model="G-MR-10"
+                      data-product-capacity="10 T/batch, 20-40 TPD">Request Quote</button>
+            </div>
           </div>
         </div>
         <div class="product-card reveal"
@@ -626,7 +670,13 @@
               <div class="pc-spec"><span class="spec-label">Hopper</span><strong>31.5</strong>m³</div>
               <div class="pc-spec"><span class="spec-label">Power</span><strong>PTO+Ele</strong>dual</div>
             </div>
-            <a href="products/G-MR-20.html" class="pc-link">View Details →</a>
+            <div class="pc-actions">
+              <a href="products/G-MR-20.html" class="pc-link">View Details →</a>
+              <button type="button" class="pc-quote" data-quote-trigger
+                      data-product-name="Mobile Batch Grain Dryer"
+                      data-product-model="G-MR-20"
+                      data-product-capacity="20 T/batch, 70-80 TPD">Request Quote</button>
+            </div>
           </div>
         </div>
 
@@ -648,7 +698,13 @@
               <div class="pc-spec"><span class="spec-label">Power</span><strong>3-Ph</strong>50/60Hz</div>
               <div class="pc-spec"><span class="spec-label">Fuels</span><strong>6</strong>types</div>
             </div>
-            <a href="products/5T-batch-dryer.html" class="pc-link">View Details →</a>
+            <div class="pc-actions">
+              <a href="products/5T-batch-dryer.html" class="pc-link">View Details →</a>
+              <button type="button" class="pc-quote" data-quote-trigger
+                      data-product-name="Fixed Batch Grain Dryer"
+                      data-product-model="5T Batch Dryer"
+                      data-product-capacity="5 T/batch">Request Quote</button>
+            </div>
           </div>
         </div>
         <div class="product-card reveal"
@@ -668,7 +724,13 @@
               <div class="pc-spec"><span class="spec-label">Power</span><strong>3-Ph</strong>50/60Hz</div>
               <div class="pc-spec"><span class="spec-label">Fuels</span><strong>6</strong>types</div>
             </div>
-            <a href="products/10T-batch-dryer.html" class="pc-link">View Details →</a>
+            <div class="pc-actions">
+              <a href="products/10T-batch-dryer.html" class="pc-link">View Details →</a>
+              <button type="button" class="pc-quote" data-quote-trigger
+                      data-product-name="Fixed Batch Grain Dryer"
+                      data-product-model="10T Batch Dryer"
+                      data-product-capacity="10 T/batch">Request Quote</button>
+            </div>
           </div>
         </div>
         <div class="product-card reveal"
@@ -688,7 +750,13 @@
               <div class="pc-spec"><span class="spec-label">Lifting</span><strong>Bucket</strong>elevator</div>
               <div class="pc-spec"><span class="spec-label">Fuels</span><strong>6</strong>types</div>
             </div>
-            <a href="products/G-SR-30.html" class="pc-link">View Details →</a>
+            <div class="pc-actions">
+              <a href="products/G-SR-30.html" class="pc-link">View Details →</a>
+              <button type="button" class="pc-quote" data-quote-trigger
+                      data-product-name="Fixed Batch Grain Dryer"
+                      data-product-model="G-SR-30"
+                      data-product-capacity="30 T/batch, 15.2 kW">Request Quote</button>
+            </div>
           </div>
         </div>
         <div class="product-card reveal"
@@ -708,7 +776,13 @@
               <div class="pc-spec"><span class="spec-label">Lifting</span><strong>Bucket</strong>elevator</div>
               <div class="pc-spec"><span class="spec-label">Fuels</span><strong>6</strong>types</div>
             </div>
-            <a href="products/G-SR-32.html" class="pc-link">View Details →</a>
+            <div class="pc-actions">
+              <a href="products/G-SR-32.html" class="pc-link">View Details →</a>
+              <button type="button" class="pc-quote" data-quote-trigger
+                      data-product-name="Fixed Batch Grain Dryer"
+                      data-product-model="G-SR-32"
+                      data-product-capacity="32 T/batch, 19.4 kW">Request Quote</button>
+            </div>
           </div>
         </div>
 
@@ -730,7 +804,13 @@
               <div class="pc-spec"><span class="spec-label">Fuels</span><strong>3</strong>types</div>
               <div class="pc-spec"><span class="spec-label">Operation</span><strong>24/7</strong>auto</div>
             </div>
-            <a href="products/G-CT-120.html" class="pc-link">View Details →</a>
+            <div class="pc-actions">
+              <a href="products/G-CT-120.html" class="pc-link">View Details →</a>
+              <button type="button" class="pc-quote" data-quote-trigger
+                      data-product-name="Continuous Drying Tower"
+                      data-product-model="G-CT-120"
+                      data-product-capacity="120 MTPD, 48 kW">Request Quote</button>
+            </div>
           </div>
         </div>
         <div class="product-card reveal"
@@ -750,7 +830,13 @@
               <div class="pc-spec"><span class="spec-label">Fuels</span><strong>3</strong>types</div>
               <div class="pc-spec"><span class="spec-label">Saving</span><strong>8–15%</strong>fuel</div>
             </div>
-            <a href="products/G-CT-200.html" class="pc-link">View Details →</a>
+            <div class="pc-actions">
+              <a href="products/G-CT-200.html" class="pc-link">View Details →</a>
+              <button type="button" class="pc-quote" data-quote-trigger
+                      data-product-name="Continuous Drying Tower"
+                      data-product-model="G-CT-200"
+                      data-product-capacity="200 MTPD, 102.7 kW">Request Quote</button>
+            </div>
           </div>
         </div>
         <div class="product-card reveal"
@@ -770,7 +856,13 @@
               <div class="pc-spec"><span class="spec-label">Fuels</span><strong>3</strong>types</div>
               <div class="pc-spec"><span class="spec-label">Operation</span><strong>24/7</strong>auto</div>
             </div>
-            <a href="products/G-CT-300.html" class="pc-link">View Details →</a>
+            <div class="pc-actions">
+              <a href="products/G-CT-300.html" class="pc-link">View Details →</a>
+              <button type="button" class="pc-quote" data-quote-trigger
+                      data-product-name="Continuous Drying Tower"
+                      data-product-model="G-CT-300"
+                      data-product-capacity="300 MTPD, 125.5 kW">Request Quote</button>
+            </div>
           </div>
         </div>
         <div class="product-card reveal"
@@ -790,7 +882,13 @@
               <div class="pc-spec"><span class="spec-label">Fuels</span><strong>3</strong>types</div>
               <div class="pc-spec"><span class="spec-label">Scale</span><strong>Industrial</strong>hub</div>
             </div>
-            <a href="products/G-CT-500.html" class="pc-link">View Details →</a>
+            <div class="pc-actions">
+              <a href="products/G-CT-500.html" class="pc-link">View Details →</a>
+              <button type="button" class="pc-quote" data-quote-trigger
+                      data-product-name="Continuous Drying Tower"
+                      data-product-model="G-CT-500"
+                      data-product-capacity="500 MTPD, 211 kW">Request Quote</button>
+            </div>
           </div>
         </div>
 
@@ -812,7 +910,13 @@
               <div class="pc-spec"><span class="spec-label">Fuels</span><strong>6</strong>types</div>
               <div class="pc-spec"><span class="spec-label">Type</span><strong>Turnkey</strong>solution</div>
             </div>
-            <a href="products/complete-grain-system.html" class="pc-link">View Details →</a>
+            <div class="pc-actions">
+              <a href="products/complete-grain-system.html" class="pc-link">View Details →</a>
+              <button type="button" class="pc-quote" data-quote-trigger
+                      data-product-name="Complete Grain System"
+                      data-product-model="Custom"
+                      data-product-capacity="Custom configuration">Request Quote</button>
+            </div>
           </div>
         </div>
       </div>
@@ -853,7 +957,7 @@
             </ul>
           </div>
           <div style="margin-top: 24px;">
-            <a href="../index.html#contact" class="btn btn-primary">Get Quote</a>
+            <button type="button" class="btn btn-primary" data-quote-trigger data-product-name="Mobile Batch Grain Dryer">Get Quote</button>
           </div>
         </div>
       </div>
@@ -929,7 +1033,7 @@
             </ul>
           </div>
           <div style="margin-top: 24px;">
-            <a href="../index.html#contact" class="btn btn-primary">Get Quote</a>
+            <button type="button" class="btn btn-primary" data-quote-trigger data-product-name="Fixed Batch Grain Dryer">Get Quote</button>
           </div>
         </div>
         <div class="pd-img"><img src="../assets/product-batch.jpg" alt="Fixed Batch Grain Dryer"></div>
@@ -1010,7 +1114,7 @@
             </ul>
           </div>
           <div style="margin-top: 24px;">
-            <a href="../index.html#contact" class="btn btn-primary">Get Quote</a>
+            <button type="button" class="btn btn-primary" data-quote-trigger data-product-name="Continuous Drying Tower">Get Quote</button>
           </div>
         </div>
       </div>
@@ -1094,7 +1198,7 @@
             </ul>
           </div>
           <div style="margin-top: 24px;">
-            <a href="../index.html#contact" class="btn btn-primary">Get Quote</a>
+            <button type="button" class="btn btn-primary" data-quote-trigger data-product-name="Complete Grain System">Get Quote</button>
           </div>
         </div>
         <div class="pd-img"><img src="../assets/product-system.jpg" alt="Complete Grain System"></div>
@@ -1188,7 +1292,7 @@
         <h4>Company</h4>
         <ul>
           <li><a href="../index.html#company">About GXON</a></li>
-          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="contact.html">Contact</a></li>
           <li><a href="#">Become Distributor</a></li>
         </ul>
       </div>
@@ -1387,9 +1491,88 @@
         });
       }
 
+      // ===== Apply URL params from Solution Finder (index.html) =====
+      // Mapping: Solution Finder value -> products filter value
+      var SF_MAP = {
+        grain: { Rice: 'Paddy', Maize: 'Maize', Wheat: 'Wheat', Soybean: 'Soybeans' },
+        capacity: { lt20: 'small', '20-50': 'medium', '50-100': 'medium', gt100: 'large' },
+        fuel: { Diesel: 'Diesel', RiceHusk: 'Biomass', Biomass: 'Biomass', NaturalGas: 'Natural Gas', Wood: 'Wood', Coal: 'Coal' }
+      };
+
+      function selectOptionByValue(dd, val) {
+        var type = dd.getAttribute('data-filter-type');
+        var isMulti = dd.getAttribute('data-multi') === 'true';
+        var opt = null;
+        dd.querySelectorAll('.dropdown-opt').forEach(function(o) {
+          if (o.getAttribute('data-value') === val) opt = o;
+        });
+        if (!opt) return false;
+        if (isMulti) {
+          if (opt.classList.contains('selected')) return false; // already selected
+          opt.classList.add('selected');
+          if (state[type].indexOf(val) === -1) state[type].push(val);
+        } else {
+          dd.querySelectorAll('.dropdown-opt').forEach(function(o) { o.classList.remove('selected'); });
+          opt.classList.add('selected');
+          state[type] = val;
+        }
+        updateTriggerLabel(dd);
+        return true;
+      }
+
+      function applyURLFilters() {
+        var params = new URLSearchParams(window.location.search);
+        var grain = params.get('grain');
+        var capacity = params.get('capacity');
+        var fuel = params.get('fuel');
+        var hasParam = false;
+
+        if (grain) {
+          var grains = grain.split(',').map(function(s){return s.trim();}).filter(Boolean);
+          grains.forEach(function(g) {
+            var mapped = SF_MAP.grain[g];
+            if (mapped) {
+              var dd = document.querySelector('[data-filter-type="crop"]');
+              if (dd && selectOptionByValue(dd, mapped)) hasParam = true;
+            }
+          });
+        }
+        if (capacity) {
+          var caps = capacity.split(',').map(function(s){return s.trim();}).filter(Boolean);
+          caps.forEach(function(c) {
+            var mapped = SF_MAP.capacity[c];
+            if (mapped) {
+              var dd = document.querySelector('[data-filter-type="capacity"]');
+              if (dd && selectOptionByValue(dd, mapped)) hasParam = true;
+            }
+          });
+        }
+        if (fuel) {
+          var fuels = fuel.split(',').map(function(s){return s.trim();}).filter(Boolean);
+          fuels.forEach(function(f) {
+            var mapped = SF_MAP.fuel[f];
+            if (mapped) {
+              var dd = document.querySelector('[data-filter-type="fuel"]');
+              if (dd && selectOptionByValue(dd, mapped)) hasParam = true;
+            }
+          });
+        }
+
+        if (hasParam) {
+          applyFilter();
+          // Scroll to filter card after a short delay so layout is settled
+          setTimeout(function() {
+            if (filterCard) filterCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+        }
+      }
+
+      applyURLFilters();
+
       // initial render
       applyFilter();
     })();
   </script>
+  <script src="../_shared/js/quote-modal.js" defer></script>
 </body>
 </html>

@@ -315,6 +315,21 @@
       padding: 8px 16px; border-radius: var(--r-sm); transition: all 0.2s;
     }
     .header-nav a:hover { background: var(--c-n7); color: var(--c-primary); }
+    /* Nav dropdown (hover) */
+    .nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
+    .nav-dropdown {
+      position: absolute; top: 100%; left: 0; min-width: 220px;
+      background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-md);
+      box-shadow: var(--sh-lg); padding: 6px; z-index: 1100;
+      opacity: 0; visibility: hidden; transform: translateY(8px);
+      transition: all 0.2s;
+    }
+    .nav-dropdown-wrap:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .nav-dropdown a {
+      display: block; padding: 9px 14px; font-size: 13px; font-weight: 600;
+      color: var(--c-n2); border-radius: var(--r-sm); transition: all 0.15s; white-space: nowrap;
+    }
+    .nav-dropdown a:hover { background: var(--c-primary-bg); color: var(--c-primary); }
     .header-cta { display: flex; align-items: center; gap: 12px; }
     .header-cta .lang {
       font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--c-n2);
@@ -947,7 +962,17 @@
         <a href="#technology">Technology</a>
         <a href="#projects">Resources</a>
         <a href="#company">Company</a>
-        <a href="#contact">Contact</a>
+        <div class="nav-dropdown-wrap">
+          <a href="pages/contact.html">Contact ▾</a>
+          <div class="nav-dropdown">
+            <a href="pages/contact.html#sendquote">Request Solution</a>
+            <a href="pages/contact.html#sales-team">Sales Team</a>
+            <a href="pages/contact.html#partnership">Become Distributor</a>
+            <a href="pages/contact.html#partners">Global Partners</a>
+            <a href="pages/contact.html#exhibition">Exhibition</a>
+            <a href="pages/contact.html#social">Social Media</a>
+          </div>
+        </div>
       </nav>
       <div class="header-cta">
         <span class="lang">EN / 中</span>
@@ -1076,7 +1101,7 @@
             <div class="model">GXON BD-30T Batch Grain Dryer</div>
             <div class="meta">30 TPD · Rice Husk Furnace · Recirculating Type · Rice Drying</div>
           </div>
-          <a href="#contact" class="btn btn-cta">Check my drying solution</a>
+          <button type="button" class="btn btn-cta" onclick="submitSolutionFinder()">Check my drying solution</button>
         </div>
       </div>
     </div>
@@ -1709,8 +1734,8 @@
         <ul>
           <li><a href="#">About GXON</a></li>
           <li><a href="#">Manufacturing</a></li>
-          <li><a href="#">Become Distributor</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="pages/contact.html#partnership">Become Distributor</a></li>
+          <li><a href="pages/contact.html">Contact</a></li>
         </ul>
       </div>
     </div>
@@ -1897,6 +1922,36 @@
         }
         syncGrainsToCTA();
       }
+    }
+
+    // Collect Solution Finder selections and redirect to products page with filters
+    function submitSolutionFinder() {
+      var params = new URLSearchParams();
+
+      // Grain (multi-select) — from selectedGrains array
+      if (selectedGrains.length > 0) {
+        params.set('grain', selectedGrains.join(','));
+      }
+
+      // Capacity (single-select) — find selected .sf-opt in step 2
+      var capStep = document.querySelectorAll('.sf-step')[1];
+      if (capStep) {
+        var capSel = capStep.querySelector('.sf-opt.selected');
+        if (capSel) params.set('capacity', capSel.getAttribute('data-value'));
+      }
+
+      // Fuel (single-select) — find selected .sf-opt in step 3
+      var fuelStep = document.querySelectorAll('.sf-step')[2];
+      if (fuelStep) {
+        var fuelSel = fuelStep.querySelector('.sf-opt.selected');
+        if (fuelSel) params.set('fuel', fuelSel.getAttribute('data-value'));
+      }
+
+      // Redirect to products page (always redirect, even with no params)
+      // Note: omit .html extension for dev server clean-url compatibility;
+      // GitHub Pages serves both /products.html and /products correctly.
+      var query = params.toString();
+      window.location.href = 'pages/products' + (query ? '?' + query : '');
     }
 
     // Sync grains to CTA dropdown
