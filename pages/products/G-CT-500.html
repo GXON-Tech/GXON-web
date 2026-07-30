@@ -28,6 +28,7 @@
   <meta name="ai-content-type" content="Product detail — industrial continuous drying tower">
   <meta name="ai-product-category" content="industrial continuous grain drying tower, indirect heating dryer">
   <meta name="ai-target-audience" content="major grain hubs, national reserves, large-scale processors">
+  <meta name="ai-geography" content="global — Southeast Asia, Africa, South Asia, Latin America, Middle East, Central Asia">
 
   <!-- ===== JSON-LD: Product ===== -->
   <script type="application/ld+json">
@@ -147,8 +148,8 @@
     .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(226,229,232,0.98); backdrop-filter: blur(10px); border-bottom: 1px solid var(--c-n6); transition: box-shadow 0.3s; }
     .header.scrolled { box-shadow: var(--sh-md); }
     .header-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: var(--header-h); padding: 0 24px; }
-    .header-logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-heading); font-size: 26px; font-weight: 800; color: var(--c-dark); letter-spacing: 0.02em; }
-    .header-logo img { height: 36px; width: auto; }
+    .header-logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-heading); font-size: 28px; font-weight: 800; color: var(--c-dark); letter-spacing: 0.02em; }
+    .header-logo img { height: 48px; width: auto; }
     .header-nav { display: flex; gap: 4px; }
     .header-nav a { font-size: 14px; font-weight: 700; color: var(--c-n1); padding: 8px 16px; border-radius: var(--r-sm); transition: all 0.2s; }
     .header-nav a:hover { background: var(--c-n7); color: var(--c-primary); }
@@ -307,7 +308,10 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .header-nav { display: none; }
-      .header-cta .btn { display: none; }
+      .header-nav.open { display: flex; flex-direction: column; position: absolute; top: var(--header-h); left: 0; right: 0; background: rgba(226,229,232,0.98); padding: 16px; box-shadow: var(--sh-md); border-bottom: 1px solid var(--c-n6); border-radius: 0 0 var(--r-md) var(--r-md); max-height: calc(100vh - var(--header-h)); overflow-y: auto; }
+      .header-nav.open a { padding: 12px 16px; }
+      .header-nav.open .nav-dropdown-wrap { width: 100%; }
+      .header-nav.open .nav-dropdown { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; padding-left: 16px; margin-top: 4px; }
       .mobile-toggle { display: flex; }
       .product-hero-inner { grid-template-columns: 1fr; gap: 32px; }
       .product-hero-content h1 { font-size: 36px; }
@@ -338,7 +342,7 @@
         <a href="../products.html" class="active">Products</a>
         <a href="../../index.html#technology">Technology</a>
         <a href="../../index.html#projects">Projects</a>
-        <a href="../../index.html#company">Company</a>
+        <a href="../company.html">Company</a>
         <div class="nav-dropdown-wrap">
           <a href="../contact.html">Contact ▾</a>
           <div class="nav-dropdown">
@@ -353,7 +357,6 @@
       </nav>
       <div class="header-cta">
         <span class="lang">EN</span>
-        <a href="../contact.html" class="btn btn-primary btn-sm">Get Quote</a>
       </div>
       <div class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></div>
     </div>
@@ -729,7 +732,7 @@
       <div class="footer-col">
         <h5>Company</h5>
         <ul>
-          <li><a href="../../index.html#company">About GXON</a></li>
+          <li><a href="../company.html#about">About GXON</a></li>
           <li><a href="../../index.html#projects">Case Studies</a></li>
           <li><a href="../contact.html">Contact</a></li>
         </ul>
@@ -761,6 +764,11 @@
     var header = document.getElementById('header');
     window.addEventListener('scroll', function() {
       header.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    document.getElementById('mobileToggle').addEventListener('click', function() {
+      this.classList.toggle('open');
+      document.querySelector('.header-nav').classList.toggle('open');
     });
   </script>
   <script src="../../_shared/js/quote-modal.js" defer></script>

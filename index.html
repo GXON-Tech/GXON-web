@@ -304,11 +304,11 @@
     }
     .header-logo {
       display: flex; align-items: center; gap: 10px;
-      font-family: var(--font-heading); font-size: 26px; font-weight: 800;
+      font-family: var(--font-heading); font-size: 28px; font-weight: 800;
       color: var(--c-dark); letter-spacing: 0.02em;
     }
     .header-logo .dot { width: 10px; height: 10px; background: var(--c-primary); border-radius: 2px; }
-    .header-logo img { height: 36px; width: auto; }
+    .header-logo img { height: 48px; width: auto; }
     .header-nav { display: flex; gap: 4px; }
     .header-nav a {
       font-size: 14px; font-weight: 700; color: var(--c-n1);
@@ -909,6 +909,10 @@
 
     @media (max-width: 768px) {
       .header-nav { display: none; }
+      .header-nav.open { display: flex; flex-direction: column; position: absolute; top: var(--header-h); left: 0; right: 0; background: rgba(226,229,232,0.98); padding: 16px; box-shadow: var(--sh-md); border-bottom: 1px solid var(--c-n6); border-radius: 0 0 var(--r-md) var(--r-md); max-height: calc(100vh - var(--header-h)); overflow-y: auto; }
+      .header-nav.open a { padding: 12px 16px; }
+      .header-nav.open .nav-dropdown-wrap { width: 100%; }
+      .header-nav.open .nav-dropdown { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; padding-left: 16px; margin-top: 4px; }
       .header-cta .lang { display: none; }
       .mobile-toggle {
         display: flex; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px;
@@ -952,7 +956,7 @@
   <!-- ===== HEADER ===== -->
   <header class="header" id="header">
     <div class="header-inner">
-      <a href="#" class="header-logo">
+      <a href="#hero" class="header-logo">
         <img src="assets/gxon-logo-v2.png" alt="GXON AGRO" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
       </a>
       <nav class="header-nav">
@@ -961,7 +965,7 @@
         <a href="pages/products.html">Products</a>
         <a href="#technology">Technology</a>
         <a href="#projects">Resources</a>
-        <a href="#company">Company</a>
+        <a href="pages/company.html">Company</a>
         <div class="nav-dropdown-wrap">
           <a href="pages/contact.html">Contact ▾</a>
           <div class="nav-dropdown">
@@ -976,8 +980,7 @@
       </nav>
       <div class="header-cta">
         <span class="lang">EN / 中</span>
-        <a href="#contact" class="btn btn-cta btn-sm">Get My Drying Solution</a>
-        <div class="mobile-toggle" onclick="this.classList.toggle('open')">
+        <div class="mobile-toggle" onclick="this.classList.toggle('open'); document.querySelector('.header-nav').classList.toggle('open')">
           <span></span><span></span><span></span>
         </div>
       </div>
@@ -989,12 +992,6 @@
     <!-- Background media: full-bleed image (swap to <video> for muted autoplay later) -->
     <div class="hero-bg">
       <img src="assets/hero-facility.jpg" alt="GXON Grain Drying Facility">
-      <!--
-      To use muted autoplay video, replace the <img> above with:
-      <video autoplay muted loop playsinline poster="assets/hero-facility.jpg">
-        <source src="assets/hero-video.mp4" type="video/mp4">
-      </video>
-      -->
     </div>
     <!-- Dark gradient overlay for text readability -->
     <div class="hero-overlay"></div>
@@ -1446,7 +1443,7 @@
         <form onsubmit="event.preventDefault(); alert('Thank you! Our team will contact you within 24 hours.');">
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">Country/Region *</label>
+              <label class="form-label" for="cta-country">Country/Region *</label>
               <div class="dropdown dropdown-search" id="cta-country-dropdown">
                 <button class="dropdown-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
                   <span class="dd-value">Select country/region</span>
@@ -1645,11 +1642,11 @@
                     <div class="dropdown-opt" role="option" data-value="VU">🇻🇺 Vanuatu</div>
                   </div>
                 </div>
-                <input type="hidden" name="country" required>
+                <input type="hidden" name="country" id="cta-country" required>
               </div>
             </div>
             <div class="form-group">
-              <label class="form-label">Crop *</label>
+              <label class="form-label" for="cta-crop">Crop *</label>
               <div class="dropdown dropdown-multi" id="cta-crop-dropdown">
                 <button class="dropdown-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
                   <span class="dd-value">Select crop</span>
@@ -1671,13 +1668,13 @@
                     <span class="opt-check"></span><span class="opt-text">Other</span>
                   </div>
                 </div>
-                <input type="hidden" name="crop" required>
+                <input type="hidden" name="crop" id="cta-crop" required>
               </div>
             </div>
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label class="form-label">Capacity (TPD) *</label>
+              <label class="form-label" for="cta-capacity">Capacity (TPD) *</label>
               <div class="dropdown" id="cta-capacity-dropdown">
                 <button class="dropdown-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
                   <span class="dd-value">Select capacity</span>
@@ -1689,11 +1686,11 @@
                   <div class="dropdown-opt" role="option" data-value="50-100">50–100 TPD</div>
                   <div class="dropdown-opt" role="option" data-value="gt100">100+ TPD</div>
                 </div>
-                <input type="hidden" name="capacity" required>
+                <input type="hidden" name="capacity" id="cta-capacity" required>
               </div>
             </div>
             <div class="form-group">
-              <label class="form-label">Fuel</label>
+              <label class="form-label" for="cta-fuel">Fuel</label>
               <div class="dropdown" id="cta-fuel-dropdown">
                 <button class="dropdown-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
                   <span class="dd-value">Select fuel (optional)</span>
@@ -1707,16 +1704,16 @@
                   <div class="dropdown-opt" role="option" data-value="Wood">Wood</div>
                   <div class="dropdown-opt" role="option" data-value="Coal">Coal</div>
                 </div>
-                <input type="hidden" name="fuel">
+                <input type="hidden" name="fuel" id="cta-fuel">
               </div>
             </div>
           </div>
           <div class="form-group full">
-            <label class="form-label">WhatsApp *</label>
-            <input class="form-input" type="text" placeholder="+880 1XXX XXXXXX" required>
+            <label class="form-label" for="cta-whatsapp">WhatsApp *</label>
+            <input class="form-input" type="text" id="cta-whatsapp" placeholder="+880 1XXX XXXXXX" required>
           </div>
           <div class="form-group full">
-            <label class="form-label">Email</label>
+            <label class="form-label" for="email-input">Email</label>
             <input class="form-input" type="email" id="email-input" placeholder="e.g. your@email.com (optional)">
             <div class="form-error" id="email-error" style="display:none;">Please enter a valid email address.</div>
           </div>
@@ -1733,20 +1730,20 @@
         <div class="footer-logo"><span class="dot"></span>GXON AGRO</div>
         <p>Global Grain Drying & Post-Harvest Solution Provider. Engineering better harvest quality worldwide since 2014.</p>
         <div class="footer-social">
-          <a href="#" title="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></a>
-          <a href="#" title="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
-          <a href="#" title="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2C0 8.08 0 12 0 12s0 3.92.5 5.8a3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.8zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg></a>
-          <a href="#" title="WhatsApp"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.05 24l1.69-6.16a11.87 11.87 0 0 1-1.59-5.95C.15 5.32 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.76 11.76 0 0 1 3.48 8.41c0 6.56-5.35 11.89-11.91 11.89a11.96 11.96 0 0 1-5.7-1.45L.05 24zM6.6 20.13c1.68.99 3.28 1.59 5.45 1.59 5.45 0 9.89-4.43 9.89-9.87a9.82 9.82 0 0 0-2.89-6.99 9.82 9.82 0 0 0-6.98-2.9c-5.46 0-9.9 4.43-9.9 9.87 0 2.28.67 3.99 1.79 5.78l-.99 3.62 3.63-.95zM17.5 14.38c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37s-1.04 1.01-1.04 2.47 1.06 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.69.25-1.28.17-1.42z"/></svg></a>
+          <a href="https://www.facebook.com" title="Facebook" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg></a>
+          <a href="https://www.linkedin.com" title="LinkedIn" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+          <a href="https://www.youtube.com" title="YouTube" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.2C0 8.08 0 12 0 12s0 3.92.5 5.8a3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14C24 15.92 24 12 24 12s0-3.92-.5-5.8zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg></a>
+          <a href="https://wa.me/8618135726591" title="WhatsApp" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M.05 24l1.69-6.16a11.87 11.87 0 0 1-1.59-5.95C.15 5.32 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.76 11.76 0 0 1 3.48 8.41c0 6.56-5.35 11.89-11.91 11.89a11.96 11.96 0 0 1-5.7-1.45L.05 24zM6.6 20.13c1.68.99 3.28 1.59 5.45 1.59 5.45 0 9.89-4.43 9.89-9.87a9.82 9.82 0 0 0-2.89-6.99 9.82 9.82 0 0 0-6.98-2.9c-5.46 0-9.9 4.43-9.9 9.87 0 2.28.67 3.99 1.79 5.78l-.99 3.62 3.63-.95zM17.5 14.38c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37s-1.04 1.01-1.04 2.47 1.06 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.69.25-1.28.17-1.42z"/></svg></a>
         </div>
       </div>
       <div class="footer-col">
         <h4>Solutions</h4>
         <ul>
-          <li><a href="#">Rice Drying</a></li>
-          <li><a href="#">Maize Drying</a></li>
-          <li><a href="#">Wheat Drying</a></li>
-          <li><a href="#">Soybean Drying</a></li>
-          <li><a href="#">Complete Systems</a></li>
+          <li><a href="pages/products.html#batch">Rice Drying</a></li>
+          <li><a href="pages/products.html#continuous">Maize Drying</a></li>
+          <li><a href="pages/products.html#mobile">Wheat Drying</a></li>
+          <li><a href="pages/products.html#batch">Soybean Drying</a></li>
+          <li><a href="pages/products/complete-grain-system.html">Complete Systems</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1761,27 +1758,26 @@
       <div class="footer-col">
         <h4>Technology</h4>
         <ul>
-          <li><a href="#">Multi-Fuel System</a></li>
-          <li><a href="#">Biomass Furnace</a></li>
-          <li><a href="#">Rice Husk Combustion</a></li>
-          <li><a href="#">Hot Air Exchange</a></li>
+          <li><a href="index.html#technology">Multi-Fuel System</a></li>
+          <li><a href="index.html#technology">Biomass Furnace</a></li>
+          <li><a href="index.html#technology">Rice Husk Combustion</a></li>
+          <li><a href="index.html#technology">Hot Air Exchange</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Resources</h4>
         <ul>
-          <li><a href="#">Case Studies</a></li>
-          <li><a href="#">Documentation</a></li>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Global Projects</a></li>
+          <li><a href="index.html#projects">Case Studies</a></li>
+          <li><a href="pages/contact.html">Documentation</a></li>
+          <li><a href="pages/contact.html">FAQ</a></li>
+          <li><a href="index.html#projects">Global Projects</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
-          <li><a href="#">About GXON</a></li>
-          <li><a href="#">Manufacturing</a></li>
+          <li><a href="pages/company.html#about">About GXON</a></li>
+          <li><a href="pages/company.html#manufacturing">Manufacturing</a></li>
           <li><a href="pages/contact.html#partnership">Become Distributor</a></li>
           <li><a href="pages/contact.html">Contact</a></li>
         </ul>
@@ -1794,7 +1790,7 @@
   </footer>
 
   <!-- WhatsApp Float -->
-  <a href="#" class="wa-float" title="Chat on WhatsApp">
+  <a href="https://wa.me/8618135726591?text=Hello%20GXON%20AGRO%2C%20I'd%20like%20to%20know%20more%20about%20your%20grain%20dryers" class="wa-float" title="Chat on WhatsApp" target="_blank" rel="noopener">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M.05 24l1.69-6.16a11.87 11.87 0 0 1-1.59-5.95C.15 5.32 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.76 11.76 0 0 1 3.48 8.41c0 6.56-5.35 11.89-11.91 11.89a11.96 11.96 0 0 1-5.7-1.45L.05 24zM6.6 20.13c1.68.99 3.28 1.59 5.45 1.59 5.45 0 9.89-4.43 9.89-9.87a9.82 9.82 0 0 0-2.89-6.99 9.82 9.82 0 0 0-6.98-2.9c-5.46 0-9.9 4.43-9.9 9.87 0 2.28.67 3.99 1.79 5.78l-.99 3.62 3.63-.95zM17.5 14.38c-.07-.12-.27-.2-.57-.35-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51l-.57-.01c-.2 0-.52.07-.79.37s-1.04 1.01-1.04 2.47 1.06 2.87 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.62.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.42.25-.69.25-1.28.17-1.42z"/></svg>
   </a>
 

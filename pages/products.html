@@ -150,9 +150,9 @@
     .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(226,229,232,0.98); backdrop-filter: blur(10px); border-bottom: 1px solid var(--c-n6); transition: box-shadow 0.3s; }
     .header.scrolled { box-shadow: var(--sh-md); }
     .header-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: var(--header-h); padding: 0 24px; }
-    .header-logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-heading); font-size: 26px; font-weight: 800; color: var(--c-dark); letter-spacing: 0.02em; }
+    .header-logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-heading); font-size: 28px; font-weight: 800; color: var(--c-dark); letter-spacing: 0.02em; }
     .header-logo .dot { width: 10px; height: 10px; background: var(--c-primary); border-radius: 2px; }
-    .header-logo img { height: 36px; width: auto; }
+    .header-logo img { height: 48px; width: auto; }
     .header-nav { display: flex; gap: 4px; }
     .header-nav a { font-size: 14px; font-weight: 700; color: var(--c-n1); padding: 8px 16px; border-radius: var(--r-sm); transition: all 0.2s; }
     .header-nav a:hover { background: var(--c-n7); color: var(--c-primary); }
@@ -421,7 +421,10 @@
     }
     @media (max-width: 768px) {
       .header-nav { display: none; }
-      .header-cta .btn { display: none; }
+      .header-nav.open { display: flex; flex-direction: column; position: absolute; top: var(--header-h); left: 0; right: 0; background: rgba(226,229,232,0.98); padding: 16px; box-shadow: var(--sh-md); border-bottom: 1px solid var(--c-n6); border-radius: 0 0 var(--r-md) var(--r-md); max-height: calc(100vh - var(--header-h)); overflow-y: auto; }
+      .header-nav.open a { padding: 12px 16px; }
+      .header-nav.open .nav-dropdown-wrap { width: 100%; }
+      .header-nav.open .nav-dropdown { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; padding-left: 16px; margin-top: 4px; }
       .mobile-toggle { display: flex; }
       .page-hero h1 { font-size: 32px; }
       .hero-sub { font-size: 15px; }
@@ -456,10 +459,10 @@
       <nav class="header-nav">
         <a href="../index.html">Home</a>
         <a href="../index.html#solutions">Solutions</a>
-        <a href="../pages/products.html" class="active">Products</a>
+        <a href="products.html" class="active">Products</a>
         <a href="../index.html#technology">Technology</a>
         <a href="../index.html#projects">Resources</a>
-        <a href="../index.html#company">Company</a>
+        <a href="company.html">Company</a>
         <div class="nav-dropdown-wrap">
           <a href="contact.html">Contact ▾</a>
           <div class="nav-dropdown">
@@ -474,8 +477,7 @@
       </nav>
       <div class="header-cta">
         <span class="lang">EN / 中</span>
-        <a href="contact.html" class="btn btn-cta btn-sm">Get My Drying Solution</a>
-        <div class="mobile-toggle" onclick="this.classList.toggle('open')">
+        <div class="mobile-toggle" onclick="this.classList.toggle('open'); document.querySelector('.header-nav').classList.toggle('open');">
           <span></span><span></span><span></span>
         </div>
       </div>
@@ -1285,15 +1287,15 @@
         <ul>
           <li><a href="../index.html#projects">Case Studies</a></li>
           <li><a href="../index.html#projects">Global Projects</a></li>
-          <li><a href="#">FAQ</a></li>
+          <li><a href="contact.html">FAQ</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
-          <li><a href="../index.html#company">About GXON</a></li>
+          <li><a href="company.html#about">About GXON</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a href="#">Become Distributor</a></li>
+          <li><a href="contact.html#partnership">Become Distributor</a></li>
         </ul>
       </div>
     </div>
