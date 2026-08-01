@@ -82,7 +82,7 @@
     @font-face { font-family:'JetBrainsMono'; src:url('../_shared/fonts/JetBrainsMono-Bold.ttf') format('truetype'); font-weight:700; }
   </style>
 
-  <style>
+  <style id="page-style">
     :root {
       --c-primary: #084F32;
       --c-primary-light: #0B6B45;
@@ -136,7 +136,7 @@
     .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
 
     /* ===== HEADER ===== */
-    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(226,229,232,0.98); backdrop-filter: blur(10px); border-bottom: 1px solid var(--c-n6); transition: box-shadow 0.3s; }
+    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(226,229,232,0.78); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--c-n6); transition: box-shadow 0.3s; }
     .header.scrolled { box-shadow: var(--sh-md); }
     .header-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: var(--header-h); padding: 0 24px; }
     .header-logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-heading); font-size: 28px; font-weight: 800; color: var(--c-dark); letter-spacing: 0.02em; }
@@ -224,18 +224,6 @@
     .mfg-card .mfg-unit { font-size: 14px; color: var(--c-n3); font-weight: 400; }
     .mfg-card .mfg-label { font-family: var(--font-mono); font-size: 11px; font-weight: 700; color: var(--c-n3); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 8px; }
 
-    /* ===== TEAM ===== */
-    .team-section { background: #fff; }
-    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .team-card { background: var(--c-silver-bg); border-radius: var(--r-lg); overflow: hidden; border: 1px solid var(--c-n6); }
-    .team-card .tc-img { aspect-ratio: 1/1; overflow: hidden; background: var(--c-n7); display: flex; align-items: center; justify-content: center; }
-    .team-card .tc-img img { width: 100%; height: 100%; object-fit: cover; }
-    .team-card .tc-img .tc-placeholder { font-size: 64px; color: var(--c-n5); }
-    .team-card .tc-body { padding: 20px 24px; }
-    .team-card .tc-name { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: var(--c-dark); margin-bottom: 4px; }
-    .team-card .tc-role { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--c-orange); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px; }
-    .team-card .tc-desc { font-size: 13px; color: var(--c-n3); line-height: 1.5; }
-
     /* ===== TECH STRENGTH ===== */
     .tech-section { background: var(--c-n7); }
     .tech-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 900px; margin: 0 auto; }
@@ -246,6 +234,11 @@
 
     /* ===== GLOBAL MARKET ===== */
     .market-section { background: #fff; }
+    .market-showcase { margin-bottom: 40px; border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--sh-lg); }
+    .market-showcase img { width: 100%; height: 360px; object-fit: cover; display: block; }
+    .partners-grid { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .partner-tag { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--c-n6); border-radius: 100px; padding: 10px 18px; font-size: 14px; font-weight: 600; color: var(--c-n2); box-shadow: var(--sh-sm); transition: all 0.2s; }
+    .partner-tag:hover { border-color: var(--c-primary); color: var(--c-primary); transform: translateY(-2px); box-shadow: var(--sh-md); }
     .market-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .market-card { background: var(--c-silver-bg); border: 1px solid var(--c-n6); border-radius: var(--r-md); padding: 24px; }
     .market-card .mc-flag { font-size: 32px; margin-bottom: 8px; }
@@ -258,14 +251,12 @@
     .qc-section .section-head h2 { color: #fff; }
     .qc-section .section-head .desc { color: rgba(255,255,255,0.6); }
     .qc-section .section-head .eyebrow { color: var(--c-orange-light); }
-    .qc-flow { display: flex; align-items: stretch; gap: 0; max-width: 1000px; margin: 0 auto; }
-    .qc-step { flex: 1; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: var(--r-md); padding: 28px 20px; text-align: center; position: relative; }
-    .qc-step:not(:last-child) { margin-right: 24px; }
-    .qc-step:not(:last-child)::after { content: ''; position: absolute; right: -18px; top: 50%; transform: translateY(-50%); width: 12px; height: 12px; border-top: 3px solid var(--c-orange); border-right: 3px solid var(--c-orange); transform: translateY(-50%) rotate(45deg); }
-    .qc-step .qc-num { font-family: var(--font-mono); font-size: 12px; font-weight: 700; color: var(--c-orange); letter-spacing: 0.1em; margin-bottom: 8px; }
-    .qc-step .qc-icon { font-size: 36px; margin-bottom: 12px; }
-    .qc-step .qc-title { font-family: var(--font-heading); font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 8px; }
-    .qc-step .qc-desc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+    .qc-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; max-width: 1000px; margin: 0 auto; }
+    .qc-gallery-item { border-radius: var(--r-lg); overflow: hidden; position: relative; box-shadow: var(--sh-md); }
+    .qc-gallery-item img { width: 100%; height: 280px; object-fit: cover; display: block; }
+    .qc-gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); padding: 40px 20px 16px; }
+    .qc-gallery-caption .qgc-stage { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: var(--c-orange-light); letter-spacing: 0.1em; text-transform: uppercase; }
+    .qc-gallery-caption .qgc-text { font-size: 14px; color: #fff; font-weight: 600; margin-top: 4px; }
 
     /* ===== SERVICE SUPPORT ===== */
     .service-section { background: var(--c-n7); }
@@ -277,6 +268,11 @@
     .service-card .sc-list { margin-top: 12px; padding-left: 0; list-style: none; }
     .service-card .sc-list li { font-size: 12px; color: var(--c-n3); padding: 4px 0; padding-left: 20px; position: relative; }
     .service-card .sc-list li::before { content: '✓'; position: absolute; left: 0; color: var(--c-primary); font-weight: 700; }
+    .service-showcase { margin-top: 40px; border-radius: var(--r-lg); overflow: hidden; position: relative; box-shadow: var(--sh-lg); }
+    .service-showcase img { width: 100%; height: 320px; object-fit: cover; display: block; }
+    .service-showcase-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(36,40,45,0.95)); padding: 60px 32px 28px; }
+    .service-showcase-overlay .sso-text { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: #fff; }
+    .service-showcase-overlay .sso-sub { font-size: 14px; color: rgba(255,255,255,0.7); margin-top: 4px; }
 
     /* ===== CERTIFICATES ===== */
     .cert-section { background: #fff; }
@@ -294,23 +290,24 @@
     .cta-text p { font-size: 15px; color: rgba(255,255,255,0.8); }
 
     /* ===== FOOTER ===== */
-    .footer { background: var(--c-dark); color: rgba(255,255,255,0.6); padding: 0; }
-    .footer-grid { max-width: var(--max-w); margin: 0 auto; padding: 64px 24px 32px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr; gap: 32px; }
-    .footer-brand .footer-logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-heading); font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 12px; }
-    .footer-brand .footer-logo img { height: 32px; }
-    .footer-brand p { font-size: 13px; line-height: 1.6; max-width: 280px; }
-    .footer-col h5 { font-family: var(--font-heading); font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 14px; letter-spacing: 0.02em; }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 8px; }
-    .footer-col ul li a { font-size: 13px; color: rgba(255,255,255,0.6); transition: color 0.2s; }
-    .footer-col ul li a:hover { color: var(--c-orange-light); }
-    .footer-bottom { max-width: var(--max-w); margin: 0 auto; padding: 20px 24px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.4); }
+    .footer { background: var(--c-dark); color: rgba(255,255,255,0.6); padding: 64px 0 32px; }
+    .footer-grid { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 48px; }
+    .footer-brand .footer-logo { font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .footer-brand .footer-logo .dot { width: 10px; height: 10px; background: var(--c-primary); border-radius: 2px; }
+    .footer-brand p { font-size: 13px; line-height: 1.6; margin-bottom: 20px; }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social a { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.08); border-radius: var(--r-md); transition: all 0.2s; color: rgba(255,255,255,0.5); }
+    .footer-social a:hover { background: var(--c-orange); color: var(--c-dark); }
+    .footer-col h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { font-size: 13px; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .footer-col a:hover { color: var(--c-primary); }
+    .footer-bottom { max-width: var(--max-w); margin: 0 auto; padding: 24px 24px 0; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.4); }
 
     /* ===== SVG ICONS ===== */
     .icon { display: inline-block; width: 1em; height: 1em; stroke: currentColor; fill: none; vertical-align: middle; flex-shrink: 0; }
     .about-value .av-icon svg { width: 16px; height: 16px; }
     .mfg-card .mfg-icon svg { width: 32px; height: 32px; color: var(--c-primary); }
-    .team-card .tc-img .tc-placeholder svg { width: 64px; height: 64px; color: var(--c-n5); }
     .tech-item .ti-icon svg { width: 22px; height: 22px; color: var(--c-tech); }
     .market-card .mc-flag svg { width: 32px; height: 32px; color: var(--c-orange); }
     .qc-step .qc-icon svg { width: 36px; height: 36px; color: var(--c-orange); }
@@ -324,22 +321,23 @@
       .header-nav.open a { padding: 12px 16px; }
       .header-nav.open .nav-dropdown-wrap { width: 100%; }
       .header-nav.open .nav-dropdown { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; padding-left: 16px; margin-top: 4px; }
+      .header-cta .lang { display: none; }
       .mobile-toggle { display: flex; }
       .page-hero h1 { font-size: 36px; }
       .about-inner { grid-template-columns: 1fr; gap: 32px; }
       .about-values { grid-template-columns: 1fr; }
       .mfg-grid { grid-template-columns: repeat(2, 1fr); }
-      .team-grid { grid-template-columns: 1fr; }
       .tech-grid { grid-template-columns: 1fr; }
       .market-grid { grid-template-columns: 1fr; }
-      .qc-flow { flex-direction: column; gap: 16px; }
-      .qc-step:not(:last-child) { margin-right: 0; margin-bottom: 0; }
-      .qc-step:not(:last-child)::after { display: none; }
       .service-grid { grid-template-columns: 1fr; }
+      .qc-gallery { grid-template-columns: 1fr; }
+      .market-showcase img { height: 220px; }
+      .qc-gallery-item img { height: 200px; }
+      .service-showcase img { height: 220px; }
       .cert-grid { grid-template-columns: repeat(2, 1fr); }
       .section-head h2 { font-size: 28px; }
       .cta-inner { flex-direction: column; text-align: center; }
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 32px; }
       .footer-grid .footer-col { display: none; }
       .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
       section.block { padding: 56px 0; }
@@ -348,7 +346,11 @@
 </head>
 <body>
 
-  <!-- ===== SVG ICON SPRITE ===== -->
+  <!-- ===== HEADER ===== -->
+  <div id="site-header"></div>
+  <div id="pjax-main">
+
+  <!-- ===== SVG ICON SPRITE (inside pjax-main so it loads on PJAX navigation) ===== -->
   <svg style="display:none" aria-hidden="true">
     <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
     <symbol id="i-wrench" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></symbol>
@@ -376,38 +378,6 @@
     <symbol id="i-person" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></symbol>
     <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/><path d="M15 5.764v15"/><path d="M9 3.236v15"/></symbol>
   </svg>
-
-  <!-- ===== HEADER ===== -->
-  <header class="header" id="header">
-    <div class="header-inner">
-      <a href="../index.html" class="header-logo">
-        <img src="../assets/gxon-logo-v2.png" alt="GXON AGRO">
-      </a>
-      <nav class="header-nav">
-        <a href="../index.html">Home</a>
-        <a href="../index.html#solutions">Solutions</a>
-        <a href="products.html">Products</a>
-        <a href="../index.html#technology">Technology</a>
-        <a href="../index.html#projects">Resources</a>
-        <a href="company.html" class="active">Company</a>
-        <div class="nav-dropdown-wrap">
-          <a href="contact.html">Contact ▾</a>
-          <div class="nav-dropdown">
-            <a href="contact.html#sendquote">Request Solution</a>
-            <a href="contact.html#sales-team">Sales Team</a>
-            <a href="contact.html#partnership">Become Distributor</a>
-            <a href="contact.html#partners">Global Partners</a>
-            <a href="contact.html#exhibition">Exhibition</a>
-            <a href="contact.html#social">Social Media</a>
-          </div>
-        </div>
-      </nav>
-      <div class="header-cta">
-        <span class="lang">EN</span>
-      </div>
-      <div class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></div>
-    </div>
-  </header>
 
   <!-- ===== BREADCRUMB ===== -->
   <div class="breadcrumb">
@@ -441,7 +411,7 @@
     <div class="container">
       <div class="about-inner">
         <div class="about-img">
-          <img src="../assets/hero-facility.jpg" alt="GXON AGRO Facility">
+          <img src="../assets/workshop-panorama.jpg" alt="GXON AGRO 15,000 m² Manufacturing Workshop">
         </div>
         <div class="about-content">
           <div class="section-head" style="text-align:left;margin-bottom:24px;">
@@ -526,49 +496,6 @@
     </div>
   </section>
 
-  <!-- ===== ENGINEERING TEAM ===== -->
-  <section class="block team-section" id="team">
-    <div class="container">
-      <div class="section-head">
-        <div class="eyebrow">ENGINEERING TEAM</div>
-        <h2>The People Behind the Machines</h2>
-        <p class="desc">A multidisciplinary team combining mechanical engineering, thermal dynamics, and agricultural science.</p>
-      </div>
-      <div class="team-grid">
-        <div class="team-card">
-          <div class="tc-img">
-            <div class="tc-placeholder"><svg class="icon"><use href="#i-person"/></svg></div>
-          </div>
-          <div class="tc-body">
-            <div class="tc-name">Mr. Wang</div>
-            <div class="tc-role">Founder & Chief Engineer</div>
-            <div class="tc-desc">20+ years in agricultural equipment design. Led the development of GXON's multi-fuel burner system and continuous drying tower platform.</div>
-          </div>
-        </div>
-        <div class="team-card">
-          <div class="tc-img">
-            <div class="tc-placeholder"><svg class="icon"><use href="#i-person"/></svg></div>
-          </div>
-          <div class="tc-body">
-            <div class="tc-name">Mr. Chen</div>
-            <div class="tc-role">Production Director</div>
-            <div class="tc-desc">15+ years in manufacturing management. Oversees the 15,000 m² facility, ensuring production quality and on-time delivery across all four product lines.</div>
-          </div>
-        </div>
-        <div class="team-card">
-          <div class="tc-img">
-            <div class="tc-placeholder"><svg class="icon"><use href="#i-person"/></svg></div>
-          </div>
-          <div class="tc-body">
-            <div class="tc-name">Ms. Liu</div>
-            <div class="tc-role">QA Manager</div>
-            <div class="tc-desc">ISO 9001 lead auditor. Manages the four-stage quality control process — from incoming material inspection to pre-shipment testing.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ===== TECHNOLOGY STRENGTH ===== -->
   <section class="block tech-section" id="technology">
     <div class="container">
@@ -610,51 +537,30 @@
     </div>
   </section>
 
-  <!-- ===== GLOBAL MARKET ===== -->
-  <section class="block market-section" id="market">
+  <!-- ===== GLOBAL MARKET (temporarily hidden — merged with Global Network from contact page) ===== -->
+  <section class="block market-section" id="market" style="display:none;">
     <div class="container">
       <div class="section-head">
         <div class="eyebrow">GLOBAL MARKET</div>
         <h2>Serving 30+ Countries Worldwide</h2>
         <p class="desc">Adapting dryer configurations to local grain types, climate conditions, and fuel availability across six regions.</p>
       </div>
-      <div class="market-grid">
-        <div class="market-card">
-          <div class="mc-flag"><svg class="icon"><use href="#i-map"/></svg></div>
-          <div class="mc-region">South & Southeast Asia</div>
-          <div class="mc-countries">Bangladesh, India, Philippines, Vietnam, Thailand, Indonesia</div>
-          <div class="mc-grain">RICE / PADDY</div>
-        </div>
-        <div class="market-card">
-          <div class="mc-flag"><svg class="icon"><use href="#i-map"/></svg></div>
-          <div class="mc-region">East & West Africa</div>
-          <div class="mc-countries">Kenya, Nigeria, Ghana, Tanzania, Ethiopia, Uganda</div>
-          <div class="mc-grain">MAIZE / MIXED</div>
-        </div>
-        <div class="market-card">
-          <div class="mc-flag"><svg class="icon"><use href="#i-map"/></svg></div>
-          <div class="mc-region">Latin America</div>
-          <div class="mc-countries">Brazil, Argentina, Peru, Colombia, Mexico</div>
-          <div class="mc-grain">SOYBEAN / MAIZE</div>
-        </div>
-        <div class="market-card">
-          <div class="mc-flag"><svg class="icon"><use href="#i-map"/></svg></div>
-          <div class="mc-region">Central Asia & Middle East</div>
-          <div class="mc-countries">Kazakhstan, Uzbekistan, Turkey, Iran, Pakistan</div>
-          <div class="mc-grain">WHEAT</div>
-        </div>
-        <div class="market-card">
-          <div class="mc-flag"><svg class="icon"><use href="#i-building"/></svg></div>
-          <div class="mc-region">Government & NGO</div>
-          <div class="mc-countries">Strategic grain reserve programs, FAO procurement, food security initiatives</div>
-          <div class="mc-grain">MULTI-GRAIN</div>
-        </div>
-        <div class="market-card">
-          <div class="mc-flag"><svg class="icon"><use href="#i-link"/></svg></div>
-          <div class="mc-region">Distributor Network</div>
-          <div class="mc-countries">Active distributor partnerships in 15+ countries. Local sales, installation, and after-sales support.</div>
-          <div class="mc-grain">ALL PRODUCTS</div>
-        </div>
+      <div class="partners-grid">
+        <span class="partner-tag">🇧🇩 Bangladesh</span>
+        <span class="partner-tag">🇰🇪 Kenya</span>
+        <span class="partner-tag">🇵🇭 Philippines</span>
+        <span class="partner-tag">🇳🇬 Nigeria</span>
+        <span class="partner-tag">🇮🇳 India</span>
+        <span class="partner-tag">🇵🇰 Pakistan</span>
+        <span class="partner-tag">🇻🇳 Vietnam</span>
+        <span class="partner-tag">🇹🇭 Thailand</span>
+        <span class="partner-tag">🇮🇩 Indonesia</span>
+        <span class="partner-tag">🇲🇲 Myanmar</span>
+        <span class="partner-tag">🇪🇹 Ethiopia</span>
+        <span class="partner-tag">🇬🇭 Ghana</span>
+        <span class="partner-tag">🇹🇿 Tanzania</span>
+        <span class="partner-tag">🇱🇰 Sri Lanka</span>
+        <span class="partner-tag">🇨🇲 Cameroon</span>
       </div>
     </div>
   </section>
@@ -667,30 +573,34 @@
         <h2>Four-Stage QC Process</h2>
         <p class="desc">Every GXON dryer passes through four inspection checkpoints — from raw material to loaded truck.</p>
       </div>
-      <div class="qc-flow">
-        <div class="qc-step">
-          <div class="qc-num">STAGE 01</div>
-          <div class="qc-icon"><svg class="icon"><use href="#i-search"/></svg></div>
-          <div class="qc-title">Inspection</div>
-          <div class="qc-desc">Incoming material inspection — steel plate thickness, motor certifications, burner component specs verified against standards before entering production.</div>
+      <div class="qc-gallery">
+        <div class="qc-gallery-item">
+          <img src="../assets/qc-inspection.jpg" alt="Incoming material inspection — steel plate thickness verification">
+          <div class="qc-gallery-caption">
+            <div class="qgc-stage">Stage 01 — Inspection</div>
+            <div class="qgc-text">Steel plate thickness, motor certifications, and burner component specs verified against standards before entering production</div>
+          </div>
         </div>
-        <div class="qc-step">
-          <div class="qc-num">STAGE 02</div>
-          <div class="qc-icon"><svg class="icon"><use href="#i-hammer"/></svg></div>
-          <div class="qc-title">Production</div>
-          <div class="qc-desc">In-process QC at every workstation — welding seam inspection, dimensional checks, assembly torque verification. Deviations caught and corrected in real-time.</div>
+        <div class="qc-gallery-item">
+          <img src="../assets/qc-production.jpg" alt="In-process QC — welding seam inspection on production line">
+          <div class="qc-gallery-caption">
+            <div class="qgc-stage">Stage 02 — Production</div>
+            <div class="qgc-text">In-process QC at every workstation — welding seam inspection, dimensional checks, and assembly torque verification in real-time</div>
+          </div>
         </div>
-        <div class="qc-step">
-          <div class="qc-num">STAGE 03</div>
-          <div class="qc-icon"><svg class="icon"><use href="#i-flask"/></svg></div>
-          <div class="qc-title">Testing</div>
-          <div class="qc-desc">Full-load test run — burner ignition, temperature stability, grain flow rate, moisture sensor calibration, and emergency shutdown verification. 100% of units tested.</div>
+        <div class="qc-gallery-item">
+          <img src="../assets/qc-testing.jpg" alt="Full-load test run — burner ignition and temperature stability verification">
+          <div class="qc-gallery-caption">
+            <div class="qgc-stage">Stage 03 — Testing</div>
+            <div class="qgc-text">100% of units undergo full-load test — burner ignition, temperature stability, moisture sensor calibration, and emergency shutdown verified</div>
+          </div>
         </div>
-        <div class="qc-step">
-          <div class="qc-num">STAGE 04</div>
-          <div class="qc-icon"><svg class="icon"><use href="#i-package"/></svg></div>
-          <div class="qc-title">Shipment</div>
-          <div class="qc-desc">Pre-shipment inspection — surface finish, bolt tightness, packaging integrity, spare parts kit verification, and documentation completeness before container loading.</div>
+        <div class="qc-gallery-item">
+          <img src="../assets/qc-shipment.jpg" alt="Pre-shipment inspection — final check before container loading">
+          <div class="qc-gallery-caption">
+            <div class="qgc-stage">Stage 04 — Shipment</div>
+            <div class="qgc-text">Surface finish, bolt tightness, packaging integrity, spare parts kit, and documentation verified before container loading</div>
+          </div>
         </div>
       </div>
     </div>
@@ -737,6 +647,13 @@
             <li>2–3 day maintenance training</li>
             <li>Documentation in English provided</li>
           </ul>
+        </div>
+      </div>
+      <div class="service-showcase">
+        <img src="../assets/service-training.jpg" alt="On-site installation supervision and operator training">
+        <div class="service-showcase-overlay">
+          <div class="sso-text">On-Site Installation & Operator Training</div>
+          <div class="sso-sub">GXON engineers dispatched to your facility — 3–5 day hands-on training included with every purchase</div>
         </div>
       </div>
     </div>
@@ -790,74 +707,11 @@
   </section>
 
   <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="footer-grid">
-      <div class="footer-col footer-brand">
-        <div class="footer-logo">
-          <img src="../assets/gxon-logo-v2.png" alt="GXON AGRO">
-        </div>
-        <p>Global grain drying solution provider. Mobile, batch, and continuous dryers serving 30+ countries.</p>
-      </div>
-      <div class="footer-col">
-        <h5>Products</h5>
-        <ul>
-          <li><a href="products/G-MR-5.html">Mobile Dryers</a></li>
-          <li><a href="products/G-SR-30.html">Batch Dryers</a></li>
-          <li><a href="products/G-CT-120.html">Continuous Towers</a></li>
-          <li><a href="products/complete-grain-system.html">Complete Systems</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Solutions</h5>
-        <ul>
-          <li><a href="../index.html#solutions">Solution Finder</a></li>
-          <li><a href="../index.html#system">Post-Harvest System</a></li>
-          <li><a href="../index.html#technology">Technology</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="company.html#about">About GXON</a></li>
-          <li><a href="company.html#manufacturing">Manufacturing</a></li>
-          <li><a href="company.html#quality">Quality Control</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Contact</h5>
-        <ul>
-          <li><a href="mailto:info@gxonagro.com">info@gxonagro.com</a></li>
-          <li><a href="https://wa.me/8618567703190">WhatsApp: +86 185 6770 3190</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Connect</h5>
-        <ul>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">YouTube</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 GXON AGRO Equipment Co., Ltd. All rights reserved.</span>
-      <span>www.gxonagro.com</span>
-    </div>
-  </footer>
+  </div>
+  <div id="site-footer"></div>
 
-  <script>
-    // Header scroll effect
-    var header = document.getElementById('header');
-    window.addEventListener('scroll', function() {
-      header.classList.toggle('scrolled', window.scrollY > 20);
-    });
-
-    // Mobile nav toggle
-    document.getElementById('mobileToggle').addEventListener('click', function() {
-      this.classList.toggle('open');
-      document.querySelector('.header-nav').classList.toggle('open');
-    });
-  </script>
+  <script src="../_shared/js/site-header.js" defer></script>
+  <script src="../_shared/js/site-footer.js" defer></script>
+  <script src="../_shared/js/pjax.js" defer></script>
 </body>
 </html>
