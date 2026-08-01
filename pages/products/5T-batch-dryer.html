@@ -91,7 +91,7 @@
     @font-face { font-family:'JetBrainsMono'; src:url('../../_shared/fonts/JetBrainsMono-Bold.ttf') format('truetype'); font-weight:700; }
   </style>
 
-  <style>
+  <style id="page-style">
     :root {
       --c-primary: #084F32;
       --c-primary-light: #0B6B45;
@@ -145,7 +145,7 @@
     .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
 
     /* ===== HEADER ===== */
-    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(226,229,232,0.98); backdrop-filter: blur(10px); border-bottom: 1px solid var(--c-n6); transition: box-shadow 0.3s; }
+    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(226,229,232,0.78); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--c-n6); transition: box-shadow 0.3s; }
     .header.scrolled { box-shadow: var(--sh-md); }
     .header-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: var(--header-h); padding: 0 24px; }
     .header-logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-heading); font-size: 28px; font-weight: 800; color: var(--c-dark); letter-spacing: 0.02em; }
@@ -226,6 +226,26 @@
     .specs-table td:last-child { color: var(--c-n1); font-weight: 600; }
     .specs-table .spec-strong { font-family: var(--font-heading); font-size: 16px; color: var(--c-primary); font-weight: 700; }
 
+    /* ===== MACHINE DETAILS ===== */
+    .details-section { background: #fff; }
+    .details-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .detail-card { background: var(--c-silver-bg); border: 1px solid var(--c-n6); border-radius: var(--r-lg); overflow: hidden; }
+    .detail-img { aspect-ratio: 16/10; overflow: hidden; background: var(--c-n7); }
+    .detail-img img { width: 100%; height: 100%; object-fit: cover; }
+    .detail-body { padding: 24px; }
+    .detail-body h3 { font-family: var(--font-heading); font-size: 20px; font-weight: 700; color: var(--c-dark); margin-bottom: 8px; }
+    .detail-body p { font-size: 14px; color: var(--c-n2); line-height: 1.6; margin-bottom: 16px; }
+    .fuel-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .fuel-chip { display: flex; align-items: center; gap: 6px; background: #fff; border: 1px solid var(--c-n6); border-radius: 100px; padding: 4px 12px 4px 4px; }
+    .fuel-chip img { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
+    .fuel-chip span { font-size: 12px; font-weight: 600; color: var(--c-n2); }
+    .detail-list { list-style: none; margin-bottom: 16px; }
+    .detail-list li { font-size: 13px; color: var(--c-n3); padding: 4px 0; padding-left: 20px; position: relative; }
+    .detail-list li::before { content: '▸'; position: absolute; left: 0; color: var(--c-primary); font-weight: 700; }
+    .detail-savings { display: flex; align-items: center; gap: 10px; background: var(--c-primary-bg); border-radius: var(--r-md); padding: 10px 14px; }
+    .detail-savings .ds-label { font-family: var(--font-mono); font-size: 10px; font-weight: 700; color: #fff; letter-spacing: 0.08em; text-transform: uppercase; background: var(--c-primary); padding: 2px 8px; border-radius: 100px; flex-shrink: 0; }
+    .detail-savings .ds-text { font-size: 13px; font-weight: 600; color: var(--c-primary-dark); }
+
     /* ===== FEATURES ===== */
     .features-section { background: var(--c-n7); }
     .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 900px; margin: 0 auto; }
@@ -254,23 +274,26 @@
     .cta-text p { font-size: 15px; color: rgba(255,255,255,0.7); }
 
     /* ===== FOOTER ===== */
-    .footer { background: var(--c-dark); color: rgba(255,255,255,0.6); padding: 0; }
-    .footer-grid { max-width: var(--max-w); margin: 0 auto; padding: 64px 24px 32px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr; gap: 32px; }
-    .footer-brand .footer-logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-heading); font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 12px; }
-    .footer-brand .footer-logo img { height: 32px; }
-    .footer-brand p { font-size: 13px; line-height: 1.6; max-width: 280px; }
-    .footer-col h5 { font-family: var(--font-heading); font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 14px; letter-spacing: 0.02em; }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 8px; }
-    .footer-col ul li a { font-size: 13px; color: rgba(255,255,255,0.6); transition: color 0.2s; }
-    .footer-col ul li a:hover { color: var(--c-orange-light); }
-    .footer-bottom { max-width: var(--max-w); margin: 0 auto; padding: 20px 24px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(255,255,255,0.4); }
+    .footer { background: var(--c-dark); color: rgba(255,255,255,0.6); padding: 64px 0 32px; }
+    .footer-grid { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 48px; }
+    .footer-brand .footer-logo { font-family: var(--font-heading); font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+    .footer-brand .footer-logo .dot { width: 10px; height: 10px; background: var(--c-primary); border-radius: 2px; }
+    .footer-brand p { font-size: 13px; line-height: 1.6; margin-bottom: 20px; }
+    .footer-social { display: flex; gap: 10px; }
+    .footer-social a { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.08); border-radius: var(--r-md); transition: all 0.2s; color: rgba(255,255,255,0.5); }
+    .footer-social a:hover { background: var(--c-orange); color: var(--c-dark); }
+    .footer-col h4 { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { font-size: 13px; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .footer-col a:hover { color: var(--c-primary); }
+    .footer-bottom { max-width: var(--max-w); margin: 0 auto; padding: 24px 24px 0; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: rgba(255,255,255,0.4); }
 
     /* ===== APPLICATIONS ===== */
     .apps-section { background: #fff; }
     .apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1000px; margin: 0 auto; }
     .app-item { background: var(--c-silver-bg); border: 1px solid var(--c-n6); border-radius: var(--r-md); padding: 20px 24px; }
     .app-item .app-icon { font-size: 28px; margin-bottom: 8px; }
+    .feature-icon svg, .app-icon svg { width: 1em; height: 1em; }
     .app-item h4 { font-family: var(--font-heading); font-size: 16px; font-weight: 700; color: var(--c-dark); margin-bottom: 4px; }
     .app-item p { font-size: 13px; color: var(--c-n3); line-height: 1.5; }
 
@@ -312,17 +335,19 @@
       .header-nav.open a { padding: 12px 16px; }
       .header-nav.open .nav-dropdown-wrap { width: 100%; }
       .header-nav.open .nav-dropdown { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; padding-left: 16px; margin-top: 4px; }
+      .header-cta .lang { display: none; }
       .mobile-toggle { display: flex; }
       .product-hero-inner { grid-template-columns: 1fr; gap: 32px; }
       .product-hero-content h1 { font-size: 36px; }
       .pd-highlights { grid-template-columns: 1fr; }
       .features-grid { grid-template-columns: 1fr; }
+      .details-grid { grid-template-columns: 1fr; }
       .apps-grid { grid-template-columns: 1fr; }
       .perf-grid { grid-template-columns: repeat(2, 1fr); }
       .related-grid { grid-template-columns: repeat(2, 1fr); }
       .section-head h2 { font-size: 28px; }
       .cta-inner { flex-direction: column; text-align: center; }
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; margin-bottom: 32px; }
       .footer-grid .footer-col { display: none; }
       .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
       section.block { padding: 56px 0; }
@@ -330,37 +355,33 @@
   </style>
 </head>
 <body>
-
-  <!-- ===== HEADER ===== -->
-  <header class="header" id="header">
-    <div class="header-inner">
-      <a href="../../index.html" class="header-logo">
-        <img src="../../assets/gxon-logo-v2.png" alt="GXON AGRO">
-      </a>
-      <nav class="header-nav">
-        <a href="../../index.html">Home</a>
-        <a href="../products.html" class="active">Products</a>
-        <a href="../../index.html#technology">Technology</a>
-        <a href="../../index.html#projects">Projects</a>
-        <a href="../company.html">Company</a>
-        <div class="nav-dropdown-wrap">
-          <a href="../contact.html">Contact ▾</a>
-          <div class="nav-dropdown">
-            <a href="../contact.html#sendquote">Request Solution</a>
-            <a href="../contact.html#sales-team">Sales Team</a>
-            <a href="../contact.html#partnership">Become Distributor</a>
-            <a href="../contact.html#partners">Global Partners</a>
-            <a href="../contact.html#exhibition">Exhibition</a>
-            <a href="../contact.html#social">Social Media</a>
-          </div>
-        </div>
-      </nav>
-      <div class="header-cta">
-        <span class="lang">EN</span>
-      </div>
-      <div class="mobile-toggle" id="mobileToggle"><span></span><span></span><span></span></div>
-    </div>
-  </header>
+  <div id="site-header"></div>
+  <div id="pjax-main">
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="i-factory" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></symbol>
+  <symbol id="i-lightbulb" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+  <symbol id="i-sprout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></symbol>
+  <symbol id="i-hard-hat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/><path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><path d="M14 6a6 6 0 0 1 6 6v3"/></symbol>
+  <symbol id="i-train" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="16" x="4" y="3" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/><path d="M8 19l-2 3"/><path d="M18 22l-2-3"/><circle cx="8" cy="15" r="1"/><circle cx="16" cy="15" r="1"/></symbol>
+  <symbol id="i-landmark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" x2="21" y1="22" y2="22"/><line x1="6" x2="6" y1="18" y2="11"/><line x1="10" x2="10" y1="18" y2="11"/><line x1="14" x2="14" y1="18" y2="11"/><line x1="18" x2="18" y1="18" y2="11"/><polygon points="12 2 20 7 4 7"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></symbol>
+  <symbol id="i-trending" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+  <symbol id="i-wallet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></symbol>
+  <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+  <symbol id="i-truck" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></symbol>
+  <symbol id="i-cloud-rain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M16 14v6"/><path d="M8 14v6"/><path d="M12 16v6"/></symbol>
+  <symbol id="i-mountain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 3 4 8 5-5 5 15H2L8 3z"/></symbol>
+  <symbol id="i-package" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></symbol>
+  <symbol id="i-store" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m2 7 4.41-4.41A2 2 0 0 1 7.83 2h8.34a2 2 0 0 1 1.42.59L22 7"/><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><path d="M15 22v-4a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v4"/><path d="M2 7h20"/><path d="M22 7v3a2 2 0 0 1-2 2v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 16 12v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 12 12v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 8 12v0a2.7 2.7 0 0 1-1.59-.63.7.7 0 0 0-.82 0A2.7 2.7 0 0 1 4 12v0a2 2 0 0 1-2-2V7"/></symbol>
+  <symbol id="i-ship" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 21c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M19.38 20A11.6 11.6 0 0 0 21 14l-9-4-9 4c0 2.9.94 5.34 2.81 7.76"/><path d="M19 13V7a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v6"/><path d="M12 10v4"/><path d="M12 2v3"/></symbol>
+  <symbol id="i-bar-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></symbol>
+</svg>
 
   <!-- ===== BREADCRUMB ===== -->
   <div class="breadcrumb">
@@ -439,6 +460,107 @@
     </div>
   </section>
 
+  <!-- ===== MACHINE DETAILS ===== -->
+  <section class="block details-section" id="details">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">MACHINE DETAILS</div>
+        <h2>Engineered to Save Labor, Built for Automation</h2>
+        <p class="desc">Every component is designed to reduce manual work and deliver consistent drying quality — from the burner to the control system.</p>
+      </div>
+      <div class="details-grid">
+
+        <div class="detail-card">
+          <div class="detail-img">
+            <img src="../../assets/component-burner.jpg" alt="Multi-fuel burner system">
+          </div>
+          <div class="detail-body">
+            <h3>Multi-Fuel Burner System</h3>
+            <p>Auto-switches between 6 fuel types in under 30 minutes. The burner auto-calibrates combustion parameters for each fuel — no manual reconfiguration, no specialist required.</p>
+            <div class="fuel-row">
+              <div class="fuel-chip"><img src="../../assets/Diesel.webp" alt="Diesel"><span>Diesel</span></div>
+              <div class="fuel-chip"><img src="../../assets/Natural_Gas.webp" alt="Natural Gas"><span>Natural Gas</span></div>
+              <div class="fuel-chip"><img src="../../assets/Biomass_Pellet.webp" alt="Biomass"><span>Biomass</span></div>
+              <div class="fuel-chip"><img src="../../assets/Rice_Husk.webp" alt="Rice Husk"><span>Rice Husk</span></div>
+              <div class="fuel-chip"><img src="../../assets/Wood.webp" alt="Wood"><span>Wood</span></div>
+              <div class="fuel-chip"><img src="../../assets/Coal.webp" alt="Coal"><span>Coal</span></div>
+            </div>
+            <ul class="detail-list">
+              <li>One-touch fuel switching via PLC touchscreen</li>
+              <li>Auto air-fuel ratio calibration per fuel type</li>
+              <li>Flame failure protection &amp; auto-restart</li>
+            </ul>
+            <div class="detail-savings">
+              <span class="ds-label">Labor Saved</span>
+              <span class="ds-text">2h/day fuel switching — use cheapest local fuel</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-card">
+          <div class="detail-img">
+            <img src="../../assets/component-control-cabinet.jpg" alt="PLC control cabinet">
+          </div>
+          <div class="detail-body">
+            <h3>PLC Control Cabinet</h3>
+            <p>Automates the entire drying cycle — from temperature control to moisture sensing. One operator can supervise multiple machines remotely.</p>
+            <ul class="detail-list">
+              <li>Touchscreen HMI with intuitive interface</li>
+              <li>Automatic moisture sensing &amp; drying cycle control</li>
+              <li>Remote alarm via SMS for temperature deviations</li>
+              <li>Drying data logging for quality traceability</li>
+            </ul>
+            <div class="detail-savings">
+              <span class="ds-label">Labor Saved</span>
+              <span class="ds-text">Replaces 1 full-time operator — 24/7 unattended operation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-card">
+          <div class="detail-img">
+            <img src="../../assets/component-temp-sensor.jpg" alt="Dual temperature sensors">
+          </div>
+          <div class="detail-body">
+            <h3>Dual Temperature Sensors</h3>
+            <p>Monitors both hot air temperature and grain bed temperature in real-time. The PLC adjusts burner output automatically to prevent overheating or underdrying.</p>
+            <ul class="detail-list">
+              <li>Hot air sensor: ±1°C precision in drying plenum</li>
+              <li>Grain sensor: monitors core grain temperature</li>
+              <li>Auto shutdown if grain temp exceeds safety threshold</li>
+              <li>Digital display on control cabinet</li>
+            </ul>
+            <div class="detail-savings">
+              <span class="ds-label">Grain Saved</span>
+              <span class="ds-text">Prevents 5–8% grain loss from overheating</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-card">
+          <div class="detail-img">
+            <img src="../../assets/component-grain-agitator.jpg" alt="Auto grain agitator">
+          </div>
+          <div class="detail-body">
+            <h3>Auto Grain Agitator</h3>
+            <p>Rotating auger inside the drying hopper prevents grain from sticking and ensures uniform moisture distribution. Eliminates the need for manual grain turning between batches.</p>
+            <ul class="detail-list">
+              <li>Auto-rotating paddle mechanism</li>
+              <li>Prevents grain bridging and hot spots</li>
+              <li>Ensures ±0.5% moisture uniformity</li>
+              <li>Programmable rotation intervals via PLC</li>
+            </ul>
+            <div class="detail-savings">
+              <span class="ds-label">Labor Saved</span>
+              <span class="ds-text">3–4h/day manual grain turning eliminated</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ===== KEY FEATURES ===== -->
   <section class="block features-section" id="features">
     <div class="container">
@@ -449,28 +571,28 @@
       </div>
       <div class="features-grid">
         <div class="feature-item">
-          <div class="feature-icon">🏭</div>
+          <div class="feature-icon"><svg><use href="#i-factory"/></svg></div>
           <div class="feature-text">
             <h4>Compact Footprint</h4>
             <p>Small installed footprint fits inside existing grain stations or rice-mill yards without major civil works.</p>
           </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🌾</div>
+          <div class="feature-icon"><svg><use href="#i-sprout"/></svg></div>
           <div class="feature-text">
             <h4>Bucket Elevator (Low Breakage)</h4>
             <p>Bucket elevator lifting system keeps grain breakage rates low — protecting head-rice yield and selling grade.</p>
           </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">🔥</div>
+          <div class="feature-icon"><svg><use href="#i-flame"/></svg></div>
           <div class="feature-text">
             <h4>6 Fuel Options</h4>
             <p>Diesel, LPG, natural gas, biomass pellets, wood, or coal — choose the most cost-effective local fuel.</p>
           </div>
         </div>
         <div class="feature-item">
-          <div class="feature-icon">💡</div>
+          <div class="feature-icon"><svg><use href="#i-lightbulb"/></svg></div>
           <div class="feature-text">
             <h4>Multi-Grain Compatible</h4>
             <p>Handles paddy, maize, wheat, sorghum, and soybeans with adjustable drying parameters per grain.</p>
@@ -490,32 +612,32 @@
       </div>
       <div class="apps-grid">
         <div class="app-item">
-          <div class="app-icon">🏢</div>
+          <div class="app-icon"><svg><use href="#i-building"/></svg></div>
           <h4>Grain Stations & Cooperatives</h4>
           <p>Fixed installation for community grain drying at centralized collection points. Serves multiple surrounding farms efficiently.</p>
         </div>
         <div class="app-item">
-          <div class="app-icon">🏭</div>
+          <div class="app-icon"><svg><use href="#i-factory"/></svg></div>
           <h4>Rice Mills & Processing Plants</h4>
           <p>Integrate with existing processing lines for continuous grain supply. Reduces waiting time and spoilage during peak season.</p>
         </div>
         <div class="app-item">
-          <div class="app-icon">🌾</div>
+          <div class="app-icon"><svg><use href="#i-sprout"/></svg></div>
           <h4>Medium-Scale Farms</h4>
           <p>Dedicated drying facility for farms with 50–500 hectares of grain production. Lower per-ton cost than mobile drying.</p>
         </div>
         <div class="app-item">
-          <div class="app-icon">💰</div>
+          <div class="app-icon"><svg><use href="#i-wallet"/></svg></div>
           <h4>Dual-Use Investment</h4>
           <p>G-SR-30/32 doubles as storage silo when not drying, maximizing equipment ROI. Other models offer compact footprint.</p>
         </div>
         <div class="app-item">
-          <div class="app-icon">🔄</div>
+          <div class="app-icon"><svg><use href="#i-refresh"/></svg></div>
           <h4>Batch Processing Flexibility</h4>
           <p>Handle different grain types and moisture levels in separate batches. Ideal for mixed-grain operations.</p>
         </div>
         <div class="app-item">
-          <div class="app-icon">⚡</div>
+          <div class="app-icon"><svg><use href="#i-zap"/></svg></div>
           <h4>Energy-Efficient Operation</h4>
           <p>Lower per-ton energy cost than mobile dryers for consistent daily output. Optimized heat circulation design.</p>
         </div>
@@ -699,74 +821,13 @@
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="footer-grid">
-      <div class="footer-col footer-brand">
-        <div class="footer-logo">
-          <img src="../../assets/gxon-logo-v2.png" alt="GXON AGRO">
-        </div>
-        <p>Global grain drying solution provider. Mobile, batch, and continuous dryers serving 30+ countries.</p>
-      </div>
-      <div class="footer-col">
-        <h5>Products</h5>
-        <ul>
-          <li><a href="G-MR-5.html">Mobile Dryers</a></li>
-          <li><a href="G-SR-30.html">Batch Dryers</a></li>
-          <li><a href="G-CT-120.html">Continuous Towers</a></li>
-          <li><a href="complete-grain-system.html">Complete Systems</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Solutions</h5>
-        <ul>
-          <li><a href="../../index.html#solutions">Solution Finder</a></li>
-          <li><a href="../../index.html#system">Post-Harvest System</a></li>
-          <li><a href="../../index.html#technology">Technology</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Company</h5>
-        <ul>
-          <li><a href="../company.html#about">About GXON</a></li>
-          <li><a href="../../index.html#projects">Case Studies</a></li>
-          <li><a href="../contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Contact</h5>
-        <ul>
-          <li><a href="mailto:info@gxonagro.com">info@gxonagro.com</a></li>
-          <li><a href="https://wa.me/8618567703190">WhatsApp: +86 185 6770 3190</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Connect</h5>
-        <ul>
-          <li><a href="#">Facebook</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">YouTube</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 GXON AGRO Equipment Co., Ltd. All rights reserved.</span>
-      <span>www.gxonagro.com</span>
-    </div>
-  </footer>
+  </div>
 
-  <script>
-    // Header scroll effect
-    var header = document.getElementById('header');
-    window.addEventListener('scroll', function() {
-      header.classList.toggle('scrolled', window.scrollY > 20);
-    });
+  <div id="site-footer"></div>
 
-    document.getElementById('mobileToggle').addEventListener('click', function() {
-      this.classList.toggle('open');
-      document.querySelector('.header-nav').classList.toggle('open');
-    });
-  </script>
+  <script src="../../_shared/js/site-header.js" defer></script>
+  <script src="../../_shared/js/site-footer.js" defer></script>
   <script src="../../_shared/js/quote-modal.js" defer></script>
+  <script src="../../_shared/js/pjax.js" defer></script>
 </body>
 </html>
