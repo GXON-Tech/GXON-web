@@ -483,7 +483,7 @@
                 </button>
                 <div class="dropdown-menu" role="listbox">
                   <div class="dd-search">
-                    <input type="text" class="dd-search-input" placeholder="Search country..." oninput="filterCountryDropdown(this)">
+                    <input type="text" class="dd-search-input" placeholder="Search country..." data-action="filter-country">
                   </div>
                   <div class="dd-options" id="country-options">
                     <div class="dd-group-label">Southeast Asia</div>
@@ -1065,6 +1065,14 @@
       }
     }
     window.filterCountryDropdown = filterCountryDropdown;
+
+    /* ---------- Event delegation for data-action elements ----------
+     * Replaces inline oninput per AGENTS.md rule.
+     */
+    document.addEventListener('input', function(e) {
+      var el = e.target.closest ? e.target.closest('[data-action="filter-country"]') : null;
+      if (el) filterCountryDropdown(el);
+    });
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(function(a) {
