@@ -97,52 +97,52 @@
   var CSS = '' +
     '.qm-overlay{position:fixed;inset:0;background:rgba(26,26,26,0.55);backdrop-filter:blur(3px);z-index:9999;display:flex;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}' +
     '.qm-overlay.qm-open{opacity:1;visibility:visible}' +
-    '.qm-modal{background:#fff;border-radius:12px;box-shadow:0 16px 48px rgba(0,0,0,0.24);width:100%;max-width:480px;max-height:calc(100vh - 80px);overflow:hidden;display:flex;flex-direction:column;transform:translateY(20px);transition:transform .25s}' +
+    '.qm-modal{background:#fff;border-radius:var(--r-lg);box-shadow:var(--sh-xl);width:100%;max-width:480px;max-height:calc(100vh - 80px);overflow:hidden;display:flex;flex-direction:column;transform:translateY(20px);transition:transform .25s}' +
     '.qm-overlay.qm-open .qm-modal{transform:translateY(0)}' +
-    '.qm-header{background:#fff;border-bottom:1px solid #C8CBD0;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;z-index:2;flex-shrink:0}' +
-    '.qm-header h3{font-size:20px;font-weight:700;color:#24282D;margin:0}' +
-    '.qm-close{width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:20px;color:#6B6B6B;cursor:pointer;transition:all .15s;border:none;background:none}' +
-    '.qm-close:hover{background:#D6D9DC;color:#1A1A1A}' +
+    '.qm-header{background:#fff;border-bottom:1px solid var(--c-n6);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;z-index:2;flex-shrink:0}' +
+    '.qm-header h3{font-size:20px;font-weight:700;color:var(--c-dark);margin:0}' +
+    '.qm-close{width:32px;height:32px;border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--c-n3);cursor:pointer;transition:all .15s;border:none;background:none}' +
+    '.qm-close:hover{background:var(--c-n7);color:var(--c-n1)}' +
     '.qm-body{padding:24px;overflow-y:auto;flex:1}' +
-    '.qm-product-info{background:#EAF3EF;border:1px solid #BFC3C7;border-radius:8px;padding:14px 16px;margin-bottom:22px}' +
-    '.qm-product-info .qm-pi-label{font-size:11px;font-weight:700;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px}' +
-    '.qm-product-info .qm-pi-row{display:flex;gap:8px;font-size:14px;color:#1A1A1A;margin:3px 0;align-items:baseline}' +
-    '.qm-product-info .qm-pi-row .qm-pi-k{font-weight:700;min-width:78px;color:#4A4A4A}' +
+    '.qm-product-info{background:var(--c-primary-bg);border:1px solid var(--c-silver);border-radius:var(--r-md);padding:14px 16px;margin-bottom:22px}' +
+    '.qm-product-info .qm-pi-label{font-size:11px;font-weight:700;color:var(--c-n3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:6px}' +
+    '.qm-product-info .qm-pi-row{display:flex;gap:8px;font-size:14px;color:var(--c-n1);margin:3px 0;align-items:baseline}' +
+    '.qm-product-info .qm-pi-row .qm-pi-k{font-weight:700;min-width:78px;color:var(--c-n2)}' +
     '.qm-field{margin-bottom:18px}' +
-    '.qm-field>label{display:block;font-size:13px;font-weight:700;color:#24282D;margin-bottom:6px}' +
-    '.qm-input{width:100%;border:1px solid #C8CBD0;border-radius:6px;padding:11px 14px;font-size:15px;font-family:inherit;color:#1A1A1A;background:#fff;transition:border-color .15s;box-sizing:border-box}' +
-    '.qm-input:focus{outline:none;border-color:#084F32;box-shadow:0 0 0 3px rgba(8,79,50,0.12)}' +
+    '.qm-field>label{display:block;font-size:13px;font-weight:700;color:var(--c-dark);margin-bottom:6px}' +
+    '.qm-input{width:100%;border:1px solid var(--c-n6);border-radius:var(--r-sm);padding:11px 14px;font-size:15px;font-family:inherit;color:var(--c-n1);background:#fff;transition:border-color .15s;box-sizing:border-box}' +
+    '.qm-input:focus{outline:none;border-color:var(--c-primary);box-shadow:0 0 0 3px rgba(8,79,50,0.12)}' +
     '.qm-textarea{resize:vertical;min-height:72px}' +
-    '.qm-req{color:#D4841A}' +
-    '.qm-error{border-color:#C0392B !important;box-shadow:0 0 0 3px rgba(192,57,43,0.12) !important}' +
-    '.qm-errmsg{color:#C0392B;font-size:12px;margin-top:4px;display:none}' +
+    '.qm-req{color:var(--c-orange-dark)}' +
+    '.qm-error{border-color:var(--c-error) !important;box-shadow:0 0 0 3px rgba(192,57,43,0.12) !important}' +
+    '.qm-errmsg{color:var(--c-error);font-size:12px;margin-top:4px;display:none}' +
     '.qm-errmsg.qm-show{display:block}' +
     /* country dropdown */
     '.qm-country-dd{position:relative}' +
-    '.qm-dd-trigger{width:100%;border:1px solid #C8CBD0;border-radius:6px;padding:11px 14px;font-size:15px;font-family:inherit;color:#1A1A1A;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:border-color .15s;box-sizing:border-box}' +
-    '.qm-dd-trigger.qm-active{border-color:#084F32;box-shadow:0 0 0 3px rgba(8,79,50,0.12)}' +
-    '.qm-dd-trigger.qm-placeholder{color:#9B9B9B}' +
-    '.qm-dd-caret{font-size:12px;color:#6B6B6B;transition:transform .2s}' +
+    '.qm-dd-trigger{width:100%;border:1px solid var(--c-n6);border-radius:var(--r-sm);padding:11px 14px;font-size:15px;font-family:inherit;color:var(--c-n1);background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:border-color .15s;box-sizing:border-box}' +
+    '.qm-dd-trigger.qm-active{border-color:var(--c-primary);box-shadow:0 0 0 3px rgba(8,79,50,0.12)}' +
+    '.qm-dd-trigger.qm-placeholder{color:var(--c-n4)}' +
+    '.qm-dd-caret{font-size:12px;color:var(--c-n3);transition:transform .2s}' +
     '.qm-dd-trigger.qm-active .qm-dd-caret{transform:rotate(180deg)}' +
-    '.qm-dd-menu{position:absolute;top:calc(100% + 4px);left:0;right:0;background:#fff;border:1px solid #C8CBD0;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.16);z-index:10;max-height:260px;overflow:hidden;display:none;flex-direction:column}' +
+    '.qm-dd-menu{position:absolute;top:calc(100% + 4px);left:0;right:0;background:#fff;border:1px solid var(--c-n6);border-radius:var(--r-md);box-shadow:var(--sh-lg);z-index:10;max-height:260px;overflow:hidden;display:none;flex-direction:column}' +
     '.qm-dd-menu.qm-open{display:flex}' +
-    '.qm-dd-search{padding:8px;border-bottom:1px solid #D6D9DC}' +
-    '.qm-dd-search input{width:100%;border:1px solid #C8CBD0;border-radius:4px;padding:8px 10px;font-size:13px;font-family:inherit;box-sizing:border-box}' +
+    '.qm-dd-search{padding:8px;border-bottom:1px solid var(--c-n7)}' +
+    '.qm-dd-search input{width:100%;border:1px solid var(--c-n6);border-radius:var(--r-sm);padding:8px 10px;font-size:13px;font-family:inherit;box-sizing:border-box}' +
     '.qm-dd-options{overflow-y:auto;flex:1}' +
-    '.qm-dd-group{padding:7px 14px 3px;font-size:10px;font-weight:700;color:#6B6B6B;text-transform:uppercase;letter-spacing:0.05em;background:#F0F1F3;border-bottom:1px solid #D6D9DC}' +
-    '.qm-dd-opt{padding:10px 14px;font-size:14px;color:#4A4A4A;cursor:pointer;transition:background .12s;border-bottom:1px solid #D6D9DC}' +
+    '.qm-dd-group{padding:7px 14px 3px;font-size:10px;font-weight:700;color:var(--c-n3);text-transform:uppercase;letter-spacing:0.05em;background:var(--c-silver-bg);border-bottom:1px solid var(--c-n7)}' +
+    '.qm-dd-opt{padding:10px 14px;font-size:14px;color:var(--c-n2);cursor:pointer;transition:background .12s;border-bottom:1px solid var(--c-n7)}' +
     '.qm-dd-opt:last-child{border-bottom:none}' +
-    '.qm-dd-opt:hover{background:#EAF3EF;color:#084F32}' +
-    '.qm-dd-opt.qm-selected{background:#EAF3EF;color:#084F32;font-weight:700}' +
+    '.qm-dd-opt:hover{background:var(--c-primary-bg);color:var(--c-primary)}' +
+    '.qm-dd-opt.qm-selected{background:var(--c-primary-bg);color:var(--c-primary);font-weight:700}' +
     /* divider */
-    '.qm-divider{height:1px;background:#C8CBD0;margin:22px 0 18px}' +
-    '.qm-divider-label{text-align:center;font-size:13px;font-weight:700;color:#6B6B6B;margin-bottom:16px}' +
+    '.qm-divider{height:1px;background:var(--c-n6);margin:22px 0 18px}' +
+    '.qm-divider-label{text-align:center;font-size:13px;font-weight:700;color:var(--c-n3);margin-bottom:16px}' +
     /* actions */
     '.qm-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px}' +
-    '.qm-action{border:2px solid;border-radius:10px;padding:16px 14px;cursor:pointer;transition:all .2s;text-align:center;background:none;font-family:inherit}' +
-    '.qm-action-submit{border-color:#084F32;background:#084F32;color:#fff}' +
-    '.qm-action-submit:hover{background:#053D24;border-color:#053D24;transform:translateY(-2px);box-shadow:0 4px 16px rgba(8,79,50,0.3)}' +
-    '.qm-action-wa{border-color:#25D366;background:#fff;color:#1A1A1A}' +
+    '.qm-action{border:2px solid;border-radius:var(--r-md);padding:16px 14px;cursor:pointer;transition:all .2s;text-align:center;background:none;font-family:inherit}' +
+    '.qm-action-submit{border-color:var(--c-primary);background:var(--c-primary);color:#fff}' +
+    '.qm-action-submit:hover{background:var(--c-primary-dark);border-color:var(--c-primary-dark);transform:translateY(-2px);box-shadow:0 4px 16px rgba(8,79,50,0.3)}' +
+    '.qm-action-wa{border-color:#25D366;background:#fff;color:var(--c-n1)}' +
     '.qm-action-wa:hover{background:#25D366;color:#fff;transform:translateY(-2px);box-shadow:0 4px 16px rgba(37,211,102,0.3)}' +
     '.qm-action .qm-act-icon{font-size:24px;display:block;margin-bottom:6px}' +
     '.qm-action .qm-act-title{font-size:15px;font-weight:700;display:block;margin-bottom:3px}' +
@@ -150,14 +150,14 @@
     /* success */
     '.qm-success{text-align:center;padding:36px 24px}' +
     '.qm-success-icon{font-size:48px;margin-bottom:12px}' +
-    '.qm-success h3{font-size:22px;color:#084F32;margin-bottom:10px}' +
-    '.qm-success p{font-size:15px;color:#4A4A4A;margin-bottom:24px;max-width:320px;margin-left:auto;margin-right:auto}' +
-    '.qm-success-btn{background:#084F32;color:#fff;border:none;border-radius:8px;padding:12px 28px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}' +
-    '.qm-success-btn:hover{background:#053D24}' +
+    '.qm-success h3{font-size:22px;color:var(--c-primary);margin-bottom:10px}' +
+    '.qm-success p{font-size:15px;color:var(--c-n2);margin-bottom:24px;max-width:320px;margin-left:auto;margin-right:auto}' +
+    '.qm-success-btn{background:var(--c-primary);color:#fff;border:none;border-radius:var(--r-md);padding:12px 28px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}' +
+    '.qm-success-btn:hover{background:var(--c-primary-dark)}' +
     /* responsive */
     '@media(max-width:520px){' +
       '.qm-overlay{padding:0;align-items:flex-end}' +
-      '.qm-modal{max-width:100%;border-radius:12px 12px 0 0;max-height:100vh}' +
+      '.qm-modal{max-width:100%;border-radius:var(--r-lg) var(--r-lg) 0 0;max-height:100vh}' +
       '.qm-actions{grid-template-columns:1fr}' +
     '}';
 
@@ -490,28 +490,27 @@
     }
   });
 
-  /* ---------- Bind triggers ---------- */
-  function bindTriggers() {
-    var triggers = document.querySelectorAll('[data-quote-trigger]');
-    triggers.forEach(function (btn) {
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        var info = {
-          name: btn.getAttribute('data-product-name') || '',
-          model: btn.getAttribute('data-product-model') || '',
-          capacity: btn.getAttribute('data-product-capacity') || ''
-        };
-        openModal(info);
-      });
-    });
-  }
+  /* ---------- Bind triggers via event delegation ----------
+   * Uses document-level delegation so buttons loaded by PJAX
+   * after initial init() also work without re-binding.
+   */
+  document.addEventListener('click', function (e) {
+    var btn = e.target.closest ? e.target.closest('[data-quote-trigger]') : null;
+    if (!btn) return;
+    e.preventDefault();
+    var info = {
+      name: btn.getAttribute('data-product-name') || '',
+      model: btn.getAttribute('data-product-model') || '',
+      capacity: btn.getAttribute('data-product-capacity') || ''
+    };
+    openModal(info);
+  });
 
   /* ---------- Init ---------- */
   function init() {
     if (document.querySelector('[data-qm]')) return; /* already injected */
     injectCSS();
     injectModal();
-    bindTriggers();
   }
 
   if (document.readyState === 'loading') {

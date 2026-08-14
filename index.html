@@ -475,6 +475,91 @@
     .section-head.left { text-align: left; }
     .section-head.left .desc { margin-left: 0; }
 
+    /* ===== HARVEST PROBLEM ===== */
+    .harvest-problem {
+      background: var(--c-n8);
+      padding: 80px 0;
+    }
+    .hp-head { text-align: center; max-width: 720px; margin: 0 auto 56px; padding: 0 24px; }
+    .hp-head .eyebrow {
+      font-family: var(--font-mono); font-size: 13px; font-weight: 700;
+      color: var(--c-orange); letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .hp-head h2 {
+      font-family: var(--font-heading); font-size: 40px; font-weight: 700;
+      line-height: 1.15; color: var(--c-dark); margin-bottom: 18px;
+    }
+    .hp-head h2 .accent { color: var(--c-orange); }
+    .hp-head .hp-desc {
+      font-size: 16px; line-height: 1.7; color: var(--c-n3);
+    }
+    /* Risk chain flow */
+    .hp-flow {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 24px;
+      display: flex; align-items: stretch; justify-content: center; gap: 0;
+    }
+    .hp-step {
+      flex: 1; min-width: 160px; max-width: 240px;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 32px 16px;
+      background: #fff; border-radius: var(--r-lg);
+      box-shadow: var(--sh-sm); position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-top: 4px solid transparent;
+    }
+    .hp-step:hover { transform: translateY(-4px); box-shadow: var(--sh-md); }
+    .hp-step .hp-num {
+      font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.1em; color: var(--c-n4); margin-bottom: 16px;
+    }
+    .hp-step .hp-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 18px;
+    }
+    .hp-step .hp-label {
+      font-family: var(--font-heading); font-size: 18px; font-weight: 700;
+      color: var(--c-dark); line-height: 1.3; margin-bottom: 8px;
+    }
+    .hp-step .hp-sub {
+      font-size: 13px; color: var(--c-n3); line-height: 1.5;
+    }
+    /* Step color coding — risk escalation: green → orange → silver/blue → red */
+    .hp-step.s1 { border-top-color: var(--c-primary); }
+    .hp-step.s1 .hp-icon { background: var(--c-primary-bg); color: var(--c-primary); }
+    .hp-step.s2 { border-top-color: var(--c-orange); }
+    .hp-step.s2 .hp-icon { background: var(--c-orange-bg); color: var(--c-orange-dark); }
+    .hp-step.s3 { border-top-color: var(--c-info); }
+    .hp-step.s3 .hp-icon { background: #E3ECF7; color: var(--c-info); }
+    .hp-step.s4 { border-top-color: var(--c-error); }
+    .hp-step.s4 .hp-icon { background: #FDEAEA; color: var(--c-error); }
+    /* Arrow between steps */
+    .hp-arrow {
+      display: flex; align-items: center; justify-content: center;
+      width: 32px; flex-shrink: 0;
+      color: var(--c-n5);
+    }
+    /* Conclusion block */
+    .hp-conclusion {
+      max-width: 720px; margin: 56px auto 0; padding: 0 24px;
+      text-align: center;
+    }
+    .hp-conclusion p {
+      font-family: var(--font-heading); font-size: 26px; font-weight: 700;
+      color: var(--c-primary); line-height: 1.3; margin-bottom: 24px;
+    }
+    .hp-conclusion .btn { margin-top: 4px; }
+    @media (max-width: 900px) {
+      .hp-flow { flex-direction: column; align-items: center; gap: 0; }
+      .hp-arrow { transform: rotate(90deg); width: 28px; height: 28px; margin: 4px 0; }
+      .hp-step { width: 100%; max-width: 380px; flex-direction: row; text-align: left; gap: 20px; padding: 24px 20px; }
+      .hp-step .hp-icon { margin-bottom: 0; flex-shrink: 0; }
+      .hp-step .hp-num { margin-bottom: 0; position: absolute; top: 12px; right: 16px; }
+      .hp-head h2 { font-size: 30px; }
+      .hp-conclusion p { font-size: 22px; }
+    }
+
     /* ===== SOLUTION FINDER ===== */
     .solution-finder { background: var(--c-n7); padding: 80px 0; }
     .sf-card {
@@ -960,9 +1045,11 @@
 
   <!-- ===== HERO ===== -->
   <section class="hero" id="hero">
-    <!-- Background media: full-bleed image (swap to <video> for muted autoplay later) -->
+    <!-- Background media: muted autoplay loop video with image fallback -->
     <div class="hero-bg">
-      <img src="assets/hero-facility.jpg" alt="GXON Grain Drying Facility">
+      <video autoplay muted loop playsinline poster="assets/hero-facility.jpg">
+        <source src="assets/hero-video.mp4" type="video/mp4">
+      </video>
     </div>
     <!-- Dark gradient overlay for text readability -->
     <div class="hero-overlay"></div>
@@ -972,11 +1059,11 @@
       <div class="hero-content reveal">
         <div class="hero-tag">
           <span class="pulse"></span>
-          Global Grain Drying Solution Provider
+          GXON gives grain operators control over drying
         </div>
-        <h1>Complete Grain Drying <span class="accent">& Post-Harvest</span> Solutions</h1>
+        <h1>Dry Grain. Protect Value. <span class="accent">Keep Harvest Moving.</span></h1>
         <p class="hero-sub">
-          GXON AGRO designs and manufactures grain drying systems from mobile dryers to industrial continuous drying towers, helping farmers, rice mills and grain processors secure better harvest quality worldwide.
+          Grain drying solutions built for harvest conditions where time, weather and grain quality matter. Wet grain can't wait, and harvest can't depend on the weather.
         </p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-cta btn-lg">Get My Drying Solution</a>
@@ -1023,6 +1110,56 @@
     </div>
   </section>
 
+  <!-- ===== HARVEST PROBLEM ===== -->
+  <section class="harvest-problem">
+    <div class="hp-head reveal">
+      <div class="eyebrow">THE HARVEST CHALLENGE</div>
+      <h2>When Grain Can't Wait, <span class="accent">Drying Can't Either.</span></h2>
+      <p class="hp-desc">After harvest, high-moisture grain needs to be dried quickly. Delays caused by slow natural drying, rain and humidity can increase losses, reduce grain quality and lower market value.</p>
+    </div>
+    <div class="hp-flow reveal">
+      <div class="hp-step s1">
+        <div class="hp-num">01</div>
+        <div class="hp-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
+        </div>
+        <div class="hp-label">Harvest</div>
+        <div class="hp-sub">Freshly harvested grain arrives wet from the field</div>
+      </div>
+      <div class="hp-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="hp-step s2">
+        <div class="hp-num">02</div>
+        <div class="hp-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+        </div>
+        <div class="hp-label">High Moisture</div>
+        <div class="hp-sub">Grain isn't ready for storage or sale at 18–28% moisture</div>
+      </div>
+      <div class="hp-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="hp-step s3">
+        <div class="hp-num">03</div>
+        <div class="hp-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16.2A4.5 4.5 0 0 0 17.5 8h-1.8A7 7 0 1 0 4 14.9"/><line x1="8" y1="19" x2="8" y2="21"/><line x1="8" y1="13" x2="8" y2="15"/><line x1="16" y1="19" x2="16" y2="21"/><line x1="16" y1="13" x2="16" y2="15"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="12" y1="15" x2="12" y2="17"/></svg>
+        </div>
+        <div class="hp-label">Weather &amp; Waiting</div>
+        <div class="hp-sub">Slow natural drying. Rain, humidity and unstable weather extend exposure</div>
+      </div>
+      <div class="hp-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
+      <div class="hp-step s4">
+        <div class="hp-num">04</div>
+        <div class="hp-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="hp-label">Loss of Value</div>
+        <div class="hp-sub">Quality risk, weight loss, storage risk — and lower selling price</div>
+      </div>
+    </div>
+    <div class="hp-conclusion reveal">
+      <p>Mechanical drying gives you control when weather doesn't.</p>
+      <a href="#solutions" class="btn btn-primary">See How Mechanical Drying Helps →</a>
+    </div>
+  </section>
+
   <!-- ===== SOLUTION FINDER ===== -->
   <section class="solution-finder" id="solutions">
     <div class="sf-card">
@@ -1036,40 +1173,40 @@
           <div class="sf-step active">
             <div class="sf-step-label"><span class="sf-step-num">1</span> What grain do you want to dry?</div>
             <div class="sf-options sf-multi">
-              <button class="sf-opt" data-value="Rice" onclick="toggleMultiOption(this, 'grain')">Rice</button>
-              <button class="sf-opt" data-value="Maize" onclick="toggleMultiOption(this, 'grain')">Maize</button>
-              <button class="sf-opt" data-value="Wheat" onclick="toggleMultiOption(this, 'grain')">Wheat</button>
-              <button class="sf-opt" data-value="Soybean" onclick="toggleMultiOption(this, 'grain')">Soybean</button>
+              <button class="sf-opt" data-value="Rice" data-action="multi" data-group="grain">Rice</button>
+              <button class="sf-opt" data-value="Maize" data-action="multi" data-group="grain">Maize</button>
+              <button class="sf-opt" data-value="Wheat" data-action="multi" data-group="grain">Wheat</button>
+              <button class="sf-opt" data-value="Soybean" data-action="multi" data-group="grain">Soybean</button>
             </div>
           </div>
           <div class="sf-step">
             <div class="sf-step-label"><span class="sf-step-num">2</span> How many tons per day?</div>
             <div class="sf-options">
-              <button class="sf-opt" data-value="lt20" onclick="selectOption(this); syncToCTA('capacity', 'lt20', '&lt;20 tons/day')">&lt;20 tons/day</button>
-              <button class="sf-opt" data-value="20-50" onclick="selectOption(this); syncToCTA('capacity', '20-50', '20–50 tons/day')">20–50 tons/day</button>
-              <button class="sf-opt" data-value="50-100" onclick="selectOption(this); syncToCTA('capacity', '50-100', '50–100 tons/day')">50–100 tons/day</button>
-              <button class="sf-opt" data-value="gt100" onclick="selectOption(this); syncToCTA('capacity', 'gt100', '100+ tons/day')">100+ tons/day</button>
+              <button class="sf-opt" data-value="lt20" data-action="single" data-field="capacity" data-display="&lt;20 tons/day">&lt;20 tons/day</button>
+              <button class="sf-opt" data-value="20-50" data-action="single" data-field="capacity" data-display="20–50 tons/day">20–50 tons/day</button>
+              <button class="sf-opt" data-value="50-100" data-action="single" data-field="capacity" data-display="50–100 tons/day">50–100 tons/day</button>
+              <button class="sf-opt" data-value="gt100" data-action="single" data-field="capacity" data-display="100+ tons/day">100+ tons/day</button>
             </div>
           </div>
           <div class="sf-step">
             <div class="sf-step-label"><span class="sf-step-num">3</span> What fuel is available?</div>
             <div class="sf-options">
-              <button class="sf-opt" data-value="Diesel" onclick="selectOption(this); syncToCTA('fuel', 'Diesel', 'Diesel')">Diesel</button>
-              <button class="sf-opt" data-value="RiceHusk" onclick="selectOption(this); syncToCTA('fuel', 'RiceHusk', 'Rice Husk')">Rice Husk</button>
-              <button class="sf-opt" data-value="Biomass" onclick="selectOption(this); syncToCTA('fuel', 'Biomass', 'Biomass')">Biomass</button>
-              <button class="sf-opt" data-value="NaturalGas" onclick="selectOption(this); syncToCTA('fuel', 'NaturalGas', 'Natural Gas')">Natural Gas</button>
-              <button class="sf-opt" data-value="Wood" onclick="selectOption(this); syncToCTA('fuel', 'Wood', 'Wood')">Wood</button>
-              <button class="sf-opt" data-value="Coal" onclick="selectOption(this); syncToCTA('fuel', 'Coal', 'Coal')">Coal</button>
+              <button class="sf-opt" data-value="Diesel" data-action="single" data-field="fuel" data-display="Diesel">Diesel</button>
+              <button class="sf-opt" data-value="RiceHusk" data-action="single" data-field="fuel" data-display="Rice Husk">Rice Husk</button>
+              <button class="sf-opt" data-value="Biomass" data-action="single" data-field="fuel" data-display="Biomass">Biomass</button>
+              <button class="sf-opt" data-value="NaturalGas" data-action="single" data-field="fuel" data-display="Natural Gas">Natural Gas</button>
+              <button class="sf-opt" data-value="Wood" data-action="single" data-field="fuel" data-display="Wood">Wood</button>
+              <button class="sf-opt" data-value="Coal" data-action="single" data-field="fuel" data-display="Coal">Coal</button>
             </div>
           </div>
         </div>
         <div class="sf-result">
           <div class="sf-result-info">
             <div class="label">STEP 4 — YOUR RECOMMENDED GRAIN DRYING SOLUTION</div>
-            <div class="model">GXON BD-30T Batch Grain Dryer</div>
-            <div class="meta">30 TPD · Rice Husk Furnace · Recirculating Type · Rice Drying</div>
+            <div class="model" id="sf-result-model">Find the best fit for your project</div>
+            <div class="meta" id="sf-result-meta">Select your grain, capacity and fuel to get a tailored recommendation</div>
           </div>
-          <button type="button" class="btn btn-cta" onclick="submitSolutionFinder()">Check my drying solution</button>
+          <button type="button" class="btn btn-cta" id="sf-submit">Check my drying solution</button>
         </div>
       </div>
     </div>
@@ -1297,7 +1434,7 @@
         </div>
         <div class="project-card reveal">
           <div class="pj-img">
-            <img src="assets/project-kenya.jpg" alt="West Africa Tropical Multi-Grain Solution">
+            <img src="assets/product-G-SR-32-field.jpg" alt="West Africa Tropical Multi-Grain Solution">
             <div class="pj-flag">🇳🇬 West Africa</div>
           </div>
           <div class="pj-body">
@@ -1313,7 +1450,7 @@
         </div>
         <div class="project-card reveal">
           <div class="pj-img">
-            <img src="assets/project-philippines.jpg" alt="South America Large-Scale Drying Solution">
+            <img src="assets/product-G-CT-120.jpg" alt="South America Large-Scale Drying Solution">
             <div class="pj-flag">🇧🇷 South America</div>
           </div>
           <div class="pj-body">
@@ -1329,7 +1466,7 @@
         </div>
         <div class="project-card reveal">
           <div class="pj-img">
-            <img src="assets/project-bangladesh.jpg" alt="Central Asia Wheat Belt Solution">
+            <img src="assets/product-G-CT-200-pellet.jpg" alt="Central Asia Wheat Belt Solution">
             <div class="pj-flag">🇰🇿 Central Asia</div>
           </div>
           <div class="pj-body">
@@ -1421,7 +1558,7 @@
                 </button>
                 <div class="dropdown-menu" role="listbox">
                   <div class="dd-search">
-                    <input type="text" class="dd-search-input" placeholder="Search country..." oninput="filterCountryDropdown(this)">
+                    <input type="text" class="dd-search-input" placeholder="Search country..." data-action="filter-country">
                   </div>
                   <div class="dd-options" id="country-options">
                     <div class="dd-group-label">Southeast Asia</div>
@@ -1709,6 +1846,62 @@
       var siblings = btn.parentElement.querySelectorAll('.sf-opt');
       siblings.forEach(function(s) { s.classList.remove('selected'); });
       btn.classList.add('selected');
+      updateRecommendation();
+    }
+
+    // Dynamic recommendation engine based on selections
+    function updateRecommendation() {
+      var modelEl = document.getElementById('sf-result-model');
+      var metaEl = document.getElementById('sf-result-meta');
+      if (!modelEl || !metaEl) return;
+
+      var steps = document.querySelectorAll('.sf-step');
+      var capacitySel = steps[1] ? steps[1].querySelector('.sf-opt.selected') : null;
+      var fuelSel = steps[2] ? steps[2].querySelector('.sf-opt.selected') : null;
+      var capacity = capacitySel ? capacitySel.getAttribute('data-value') : '';
+      var fuel = fuelSel ? fuelSel.getAttribute('data-display') : '';
+      var grains = selectedGrains.length > 0 ? selectedGrains.join(', ') : '';
+
+      // No capacity selected yet — show default
+      if (!capacity) {
+        modelEl.textContent = 'Find the best fit for your project';
+        metaEl.textContent = 'Select your grain, capacity and fuel to get a tailored recommendation';
+        return;
+      }
+
+      // Recommend model based on capacity
+      var model = '';
+      var type = '';
+      var tpd = '';
+
+      if (capacity === 'lt20') {
+        model = 'GXON G-MR-5 Mobile Batch Dryer';
+        type = 'Mobile Recirculating';
+        tpd = '10–20 TPD';
+      } else if (capacity === '20-50') {
+        model = 'GXON G-SR-10 Batch Grain Dryer';
+        type = 'Fixed Batch Recirculating';
+        tpd = '20–40 TPD';
+      } else if (capacity === '50-100') {
+        model = 'GXON G-SR-30 Batch Grain Dryer';
+        type = 'Fixed Batch Recirculating';
+        tpd = '50–80 TPD';
+      } else if (capacity === 'gt100') {
+        model = 'GXON G-CT-200 Continuous Drying Tower';
+        type = 'Continuous Tower';
+        tpd = '200 TPD';
+      }
+
+      modelEl.textContent = model;
+
+      // Build meta string
+      var metaParts = [];
+      if (tpd) metaParts.push(tpd);
+      if (fuel) metaParts.push(fuel + ' Heating');
+      if (type) metaParts.push(type);
+      if (grains) metaParts.push('For: ' + grains);
+
+      metaEl.textContent = metaParts.length > 0 ? metaParts.join(' · ') : '';
     }
 
     // Sync Solution Finder selection to CTA dropdown
@@ -1868,6 +2061,7 @@
           selectedGrains = selectedGrains.filter(function(g) { return g !== val; });
         }
         syncGrainsToCTA();
+        updateRecommendation();
       }
     }
 
@@ -1960,7 +2154,33 @@
         }
       }
     }
-    window.filterCountryDropdown = filterCountryDropdown;
+
+    /* ---------- Event delegation for data-action elements ----------
+     * Replaces inline onclick/oninput attributes per AGENTS.md rule.
+     * Works with PJAX-loaded content without re-binding.
+     */
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest ? e.target.closest('[data-action]') : null;
+      if (!btn) return;
+      var action = btn.getAttribute('data-action');
+      if (action === 'multi') {
+        toggleMultiOption(btn, btn.getAttribute('data-group') || '');
+      } else if (action === 'single') {
+        selectOption(btn);
+        syncToCTA(btn.getAttribute('data-field'), btn.getAttribute('data-value'), btn.getAttribute('data-display'));
+      }
+    });
+
+    document.addEventListener('input', function(e) {
+      var el = e.target.closest ? e.target.closest('[data-action="filter-country"]') : null;
+      if (el) filterCountryDropdown(el);
+    });
+
+    // Submit button
+    var sfSubmit = document.getElementById('sf-submit');
+    if (sfSubmit) {
+      sfSubmit.addEventListener('click', submitSolutionFinder);
+    }
 
     function closeOtherMenus(e) {
       if (e) {
