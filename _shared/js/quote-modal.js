@@ -152,8 +152,16 @@
     '.qm-success-icon{font-size:48px;margin-bottom:12px}' +
     '.qm-success h3{font-size:22px;color:var(--c-primary);margin-bottom:10px}' +
     '.qm-success p{font-size:15px;color:var(--c-n2);margin-bottom:24px;max-width:320px;margin-left:auto;margin-right:auto}' +
-    '.qm-success-btn{background:var(--c-primary);color:#fff;border:none;border-radius:var(--r-md);padding:12px 28px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit}' +
-    '.qm-success-btn:hover{background:var(--c-primary-dark)}' +
+    '.qm-receipt{background:var(--c-silver-bg);border:1px solid var(--c-n7);border-radius:var(--r-md);padding:14px 16px;margin:0 auto 24px;max-width:360px;text-align:left}' +
+    '.qm-receipt .qm-cr-row{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--c-n7);font-size:14px;line-height:1.4}' +
+    '.qm-receipt .qm-cr-row:last-child{border-bottom:none}' +
+    '.qm-receipt .qm-cr-k{font-weight:700;color:var(--c-n2);flex-shrink:0}' +
+    '.qm-receipt .qm-cr-v{color:var(--c-n1);text-align:right;word-break:break-word}' +
+    '.qm-success-actions{display:flex;gap:12px;justify-content:center;align-items:center}' +
+    '.qm-success-btn{background:var(--c-primary);color:#fff;border:none;border-radius:var(--r-md);padding:12px 28px;font-size:15px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s}' +
+    '.qm-success-btn:hover{background:var(--c-primary-dark);transform:translateY(-2px)}' +
+    '.qm-success-wa{width:48px;height:48px;border-radius:var(--r-md);background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;transition:all .2s;flex-shrink:0;text-decoration:none}' +
+    '.qm-success-wa:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(37,211,102,0.4)}' +
     /* responsive */
     '@media(max-width:520px){' +
       '.qm-overlay{padding:0;align-items:flex-end}' +
@@ -236,9 +244,17 @@
             '</form>' +
             '<div class="qm-success" id="qmSuccess" style="display:none">' +
               '<div class="qm-success-icon">&#9989;</div>' +
-              '<h3>Request Sent!</h3>' +
+              '<h3 id="qmSuccessTitle">Request Sent!</h3>' +
               '<p>Thank you, <span id="qmSuccessName"></span>. Our team will contact you within 24 hours.</p>' +
-              '<button class="qm-success-btn" id="qmSuccessClose">Done</button>' +
+              '<div class="qm-receipt" id="qmReceipt" style="display:none">' +
+                '<div id="qmReceiptRows"></div>' +
+              '</div>' +
+              '<div class="qm-success-actions">' +
+                '<button class="qm-success-btn" id="qmSuccessClose">Done</button>' +
+                '<a class="qm-success-wa" id="qmSuccessWa" target="_blank" rel="noopener" title="Send via WhatsApp" href="#">' +
+                  '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M.05 24l1.69-6.16a11.87 11.87 0 0 1-1.59-5.95C.15 5.32 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.76 11.76 0 0 1 3.48 8.41c0 6.56-5.35 11.89-11.91 11.89a11.96 11.96 0 0 1-5.7-1.45L.05 24zM6.6 20.13c1.68.99 3.28 1.59 5.45 1.59 5.45 0 9.89-4.43 9.89-9.87a9.82 9.82 0 0 0-2.89-6.99 9.82 9.82 0 0 0-6.98-2.9c-5.46 0-9.9 4.43-9.9 9.87 0 2.28.67 3.99 1.79 5.78l-.99 3.62 3.63-.95z"/></svg>' +
+                '</a>' +
+              '</div>' +
             '</div>' +
           '</div>' +
         '</div>' +
@@ -285,6 +301,9 @@
     var overlay = state.overlay;
     overlay.querySelector('#qmClose').addEventListener('click', closeModal);
     overlay.querySelector('#qmSuccessClose').addEventListener('click', closeModal);
+    overlay.querySelector('#qmSuccessWa').addEventListener('click', function () {
+      setTimeout(closeModal, 300);
+    });
     overlay.addEventListener('click', function (e) {
       if (e.target === overlay) closeModal();
     });
@@ -466,11 +485,90 @@
     } else {
       /* Web submit — requires validation */
       if (!validate()) return;
-      state.overlay.querySelector('#qmForm').style.display = 'none';
-      var success = state.overlay.querySelector('#qmSuccess');
-      success.style.display = 'block';
-      state.overlay.querySelector('#qmSuccessName').textContent = name;
+      var fields = [
+        { label: 'Name', value: name },
+        { label: 'Country', value: country },
+        { label: 'WhatsApp', value: wa }
+      ];
+      if (message) fields.push({ label: 'Message', value: message });
+      if (p.name) fields.unshift({ label: 'Product', value: p.name });
+      if (p.model) fields.unshift({ label: 'Model', value: p.model });
+      if (p.capacity) fields.unshift({ label: 'Capacity', value: p.capacity });
+      showSuccess(fields, name);
     }
+  }
+
+  /* ---------- Show success / confirmation view ----------
+   * fields: array of { label, value } — only non-empty values are shown.
+   * name:   optional name to personalise the success message.
+   */
+  function showSuccess(fields, name) {
+    var overlay = state.overlay;
+    /* Hide form + product info, show success view */
+    overlay.querySelector('#qmForm').style.display = 'none';
+    overlay.querySelector('#qmProductInfo').style.display = 'none';
+    var success = overlay.querySelector('#qmSuccess');
+    success.style.display = 'block';
+
+    /* Title + personalised message */
+    overlay.querySelector('#qmSuccessTitle').textContent = 'Request Received';
+    overlay.querySelector('#qmSuccessName').textContent = name || '';
+
+    /* Build receipt rows (only non-empty values) */
+    var receiptHTML = '';
+    for (var i = 0; i < fields.length; i++) {
+      if (fields[i].value) {
+        receiptHTML += '<div class="qm-cr-row"><span class="qm-cr-k">' +
+          escapeHTML(fields[i].label) + '</span><span class="qm-cr-v">' +
+          escapeHTML(fields[i].value) + '</span></div>';
+      }
+    }
+    var receipt = overlay.querySelector('#qmReceipt');
+    var receiptRows = overlay.querySelector('#qmReceiptRows');
+    if (receiptHTML) {
+      receiptRows.innerHTML = receiptHTML;
+      receipt.style.display = 'block';
+    } else {
+      receipt.style.display = 'none';
+    }
+
+    /* Build WhatsApp pre-filled message from the same fields */
+    var waText = 'Hello GXON AGRO,\n\nI\'d like to request a quote.\n\n';
+    for (var j = 0; j < fields.length; j++) {
+      if (fields[j].value) {
+        waText += '\u2022 ' + fields[j].label + ': ' + fields[j].value + '\n';
+      }
+    }
+    waText += '\nPlease contact me to discuss the right drying setup.';
+    var waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(waText);
+    overlay.querySelector('#qmSuccessWa').href = waUrl;
+
+    /* Ensure modal is open */
+    overlay.classList.add('qm-open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  /* ---------- Public API: showConfirmation ----------
+   * Called by page-level forms (homepage CTA, contact page) after collecting
+   * their own field data. Opens the modal directly in the success/confirmation
+   * view with a receipt of submitted info + Done button + WA button.
+   *
+   * Usage:
+   *   window.GXONQuote.showConfirmation([
+   *     { label: 'Country', value: 'Bangladesh' },
+   *     { label: 'Crop',    value: 'Rice' },
+   *     ...
+   *   ]);
+   */
+  function showConfirmation(fields) {
+    if (!state.overlay) init();
+    if (!state.overlay) return;
+    /* Reset form views (in case modal was previously used as a form) */
+    state.overlay.querySelector('#qmForm').style.display = '';
+    state.overlay.querySelector('#qmSuccess').style.display = 'none';
+    state.overlay.querySelector('#qmProductInfo').style.display = 'none';
+    /* Now show success/confirmation view */
+    showSuccess(fields || [], '');
   }
 
   /* ---------- Utils ---------- */
@@ -512,6 +610,12 @@
     injectCSS();
     injectModal();
   }
+
+  /* ---------- Public API ---------- */
+  window.GXONQuote = {
+    showConfirmation: showConfirmation,
+    WHATSAPP_NUMBER: WHATSAPP_NUMBER
+  };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);

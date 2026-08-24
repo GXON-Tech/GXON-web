@@ -374,7 +374,8 @@
     .hero-bg img,
     .hero-bg video {
       width: 100%; height: 100%; object-fit: cover; display: block;
-      filter: saturate(0.45) brightness(0.86) contrast(1.14) hue-rotate(185deg);
+      /* Neutral darkening — no hue-rotate so machine green stays true. */
+      filter: brightness(0.62) contrast(1.06) saturate(0.90);
     }
     /* Cool-toned gradient overlay — dark engineering gray for text readability */
     .hero-overlay {
@@ -570,7 +571,7 @@
       box-shadow: var(--sh-lg); border: 1px solid var(--c-n6);
     }
     .sf-steps {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 32px;
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 32px;
     }
     .sf-step { position: relative; }
     .sf-step-label {
@@ -608,6 +609,7 @@
     .sf-result-info .label { font-size: 12px; color: var(--c-n3); margin-bottom: 4px; }
     .sf-result-info .model { font-family: var(--font-heading); font-size: 24px; font-weight: 700; color: var(--c-primary); }
     .sf-result-info .meta { font-size: 13px; color: var(--c-n3); margin-top: 4px; }
+    .sf-result-actions { display: flex; flex-direction: column; gap: 10px; align-items: stretch; flex-shrink: 0; }
 
     /* ===== PRODUCTS ===== */
     .product-grid {
@@ -760,6 +762,10 @@
       box-shadow: var(--sh-lg); border: 1px solid var(--c-n6);
     }
     .cta-form h3 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+    .dropdown-trigger.invalid,
+    .form-input.invalid { border-color: var(--c-error) !important; }
+    .form-err { color: var(--c-error); font-size: 13px; margin-top: 4px; display: none; }
+    .form-err.show { display: block; }
     .cta-form .form-sub { font-size: 13px; color: var(--c-n3); margin-bottom: 24px; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
     .form-group { margin-bottom: 16px; }
@@ -1059,20 +1065,20 @@
       <div class="hero-content reveal">
         <div class="hero-tag">
           <span class="pulse"></span>
-          GXON gives grain operators control over drying
+          GXON GRAIN DRYING SYSTEMS
         </div>
         <h1>Dry Grain. Protect Value. <span class="accent">Keep Harvest Moving.</span></h1>
         <p class="hero-sub">
-          Grain drying solutions built for harvest conditions where time, weather and grain quality matter. Wet grain can't wait, and harvest can't depend on the weather.
+          From flexible mobile drying to high-capacity continuous systems, GXON helps you take control of grain drying when time, weather and grain quality matter most.
         </p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-cta btn-lg">Get My Drying Solution</a>
-          <a href="#products" class="btn btn-outline btn-lg" style="color:#fff;border-color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);backdrop-filter:blur(8px);">Explore Products</a>
+          <a href="#solutions" class="btn btn-cta btn-lg">Find My Drying Solution →</a>
+          <a href="#products" class="btn btn-outline btn-lg" style="color:#fff;border-color:rgba(255,255,255,0.4);background:rgba(255,255,255,0.1);backdrop-filter:blur(8px);">Explore Products →</a>
         </div>
         <div class="hero-keywords">
-          <span class="kw-pill"><span class="dot"></span> Mobile Dryer</span>
-          <span class="kw-pill"><span class="dot"></span> Batch Dryer</span>
-          <span class="kw-pill"><span class="dot"></span> Continuous Dryer</span>
+          <span class="kw-pill"><span class="dot"></span> Mobile Drying</span>
+          <span class="kw-pill"><span class="dot"></span> Batch Drying</span>
+          <span class="kw-pill"><span class="dot"></span> Continuous Drying</span>
           <span class="kw-pill"><span class="dot"></span> Multi-Fuel Heating</span>
         </div>
       </div>
@@ -1124,7 +1130,7 @@
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
         </div>
         <div class="hp-label">Harvest</div>
-        <div class="hp-sub">Freshly harvested grain arrives wet from the field</div>
+        <div class="hp-sub">Freshly harvested grain arrives wet from the field.</div>
       </div>
       <div class="hp-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
       <div class="hp-step s2">
@@ -1133,7 +1139,7 @@
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
         </div>
         <div class="hp-label">High Moisture</div>
-        <div class="hp-sub">Grain isn't ready for storage or sale at 18–28% moisture</div>
+        <div class="hp-sub">Grain isn't ready for safe storage or sale.</div>
       </div>
       <div class="hp-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
       <div class="hp-step s3">
@@ -1142,7 +1148,7 @@
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 16.2A4.5 4.5 0 0 0 17.5 8h-1.8A7 7 0 1 0 4 14.9"/><line x1="8" y1="19" x2="8" y2="21"/><line x1="8" y1="13" x2="8" y2="15"/><line x1="16" y1="19" x2="16" y2="21"/><line x1="16" y1="13" x2="16" y2="15"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="12" y1="15" x2="12" y2="17"/></svg>
         </div>
         <div class="hp-label">Weather &amp; Waiting</div>
-        <div class="hp-sub">Slow natural drying. Rain, humidity and unstable weather extend exposure</div>
+        <div class="hp-sub">Slow natural drying, rain and humidity extend exposure.</div>
       </div>
       <div class="hp-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></div>
       <div class="hp-step s4">
@@ -1151,12 +1157,13 @@
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
         </div>
         <div class="hp-label">Loss of Value</div>
-        <div class="hp-sub">Quality risk, weight loss, storage risk — and lower selling price</div>
+        <div class="hp-sub">Quality loss, weight loss, storage risk — and lower market value.</div>
       </div>
     </div>
     <div class="hp-conclusion reveal">
       <p>Mechanical drying gives you control when weather doesn't.</p>
-      <a href="#solutions" class="btn btn-primary">See How Mechanical Drying Helps →</a>
+      <p style="font-size: 16px; font-weight: 400; color: var(--c-n2); margin: 8px 0 24px;">Dry when you need to. Protect the value of every harvest.</p>
+      <a href="#solutions" class="btn btn-primary">Explore Your Drying Options →</a>
     </div>
   </section>
 
@@ -1165,31 +1172,41 @@
     <div class="sf-card">
       <div class="section-head reveal">
         <div class="eyebrow">CORE DIFFERENTIATOR</div>
-        <h2>Find Your Drying Solution in 30 Seconds</h2>
-        <p class="desc">Tell us your crop, capacity and fuel preference — we'll recommend the right grain drying system for your needs.</p>
+        <h2>Find the Right Drying Setup for Your Operation.</h2>
+        <p class="desc">Answer four quick questions and we'll narrow down the drying setup, capacity and fuel configuration that best fits your operation.</p>
       </div>
       <div class="sf-box reveal">
         <div class="sf-steps">
           <div class="sf-step active">
-            <div class="sf-step-label"><span class="sf-step-num">1</span> What grain do you want to dry?</div>
+            <div class="sf-step-label"><span class="sf-step-num">1</span> What are you drying?</div>
             <div class="sf-options sf-multi">
-              <button class="sf-opt" data-value="Rice" data-action="multi" data-group="grain">Rice</button>
+              <button class="sf-opt" data-value="Rice" data-action="multi" data-group="grain">Rice / Paddy</button>
               <button class="sf-opt" data-value="Maize" data-action="multi" data-group="grain">Maize</button>
               <button class="sf-opt" data-value="Wheat" data-action="multi" data-group="grain">Wheat</button>
               <button class="sf-opt" data-value="Soybean" data-action="multi" data-group="grain">Soybean</button>
+              <button class="sf-opt" data-value="Other" data-action="multi" data-group="grain">Other</button>
             </div>
           </div>
           <div class="sf-step">
-            <div class="sf-step-label"><span class="sf-step-num">2</span> How many tons per day?</div>
+            <div class="sf-step-label"><span class="sf-step-num">2</span> How much grain do you need to dry?</div>
             <div class="sf-options">
-              <button class="sf-opt" data-value="lt20" data-action="single" data-field="capacity" data-display="&lt;20 tons/day">&lt;20 tons/day</button>
-              <button class="sf-opt" data-value="20-50" data-action="single" data-field="capacity" data-display="20–50 tons/day">20–50 tons/day</button>
-              <button class="sf-opt" data-value="50-100" data-action="single" data-field="capacity" data-display="50–100 tons/day">50–100 tons/day</button>
-              <button class="sf-opt" data-value="gt100" data-action="single" data-field="capacity" data-display="100+ tons/day">100+ tons/day</button>
+              <button class="sf-opt" data-value="lt20" data-action="single" data-field="capacity" data-display="&lt;20 TPD">&lt;20 TPD</button>
+              <button class="sf-opt" data-value="20-50" data-action="single" data-field="capacity" data-display="20–50 TPD">20–50 TPD</button>
+              <button class="sf-opt" data-value="50-100" data-action="single" data-field="capacity" data-display="50–100 TPD">50–100 TPD</button>
+              <button class="sf-opt" data-value="100-200" data-action="single" data-field="capacity" data-display="100–200 TPD">100–200 TPD</button>
+              <button class="sf-opt" data-value="200plus" data-action="single" data-field="capacity" data-display="200+ TPD">200+ TPD</button>
             </div>
           </div>
           <div class="sf-step">
-            <div class="sf-step-label"><span class="sf-step-num">3</span> What fuel is available?</div>
+            <div class="sf-step-label"><span class="sf-step-num">3</span> Where will the dryer operate?</div>
+            <div class="sf-options">
+              <button class="sf-opt" data-value="mobile" data-action="single" data-field="location" data-display="Multiple Locations / Near the Harvest">Multiple Locations / Near the Harvest</button>
+              <button class="sf-opt" data-value="fixed" data-action="single" data-field="location" data-display="Fixed Facility">Fixed Facility</button>
+            </div>
+            <div class="sf-step-hint" style="font-size:12px;color:var(--c-n3);margin-top:8px;line-height:1.5;">Multiple locations suits farms, seasonal drying and drying-service operations. Fixed facility suits mills, grain collection centers and large processing facilities.</div>
+          </div>
+          <div class="sf-step">
+            <div class="sf-step-label"><span class="sf-step-num">4</span> What fuel is available?</div>
             <div class="sf-options">
               <button class="sf-opt" data-value="Diesel" data-action="single" data-field="fuel" data-display="Diesel">Diesel</button>
               <button class="sf-opt" data-value="RiceHusk" data-action="single" data-field="fuel" data-display="Rice Husk">Rice Husk</button>
@@ -1202,11 +1219,14 @@
         </div>
         <div class="sf-result">
           <div class="sf-result-info">
-            <div class="label">STEP 4 — YOUR RECOMMENDED GRAIN DRYING SOLUTION</div>
+            <div class="label">YOUR RECOMMENDED DRYING SETUP</div>
             <div class="model" id="sf-result-model">Find the best fit for your project</div>
-            <div class="meta" id="sf-result-meta">Select your grain, capacity and fuel to get a tailored recommendation</div>
+            <div class="meta" id="sf-result-meta">Select your grain, capacity, operating location and fuel to get a tailored recommendation.</div>
           </div>
-          <button type="button" class="btn btn-cta" id="sf-submit">Check my drying solution</button>
+          <div class="sf-result-actions">
+            <button type="button" class="btn btn-cta" id="sf-submit">View Recommended Solution →</button>
+            <a href="#contact" class="btn btn-outline" style="text-align:center;">Talk to a Drying Specialist →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -1216,61 +1236,61 @@
   <section class="block" id="products">
     <div class="container">
       <div class="section-head reveal">
-        <div class="eyebrow">PRODUCT PORTFOLIO</div>
-        <h2>Grain Drying Equipment by Engineering Logic</h2>
-        <p class="desc">From mobile farm dryers to industrial continuous drying towers — engineered for every capacity and application.</p>
+        <div class="eyebrow">DRYING SOLUTIONS</div>
+        <h2>The Right Dryer for Your Operation.</h2>
+        <p class="desc">Different operations need different drying setups. GXON provides flexible mobile and batch systems for distributed harvest operations, plus continuous drying towers for high-volume facilities.</p>
       </div>
       <div class="product-grid">
         <div class="product-card reveal">
-          <div class="pc-img"><img src="assets/product-mobile.jpg" alt="Mobile Batch Dryer"></div>
+          <div class="pc-img"><img src="assets/product-mobile.jpg" alt="Mobile Batch Grain Dryer"></div>
           <div class="pc-body">
-            <span class="pc-tag">MOBILE</span>
-            <div class="pc-title">Mobile Batch Grain Dryer</div>
-            <div class="pc-desc">Portable drying solution for farms and small-scale operations. Tractor-driven, easy relocation.</div>
+            <span class="pc-tag">MOBILE DRYING</span>
+            <div class="pc-title">Dry Where Harvest Happens.</div>
+            <div class="pc-desc">Flexible drying for farms, multiple locations and drying-service operations.</div>
             <div class="pc-specs">
               <div class="pc-spec"><strong>5–20</strong>TPD</div>
               <div class="pc-spec"><strong>Diesel</strong>Fuel</div>
             </div>
-            <a href="pages/products.html#mobile" class="pc-link">View Details →</a>
+            <a href="pages/products.html#mobile" class="pc-link">Explore Mobile Dryers →</a>
           </div>
         </div>
         <div class="product-card reveal">
-          <div class="pc-img"><img src="assets/product-batch.jpg" alt="Fixed Batch Dryer"></div>
+          <div class="pc-img"><img src="assets/product-batch.jpg" alt="Fixed Batch Grain Dryer"></div>
           <div class="pc-body">
-            <span class="pc-tag">BATCH</span>
-            <div class="pc-title">Fixed Batch Grain Dryer</div>
-            <div class="pc-desc">Recirculating batch dryer for rice mills and grain traders. Multi-fuel compatible.</div>
+            <span class="pc-tag">BATCH DRYING</span>
+            <div class="pc-title">Flexible Drying for Smaller Operations.</div>
+            <div class="pc-desc">Controlled batch drying for farms, grain traders and rice mills that need reliable drying without a large continuous system.</div>
             <div class="pc-specs">
               <div class="pc-spec"><strong>5–30</strong>TPD</div>
               <div class="pc-spec"><strong>Multi-Fuel</strong>System</div>
             </div>
-            <a href="pages/products.html#batch" class="pc-link">View Details →</a>
+            <a href="pages/products.html#batch" class="pc-link">Explore Batch Dryers →</a>
           </div>
         </div>
         <div class="product-card reveal">
-          <div class="pc-img"><img src="assets/product-tower.jpg" alt="Continuous Dryer Tower"></div>
+          <div class="pc-img"><img src="assets/product-tower.jpg" alt="Continuous Drying Tower"></div>
           <div class="pc-body">
-            <span class="pc-tag">CONTINUOUS</span>
-            <div class="pc-title">Continuous Drying Tower</div>
-            <div class="pc-desc">Industrial-scale continuous drying tower for high-capacity grain processing centers.</div>
+            <span class="pc-tag">CONTINUOUS DRYING</span>
+            <div class="pc-title">Keep High-Volume Grain Moving.</div>
+            <div class="pc-desc">Continuous drying for mills, grain collection centers and large-scale grain operations.</div>
             <div class="pc-specs">
               <div class="pc-spec"><strong>100–500</strong>TPD</div>
               <div class="pc-spec"><strong>Multi-Fuel</strong>System</div>
             </div>
-            <a href="pages/products.html#continuous" class="pc-link">View Details →</a>
+            <a href="pages/products.html#continuous" class="pc-link">Explore Continuous Dryers →</a>
           </div>
         </div>
         <div class="product-card reveal">
           <div class="pc-img"><img src="assets/product-system.jpg" alt="Complete Grain System"></div>
           <div class="pc-body">
-            <span class="pc-tag">SYSTEM</span>
-            <div class="pc-title">Complete Grain System</div>
-            <div class="pc-desc">Full post-harvest system: cleaning, drying, handling, and storage in one integrated solution.</div>
+            <span class="pc-tag">INTEGRATED SYSTEM</span>
+            <div class="pc-title">From Harvest to Storage.</div>
+            <div class="pc-desc">Connect cleaning, drying, conveying and storage into one engineered post-harvest system.</div>
             <div class="pc-specs">
               <div class="pc-spec"><strong>Cleaning</strong>+ Conveying</div>
               <div class="pc-spec"><strong>+ Storage</strong>Turnkey</div>
             </div>
-            <a href="pages/products.html#system" class="pc-link">View Details →</a>
+            <a href="pages/products.html#system" class="pc-link">Explore Grain Systems →</a>
           </div>
         </div>
       </div>
@@ -1285,51 +1305,51 @@
     <div class="container">
       <div class="section-head reveal">
         <div class="eyebrow" style="color:var(--c-primary);">WHY GXON</div>
-        <h2>Engineering Trust Through Technology</h2>
-        <p class="desc">Six advantages that make GXON the preferred grain drying partner worldwide.</p>
+        <h2>Built Around Your Drying Reality.</h2>
+        <p class="desc">Your crop, climate, fuel supply and throughput are different. GXON engineers drying systems around the conditions you actually operate in.</p>
       </div>
       <div class="why-grid">
         <div class="why-card reveal">
           <div class="wc-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           </div>
-          <div class="wc-title">Multi-Fuel</div>
-          <div class="wc-desc">6 fuel types: diesel, biomass, rice husk, gas, wood, coal.</div>
+          <div class="wc-title">Control Drying, Not the Weather</div>
+          <div class="wc-desc">Reduce dependence on natural drying when harvest conditions change.</div>
         </div>
         <div class="why-card reveal">
           <div class="wc-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/><circle cx="6" cy="6" r="1" fill="currentColor"/><circle cx="6" cy="12" r="1" fill="currentColor"/><circle cx="6" cy="18" r="1" fill="currentColor"/></svg>
           </div>
           <div class="wc-title">5–500 TPD</div>
-          <div class="wc-desc">Mobile dryers to continuous towers, scalable for any size.</div>
+          <div class="wc-desc">From flexible mobile units to high-capacity continuous drying systems.</div>
         </div>
         <div class="why-card reveal">
           <div class="wc-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
           </div>
-          <div class="wc-title">Complete Solution</div>
-          <div class="wc-desc">Cleaning, drying, handling, storage — one supplier.</div>
+          <div class="wc-title">Fuel That Fits Your Market</div>
+          <div class="wc-desc">Diesel, gas, rice husk, biomass, wood and coal options.</div>
         </div>
         <div class="why-card reveal">
           <div class="wc-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6m0 0L8 4m4 4l4-4"/><path d="M3 12h18"/><path d="M12 22V12"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>
           </div>
-          <div class="wc-title">Engineering Design</div>
-          <div class="wc-desc">Custom-built for your grain, climate, and facility.</div>
+          <div class="wc-title">Engineered for Your Crop</div>
+          <div class="wc-desc">Drying configuration adapted to grain type, moisture and operating conditions.</div>
         </div>
         <div class="why-card reveal">
           <div class="wc-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           </div>
-          <div class="wc-title">30+ Countries</div>
-          <div class="wc-desc">Bangladesh, Kenya, Philippines, Nigeria, and more.</div>
+          <div class="wc-title">Built for Real Operations</div>
+          <div class="wc-desc">Designed around your site, infrastructure, throughput and harvest conditions.</div>
         </div>
         <div class="why-card reveal">
           <div class="wc-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 5-3.5 7.5-8.5 9.5C7.5 19.5 4 17 4 12V6l8-3 8 3v6z"/></svg>
           </div>
-          <div class="wc-title">Technical Support</div>
-          <div class="wc-desc">Installation, training, and lifetime spare parts.</div>
+          <div class="wc-title">Support Beyond the Machine</div>
+          <div class="wc-desc">Installation, commissioning, training and spare-parts support.</div>
         </div>
       </div>
     </div>
@@ -1339,38 +1359,39 @@
   <section class="block" id="technology" style="background:var(--c-n7);">
     <div class="container">
       <div class="section-head reveal">
-        <div class="eyebrow">MULTI-FUEL TECHNOLOGY</div>
-        <h2>Multi-Fuel Heating Technology</h2>
-        <p class="desc">Flexible fuel options to match local resources and reduce drying costs.</p>
+        <div class="eyebrow">FUEL FLEXIBILITY</div>
+        <h2>Choose the Fuel That Works for You.</h2>
+        <p class="desc">Fuel availability shouldn't limit your drying capacity. Choose from multiple heat sources based on local availability, operating cost and project conditions.</p>
       </div>
       <div class="tech-grid">
         <div class="tech-card reveal">
-          <img class="tc-fuel-img" src="assets/Diesel.webp" alt="Diesel burner with orange flame" onerror="this.style.display='none'">
+          <img class="tc-fuel-img" src="assets/Diesel.webp" alt="Diesel burner with orange flame">
           <div class="tc-title">Diesel</div>
         </div>
         <div class="tech-card reveal">
-          <img class="tc-fuel-img" src="assets/Natural_Gas.webp" alt="Natural gas blue flame" onerror="this.style.display='none'">
+          <img class="tc-fuel-img" src="assets/Natural_Gas.webp" alt="Natural gas blue flame">
           <div class="tc-title">Natural Gas</div>
         </div>
         <div class="tech-card reveal">
-          <img class="tc-fuel-img" src="assets/Rice_Husk.webp" alt="Rice husk pile" onerror="this.style.display='none'">
+          <img class="tc-fuel-img" src="assets/Rice_Husk.webp" alt="Rice husk pile">
           <div class="tc-title">Rice Husk</div>
         </div>
         <div class="tech-card reveal">
-          <img class="tc-fuel-img" src="assets/Biomass_Pellet.webp" alt="Biomass pellets" onerror="this.style.display='none'">
+          <img class="tc-fuel-img" src="assets/Biomass_Pellet.webp" alt="Biomass pellets">
           <div class="tc-title">Biomass Pellet</div>
         </div>
         <div class="tech-card reveal">
-          <img class="tc-fuel-img" src="assets/Wood.webp" alt="Wood pile" onerror="this.style.display='none'">
+          <img class="tc-fuel-img" src="assets/Wood.webp" alt="Wood pile">
           <div class="tc-title">Wood</div>
         </div>
         <div class="tech-card reveal">
-          <img class="tc-fuel-img" src="assets/Coal.webp" alt="Coal pile" onerror="this.style.display='none'">
+          <img class="tc-fuel-img" src="assets/Coal.webp" alt="Coal pile">
           <div class="tc-title">Coal</div>
         </div>
       </div>
-      <div style="text-align:center; margin-top:32px;">
-        <a href="#contact" class="btn btn-primary">Explore Technology →</a>
+      <p style="text-align:center; margin-top:24px; font-family:var(--font-heading); font-size:18px; font-weight:700; color:var(--c-dark);">Different markets. Different fuels. One drying goal.</p>
+      <div style="text-align:center; margin-top:24px;">
+        <a href="pages/technology.html" class="btn btn-primary">Explore Heating Technology →</a>
       </div>
     </div>
   </section>
@@ -1379,104 +1400,104 @@
   <section class="block projects-section" id="projects">
     <div class="container">
       <div class="section-head reveal">
-        <div class="eyebrow">REGIONAL SOLUTIONS</div>
-        <h2>Configured for Your Local Conditions</h2>
-        <p class="desc">From monsoon rice in South Asia to savanna maize in East Africa — GXON tailors dryer configuration, fuel type, and capacity to match your climate, grain, and infrastructure.</p>
+        <div class="eyebrow">APPLICATIONS AROUND THE WORLD</div>
+        <h2>Built Around Local Conditions.</h2>
+        <p class="desc">Grain, climate, fuel and infrastructure vary from market to market. GXON adapts the drying setup to the conditions on the ground.</p>
       </div>
       <div class="project-grid">
         <div class="project-card reveal">
           <div class="pj-img">
-            <img src="assets/project-bangladesh.jpg" alt="South Asia Rice Drying Solution">
+            <img src="assets/project-bangladesh.jpg" alt="South Asia rice drying application">
             <div class="pj-flag">🇧🇩 South Asia</div>
           </div>
           <div class="pj-body">
             <div class="pj-crop">RICE / PADDY</div>
-            <div class="pj-title">Monsoon Rice Solution</div>
-            <div class="pj-desc">High-humidity monsoon climate pushes paddy moisture above 25%. Configure rice husk furnace to turn mill waste into free drying fuel — cutting fuel costs by up to 60%.</div>
+            <div class="pj-title">Monsoon Rice Drying Setup</div>
+            <div class="pj-desc">High-humidity monsoon climate keeps paddy moisture high after harvest, risking quality loss during slow natural drying. A rice husk furnace can use mill waste as drying fuel.</div>
             <div class="pj-stats">
-              <div class="pj-stat"><div class="val">G-SR-30</div><div class="lbl">Recommended</div></div>
-              <div class="pj-stat"><div class="val">Husk Furnace</div><div class="lbl">Fuel Setup</div></div>
-              <div class="pj-stat"><div class="val">Dual-Use</div><div class="lbl">Key Feature</div></div>
+              <div class="pj-stat"><div class="val">G-SR-30</div><div class="lbl">Typical Setup</div></div>
+              <div class="pj-stat"><div class="val">Husk Furnace</div><div class="lbl">Fuel Config</div></div>
+              <div class="pj-stat"><div class="val">Dual-Use</div><div class="lbl">Suitable For</div></div>
             </div>
           </div>
         </div>
         <div class="project-card reveal">
           <div class="pj-img">
-            <img src="assets/project-philippines.jpg" alt="Southeast Asia Emergency Drying Solution">
+            <img src="assets/project-philippines.jpg" alt="Southeast Asia mobile drying application">
             <div class="pj-flag">🇵🇭 Southeast Asia</div>
           </div>
           <div class="pj-body">
             <div class="pj-crop">RICE & MAIZE</div>
-            <div class="pj-title">Typhoon-Season Response</div>
-            <div class="pj-desc">Typhoon-season harvest demands rapid deployment. Mobile dryer sets up in 30 minutes, switches between diesel and biomass fuel to match local availability and cost.</div>
+            <div class="pj-title">Typhoon-Season Mobile Drying</div>
+            <div class="pj-desc">Typhoon-season harvest demands rapid deployment. A mobile dryer can relocate between sites and switch between diesel and biomass fuel to match local availability.</div>
             <div class="pj-stats">
-              <div class="pj-stat"><div class="val">G-MR-5</div><div class="lbl">Recommended</div></div>
-              <div class="pj-stat"><div class="val">Dual Fuel</div><div class="lbl">Fuel Setup</div></div>
-              <div class="pj-stat"><div class="val">30-Min</div><div class="lbl">Key Feature</div></div>
+              <div class="pj-stat"><div class="val">G-MR-5</div><div class="lbl">Typical Setup</div></div>
+              <div class="pj-stat"><div class="val">Dual Fuel</div><div class="lbl">Fuel Config</div></div>
+              <div class="pj-stat"><div class="val">Mobile</div><div class="lbl">Suitable For</div></div>
             </div>
           </div>
         </div>
         <div class="project-card reveal">
           <div class="pj-img">
-            <img src="assets/project-kenya.jpg" alt="East Africa Off-Grid Drying Solution">
+            <img src="assets/project-kenya.jpg" alt="East Africa off-grid maize drying application">
             <div class="pj-flag">🇰🇪 East Africa</div>
           </div>
           <div class="pj-body">
             <div class="pj-crop">MAIZE / CORN</div>
             <div class="pj-title">Off-Grid Maize Drying</div>
-            <div class="pj-desc">Limited grid access in rural farming regions. Mobile dryer with diesel generator operates independently. Biomass pellet option lowers drying cost for smallholder cooperatives.</div>
+            <div class="pj-desc">Limited grid access in rural farming regions. A mobile dryer with diesel generator operates independently, with a biomass pellet option for smallholder cooperatives.</div>
             <div class="pj-stats">
-              <div class="pj-stat"><div class="val">G-MR-10</div><div class="lbl">Recommended</div></div>
-              <div class="pj-stat"><div class="val">Biomass</div><div class="lbl">Fuel Setup</div></div>
-              <div class="pj-stat"><div class="val">Off-Grid</div><div class="lbl">Key Feature</div></div>
+              <div class="pj-stat"><div class="val">G-MR-10</div><div class="lbl">Typical Setup</div></div>
+              <div class="pj-stat"><div class="val">Biomass</div><div class="lbl">Fuel Config</div></div>
+              <div class="pj-stat"><div class="val">Off-Grid</div><div class="lbl">Suitable For</div></div>
             </div>
           </div>
         </div>
         <div class="project-card reveal">
           <div class="pj-img">
-            <img src="assets/product-G-SR-32-field.jpg" alt="West Africa Tropical Multi-Grain Solution">
+            <img src="assets/product-G-SR-32-field.jpg" alt="West Africa tropical multi-grain drying application">
             <div class="pj-flag">🇳🇬 West Africa</div>
           </div>
           <div class="pj-body">
             <div class="pj-crop">MIXED GRAINS</div>
-            <div class="pj-title">Tropical Multi-Grain Solution</div>
-            <div class="pj-desc">Hot and humid tropical climate causes severe post-harvest losses. Batch dryer with dual-use silo design — dry grain, then seal for storage in one unit. Multi-fuel burner adapts to whatever fuel is locally available.</div>
+            <div class="pj-title">Tropical Multi-Grain Setup</div>
+            <div class="pj-desc">Hot, humid tropical climate raises post-harvest risk. A batch dryer with dual-use silo design dries grain then seals for storage in one unit, with a multi-fuel burner that adapts to local fuel availability.</div>
             <div class="pj-stats">
-              <div class="pj-stat"><div class="val">G-SR-32</div><div class="lbl">Recommended</div></div>
-              <div class="pj-stat"><div class="val">Multi-Fuel</div><div class="lbl">Fuel Setup</div></div>
-              <div class="pj-stat"><div class="val">Dryer+Silo</div><div class="lbl">Key Feature</div></div>
+              <div class="pj-stat"><div class="val">G-SR-32</div><div class="lbl">Typical Setup</div></div>
+              <div class="pj-stat"><div class="val">Multi-Fuel</div><div class="lbl">Fuel Config</div></div>
+              <div class="pj-stat"><div class="val">Dryer+Silo</div><div class="lbl">Suitable For</div></div>
             </div>
           </div>
         </div>
         <div class="project-card reveal">
           <div class="pj-img">
-            <img src="assets/product-G-CT-120.jpg" alt="South America Large-Scale Drying Solution">
+            <img src="assets/product-G-CT-120.jpg" alt="South America large-scale continuous drying application">
             <div class="pj-flag">🇧🇷 South America</div>
           </div>
           <div class="pj-body">
             <div class="pj-crop">SOYBEAN & MAIZE</div>
-            <div class="pj-title">Large-Scale Soy & Maize</div>
-            <div class="pj-desc">Extensive commercial farming demands high-volume continuous processing. Continuous drying tower runs 24/7 unattended with indirect heat exchange — meeting export quality standards for international trade.</div>
+            <div class="pj-title">Large-Scale Continuous Drying</div>
+            <div class="pj-desc">Extensive commercial farming demands high-volume continuous processing. A continuous drying tower with indirect heat exchange handles large throughput during the harvest window.</div>
             <div class="pj-stats">
-              <div class="pj-stat"><div class="val">G-CT-300</div><div class="lbl">Recommended</div></div>
-              <div class="pj-stat"><div class="val">Nat. Gas</div><div class="lbl">Fuel Setup</div></div>
-              <div class="pj-stat"><div class="val">24/7 Auto</div><div class="lbl">Key Feature</div></div>
+              <div class="pj-stat"><div class="val">G-CT-300</div><div class="lbl">Typical Setup</div></div>
+              <div class="pj-stat"><div class="val">Nat. Gas</div><div class="lbl">Fuel Config</div></div>
+              <div class="pj-stat"><div class="val">High Volume</div><div class="lbl">Suitable For</div></div>
             </div>
           </div>
         </div>
         <div class="project-card reveal">
           <div class="pj-img">
-            <img src="assets/product-G-CT-200-pellet.jpg" alt="Central Asia Wheat Belt Solution">
+            <img src="assets/product-G-CT-200-pellet.jpg" alt="Central Asia wheat belt drying application">
             <div class="pj-flag">🇰🇿 Central Asia</div>
           </div>
           <div class="pj-body">
             <div class="pj-crop">WHEAT</div>
             <div class="pj-title">Continental Wheat Belt</div>
-            <div class="pj-desc">Continental dry climate concentrates wheat harvest into a short window. Continuous tower with natural gas or coal heating handles bulk volumes during peak season, keeping pace with combine harvester throughput.</div>
+            <div class="pj-desc">Continental dry climate concentrates wheat harvest into a short window. A continuous tower with natural gas or coal heating handles bulk volumes during peak season, keeping pace with combine harvester throughput.</div>
             <div class="pj-stats">
-              <div class="pj-stat"><div class="val">G-CT-200</div><div class="lbl">Recommended</div></div>
-              <div class="pj-stat"><div class="val">Gas/Coal</div><div class="lbl">Fuel Setup</div></div>
-              <div class="pj-stat"><div class="val">High Volume</div><div class="lbl">Key Feature</div></div>
+              <div class="pj-stat"><div class="val">G-CT-200</div><div class="lbl">Typical Setup</div></div>
+              <div class="pj-stat"><div class="val">Gas/Coal</div><div class="lbl">Fuel Config</div></div>
+              <div class="pj-stat"><div class="val">High Volume</div><div class="lbl">Suitable For</div></div>
             </div>
           </div>
         </div>
@@ -1488,9 +1509,9 @@
   <section class="block" id="system">
     <div class="container">
       <div class="section-head reveal">
-        <div class="eyebrow">COMPLETE POST-HARVEST SYSTEM</div>
-        <h2>From Harvest to Storage — One Integrated Line</h2>
-        <p class="desc">GXON provides the full post-harvest processing chain: cleaning, drying, handling, and storage — engineered to work together seamlessly.</p>
+        <div class="eyebrow">POST-HARVEST SYSTEMS</div>
+        <h2>From Harvest to Storage — One Integrated Line.</h2>
+        <p class="desc">Drying is one part of the post-harvest process. GXON can integrate cleaning, drying, conveying and storage into a complete grain handling system.</p>
       </div>
       <div class="system-flow reveal">
         <div class="system-step">
@@ -1499,7 +1520,7 @@
           </div>
           <div class="ss-num">STEP 01</div>
           <div class="ss-title">Cleaning</div>
-          <div class="ss-desc">Remove impurities, dust, and foreign matter before drying.</div>
+          <div class="ss-desc">Remove impurities.</div>
           <div class="ss-equip">Equipment: Pre-cleaner</div>
         </div>
         <div class="system-step">
@@ -1508,7 +1529,7 @@
           </div>
           <div class="ss-num">STEP 02</div>
           <div class="ss-title">Drying</div>
-          <div class="ss-desc">Reduce moisture content to safe storage levels with precision control.</div>
+          <div class="ss-desc">Control grain moisture.</div>
           <div class="ss-equip">Equipment: Dryer</div>
         </div>
         <div class="system-step">
@@ -1517,7 +1538,7 @@
           </div>
           <div class="ss-num">STEP 03</div>
           <div class="ss-title">Handling</div>
-          <div class="ss-desc">Elevators and conveyors transport grain between processing stages.</div>
+          <div class="ss-desc">Move grain efficiently between stages.</div>
           <div class="ss-equip">Equipment: Conveyor + Elevator</div>
         </div>
         <div class="system-step">
@@ -1526,8 +1547,11 @@
           </div>
           <div class="ss-num">STEP 04</div>
           <div class="ss-title">Storage</div>
-          <div class="ss-desc">Safe long-term grain storage with quality preservation.</div>
+          <div class="ss-desc">Protect grain after drying.</div>
         </div>
+      </div>
+      <div style="text-align:center; margin-top:40px;">
+        <a href="pages/products.html#system" class="btn btn-primary btn-lg">Explore Complete Systems →</a>
       </div>
     </div>
   </section>
@@ -1536,8 +1560,9 @@
   <section class="cta-section" id="contact">
     <div class="cta-inner">
       <div class="cta-content reveal">
-        <h2>Need a Grain Drying <span class="accent">Solution?</span></h2>
-        <p>Tell us about your project. Our engineers will design a custom drying solution tailored to your crop, capacity, and fuel availability — within 24 hours.</p>
+        <div class="eyebrow" style="color:var(--c-orange);">READY TO TAKE CONTROL OF DRYING?</div>
+        <h2>Let's Build the Right Drying Solution for Your Operation.</h2>
+        <p>Tell us your crop, drying capacity, operating location and available fuel. Our team will recommend a suitable drying setup and configuration for your project.</p>
         <div class="cta-features">
           <div class="cta-feature"><span class="check">✓</span> Free solution design and quotation</div>
           <div class="cta-feature"><span class="check">✓</span> Engineer consultation within 24 hours</div>
@@ -1546,9 +1571,9 @@
         </div>
       </div>
       <div class="cta-form reveal">
-        <h3>Get Your Recommendation</h3>
+        <h3>Get Your Drying Recommendation</h3>
         <p class="form-sub">Fill in the form below — our engineers will respond within 24 hours.</p>
-        <form onsubmit="event.preventDefault(); alert('Thank you! Our team will contact you within 24 hours.');">
+        <form id="cta-form" novalidate>
           <div class="form-row">
             <div class="form-group">
               <label class="form-label" for="cta-country">Country/Region *</label>
@@ -1558,7 +1583,7 @@
                 </button>
                 <div class="dropdown-menu" role="listbox">
                   <div class="dd-search">
-                    <input type="text" class="dd-search-input" placeholder="Search country..." data-action="filter-country">
+                    <input type="text" class="dd-search-input" placeholder="Search country..." data-action="filter-country" aria-label="Search country">
                   </div>
                   <div class="dd-options" id="country-options">
                     <div class="dd-group-label">Southeast Asia</div>
@@ -1751,6 +1776,7 @@
                   </div>
                 </div>
                 <input type="hidden" name="country" id="cta-country" required>
+                <div class="form-err" id="err-country">Please select your country/region.</div>
               </div>
             </div>
             <div class="form-group">
@@ -1792,9 +1818,11 @@
                   <div class="dropdown-opt" role="option" data-value="lt20">Less than 20 TPD</div>
                   <div class="dropdown-opt" role="option" data-value="20-50">20–50 TPD</div>
                   <div class="dropdown-opt" role="option" data-value="50-100">50–100 TPD</div>
-                  <div class="dropdown-opt" role="option" data-value="gt100">100+ TPD</div>
+                  <div class="dropdown-opt" role="option" data-value="100-200">100–200 TPD</div>
+                  <div class="dropdown-opt" role="option" data-value="200plus">200+ TPD</div>
                 </div>
                 <input type="hidden" name="capacity" id="cta-capacity" required>
+                <div class="form-err" id="err-capacity">Please select your required capacity.</div>
               </div>
             </div>
             <div class="form-group">
@@ -1819,6 +1847,7 @@
           <div class="form-group full">
             <label class="form-label" for="cta-whatsapp">WhatsApp *</label>
             <input class="form-input" type="text" id="cta-whatsapp" placeholder="+880 1XXX XXXXXX" required>
+            <div class="form-err" id="err-whatsapp">Please enter your WhatsApp number.</div>
           </div>
           <div class="form-group full">
             <label class="form-label" for="email-input">Email</label>
@@ -1857,55 +1886,91 @@
 
       var steps = document.querySelectorAll('.sf-step');
       var capacitySel = steps[1] ? steps[1].querySelector('.sf-opt.selected') : null;
-      var fuelSel = steps[2] ? steps[2].querySelector('.sf-opt.selected') : null;
+      var locationSel = steps[2] ? steps[2].querySelector('.sf-opt.selected') : null;
+      var fuelSel = steps[3] ? steps[3].querySelector('.sf-opt.selected') : null;
       var capacity = capacitySel ? capacitySel.getAttribute('data-value') : '';
+      var location = locationSel ? locationSel.getAttribute('data-value') : '';
       var fuel = fuelSel ? fuelSel.getAttribute('data-display') : '';
       var grains = selectedGrains.length > 0 ? selectedGrains.join(', ') : '';
 
       // No capacity selected yet — show default
       if (!capacity) {
         modelEl.textContent = 'Find the best fit for your project';
-        metaEl.textContent = 'Select your grain, capacity and fuel to get a tailored recommendation';
+        metaEl.textContent = 'Select your grain, capacity, operating location and fuel to get a tailored recommendation.';
         return;
       }
 
-      // Recommend model based on capacity
+      // Step 3 (operating location) biases the recommendation:
+      //   mobile  -> Mobile Drying
+      //   fixed   -> Batch or Continuous Drying
+      // When location is not yet chosen, fall back to the original capacity-based mapping.
+      var preferMobile = location === 'mobile' || (!location && capacity === 'lt20');
+
       var model = '';
-      var type = '';
+      var setupType = '';
       var tpd = '';
+      var bestFor = '';
 
       if (capacity === 'lt20') {
-        model = 'GXON G-MR-5 Mobile Batch Dryer';
-        type = 'Mobile Recirculating';
-        tpd = '10–20 TPD';
+        if (preferMobile) {
+          model = 'GXON G-MR-5 Mobile Batch Dryer';
+          setupType = 'Mobile Grain Dryer'; tpd = '10–20 TPD'; bestFor = 'Farms and drying-service operations';
+        } else {
+          model = 'GXON G-SR-10 Batch Grain Dryer';
+          setupType = 'Batch Grain Dryer'; tpd = '20–40 TPD'; bestFor = 'Small mills and grain stations';
+        }
       } else if (capacity === '20-50') {
-        model = 'GXON G-SR-10 Batch Grain Dryer';
-        type = 'Fixed Batch Recirculating';
-        tpd = '20–40 TPD';
+        if (preferMobile) {
+          model = 'GXON G-MR-10 Mobile Batch Dryer';
+          setupType = 'Mobile Grain Dryer'; tpd = '20–40 TPD'; bestFor = 'Farms with multiple locations';
+        } else {
+          model = 'GXON G-SR-10 Batch Grain Dryer';
+          setupType = 'Batch Grain Dryer'; tpd = '20–40 TPD'; bestFor = 'Rice mills and grain traders';
+        }
       } else if (capacity === '50-100') {
-        model = 'GXON G-SR-30 Batch Grain Dryer';
-        type = 'Fixed Batch Recirculating';
-        tpd = '50–80 TPD';
-      } else if (capacity === 'gt100') {
-        model = 'GXON G-CT-200 Continuous Drying Tower';
-        type = 'Continuous Tower';
-        tpd = '200 TPD';
+        if (preferMobile) {
+          model = 'GXON G-MR-20 Mobile Batch Dryer';
+          setupType = 'Mobile Grain Dryer'; tpd = '70–80 TPD'; bestFor = 'Seasonal high-capacity drying';
+        } else {
+          model = 'GXON G-SR-30 Batch Grain Dryer';
+          setupType = 'Batch Grain Dryer'; tpd = '50–80 TPD'; bestFor = 'Grain collection centers';
+        }
+      } else if (capacity === '100-200') {
+        if (preferMobile) {
+          model = 'Integrated Grain Drying System';
+          setupType = 'Integrated Grain Drying System'; tpd = '100–200 TPD'; bestFor = 'Distributed multi-site operations';
+        } else {
+          model = 'GXON G-CT-120 Continuous Drying Tower';
+          setupType = 'Continuous Drying Tower'; tpd = '120 TPD'; bestFor = 'Regional grain depots';
+        }
+      } else if (capacity === '200plus') {
+        if (preferMobile) {
+          model = 'Integrated Grain Drying System';
+          setupType = 'Integrated Grain Drying System'; tpd = '200+ TPD'; bestFor = 'Large multi-site operations';
+        } else {
+          model = 'GXON G-CT-200 Continuous Drying Tower';
+          setupType = 'Continuous Drying Tower'; tpd = '200 TPD'; bestFor = 'Large processing facilities';
+        }
       }
 
       modelEl.textContent = model;
 
-      // Build meta string
+      // Build meta string: setup · capacity · fuel · best for · grain
       var metaParts = [];
+      if (setupType) metaParts.push(setupType);
       if (tpd) metaParts.push(tpd);
       if (fuel) metaParts.push(fuel + ' Heating');
-      if (type) metaParts.push(type);
-      if (grains) metaParts.push('For: ' + grains);
+      if (bestFor) metaParts.push('Best for: ' + bestFor);
+      if (grains) metaParts.push('Grain: ' + grains);
 
-      metaEl.textContent = metaParts.length > 0 ? metaParts.join(' · ') : '';
+      metaEl.textContent = metaParts.join(' · ');
     }
 
     // Sync Solution Finder selection to CTA dropdown
     function syncToCTA(field, value, displayText) {
+      // Only capacity and fuel have corresponding dropdowns in the final CTA form.
+      // 'location' has no matching field, so skip it gracefully.
+      if (field !== 'capacity' && field !== 'fuel') return;
       var dropdownId = field === 'capacity' ? 'cta-capacity-dropdown' : 'cta-fuel-dropdown';
       var dd = document.getElementById(dropdownId);
       if (!dd || !value) return;
@@ -1948,12 +2013,75 @@
     var ctaForm = document.querySelector('.cta-form form');
     if (ctaForm) {
       ctaForm.addEventListener('submit', function(e) {
+        e.preventDefault();
         if (!validateEmail()) {
-          e.preventDefault();
           emailInput.focus();
+          return;
+        }
+        /* Validate required fields */
+        var firstInvalid = null;
+        function markInvalid(trigger, errEl) {
+          if (trigger) trigger.classList.add('invalid');
+          if (errEl) errEl.classList.add('show');
+          if (!firstInvalid) firstInvalid = trigger;
+        }
+        function markValid(trigger, errEl) {
+          if (trigger) trigger.classList.remove('invalid');
+          if (errEl) errEl.classList.remove('show');
+        }
+
+        /* Country dropdown */
+        var countryDD = document.getElementById('cta-country-dropdown');
+        var countryTrigger = countryDD ? countryDD.querySelector('.dropdown-trigger') : null;
+        var countryLabel = countryDD ? (countryDD.querySelector('.dd-value') ? countryDD.querySelector('.dd-value').textContent : '') : '';
+        var countryErr = document.getElementById('err-country');
+        if (!countryLabel || countryLabel === 'Select country/region') { markInvalid(countryTrigger, countryErr); }
+        else { markValid(countryTrigger, countryErr); }
+
+        /* Capacity dropdown */
+        var capDD = document.getElementById('cta-capacity-dropdown');
+        var capTrigger = capDD ? capDD.querySelector('.dropdown-trigger') : null;
+        var capLabel = capDD ? (capDD.querySelector('.dd-value') ? capDD.querySelector('.dd-value').textContent : '') : '';
+        var capErr = document.getElementById('err-capacity');
+        if (!capLabel || capLabel === 'Select capacity') { markInvalid(capTrigger, capErr); }
+        else { markValid(capTrigger, capErr); }
+
+        /* WhatsApp input */
+        var waInput = document.getElementById('cta-whatsapp');
+        var waErr = document.getElementById('err-whatsapp');
+        if (!waInput || !waInput.value.trim()) { markInvalid(waInput, waErr); }
+        else { markValid(waInput, waErr); }
+
+        if (firstInvalid) { firstInvalid.focus(); return; }
+
+        /* Collect form data for the unified confirmation modal */
+        var fields = [];
+        if (countryLabel && countryLabel !== 'Select country/region') fields.push({ label: 'Country', value: countryLabel });
+
+        var cropVal = document.getElementById('cta-crop');
+        if (cropVal && cropVal.value) fields.push({ label: 'Crop', value: cropVal.value });
+
+        if (capLabel && capLabel !== 'Select capacity') fields.push({ label: 'Capacity', value: capLabel });
+
+        var fuelDD = document.getElementById('cta-fuel-dropdown');
+        var fuelLabel = fuelDD ? (fuelDD.querySelector('.dd-value') ? fuelDD.querySelector('.dd-value').textContent : '') : '';
+        if (fuelLabel && fuelLabel !== 'Select fuel (optional)') fields.push({ label: 'Fuel', value: fuelLabel });
+
+        if (waInput && waInput.value.trim()) fields.push({ label: 'WhatsApp', value: waInput.value.trim() });
+
+        var emailVal = emailInput ? emailInput.value.trim() : '';
+        if (emailVal) fields.push({ label: 'Email', value: emailVal });
+
+        if (window.GXONQuote) {
+          window.GXONQuote.showConfirmation(fields);
         }
       });
     }
+
+    // Hide fuel card images that fail to load (replaces inline onerror)
+    document.querySelectorAll('.tc-fuel-img').forEach(function(img) {
+      img.addEventListener('error', function() { this.style.display = 'none'; });
+    });
 
     // Scroll reveal animation
     var reveals = document.querySelectorAll('.reveal');
@@ -2050,15 +2178,18 @@
     });
 
     // Solution Finder multi-select for grains
-    var selectedGrains = [];
+    // Persist on window so selection survives PJAX navigation back to homepage.
+    var selectedGrains = window._sfGrains = window._sfGrains || [];
     function toggleMultiOption(btn, group) {
       btn.classList.toggle('selected');
       var val = btn.getAttribute('data-value');
       if (group === 'grain') {
         if (btn.classList.contains('selected')) {
-          if (!selectedGrains.includes(val)) selectedGrains.push(val);
+          if (selectedGrains.indexOf(val) === -1) selectedGrains.push(val);
         } else {
-          selectedGrains = selectedGrains.filter(function(g) { return g !== val; });
+          // Mutate in place (splice) to keep the window reference valid.
+          var idx = selectedGrains.indexOf(val);
+          if (idx > -1) selectedGrains.splice(idx, 1);
         }
         syncGrainsToCTA();
         updateRecommendation();
@@ -2081,18 +2212,25 @@
         if (capSel) params.set('capacity', capSel.getAttribute('data-value'));
       }
 
-      // Fuel (single-select) — find selected .sf-opt in step 3
-      var fuelStep = document.querySelectorAll('.sf-step')[2];
+      // Operating location (single-select) — find selected .sf-opt in step 3
+      var locStep = document.querySelectorAll('.sf-step')[2];
+      if (locStep) {
+        var locSel = locStep.querySelector('.sf-opt.selected');
+        if (locSel) params.set('location', locSel.getAttribute('data-value'));
+      }
+
+      // Fuel (single-select) — find selected .sf-opt in step 4
+      var fuelStep = document.querySelectorAll('.sf-step')[3];
       if (fuelStep) {
         var fuelSel = fuelStep.querySelector('.sf-opt.selected');
         if (fuelSel) params.set('fuel', fuelSel.getAttribute('data-value'));
       }
 
       // Redirect to products page (always redirect, even with no params)
-      // Note: omit .html extension for dev server clean-url compatibility;
-      // GitHub Pages serves both /products.html and /products correctly.
+      // Use explicit .html extension — GitHub Pages does not resolve
+      // extensionless URLs to .html files.
       var query = params.toString();
-      window.location.href = 'pages/products' + (query ? '?' + query : '');
+      window.location.href = 'pages/products.html' + (query ? '?' + query : '');
     }
 
     // Sync grains to CTA dropdown
@@ -2132,8 +2270,14 @@
       }
     }
 
-    // Make toggleMultiOption globally accessible
+    // Make Solution Finder functions globally accessible so the single
+    // document-level delegation (bound once, see below) always calls the
+    // latest definitions after PJAX re-executes this page script.
     window.toggleMultiOption = toggleMultiOption;
+    window.selectOption = selectOption;
+    window.syncToCTA = syncToCTA;
+    window.filterCountryDropdown = filterCountryDropdown;
+    window.closeOtherMenus = closeOtherMenus;
 
     // Country dropdown search filter
     function filterCountryDropdown(input) {
@@ -2157,26 +2301,36 @@
 
     /* ---------- Event delegation for data-action elements ----------
      * Replaces inline onclick/oninput attributes per AGENTS.md rule.
-     * Works with PJAX-loaded content without re-binding.
+     * Bound ONCE on document so it survives PJAX navigation; handlers call
+     * the latest function versions via window.* (re-exposed each page-script
+     * run) to avoid stale-closure duplication that broke multi-select clicks
+     * after navigating away and back to the homepage.
      */
-    document.addEventListener('click', function(e) {
-      var btn = e.target.closest ? e.target.closest('[data-action]') : null;
-      if (!btn) return;
-      var action = btn.getAttribute('data-action');
-      if (action === 'multi') {
-        toggleMultiOption(btn, btn.getAttribute('data-group') || '');
-      } else if (action === 'single') {
-        selectOption(btn);
-        syncToCTA(btn.getAttribute('data-field'), btn.getAttribute('data-value'), btn.getAttribute('data-display'));
-      }
-    });
+    if (!window._sfDelegated) {
+      window._sfDelegated = true;
+      document.addEventListener('click', function(e) {
+        var btn = e.target.closest ? e.target.closest('[data-action]') : null;
+        if (btn) {
+          var action = btn.getAttribute('data-action');
+          if (action === 'multi' && window.toggleMultiOption) {
+            window.toggleMultiOption(btn, btn.getAttribute('data-group') || '');
+          } else if (action === 'single' && window.selectOption) {
+            window.selectOption(btn);
+            if (window.syncToCTA) {
+              window.syncToCTA(btn.getAttribute('data-field'), btn.getAttribute('data-value'), btn.getAttribute('data-display'));
+            }
+          }
+        }
+        if (window.closeOtherMenus) window.closeOtherMenus(e);
+      });
+      document.addEventListener('input', function(e) {
+        var el = e.target.closest ? e.target.closest('[data-action="filter-country"]') : null;
+        if (el && window.filterCountryDropdown) window.filterCountryDropdown(el);
+      });
+    }
 
-    document.addEventListener('input', function(e) {
-      var el = e.target.closest ? e.target.closest('[data-action="filter-country"]') : null;
-      if (el) filterCountryDropdown(el);
-    });
-
-    // Submit button
+    // Submit button — re-bind on each page-script run (button is inside
+    // #pjax-main and gets replaced on navigation).
     var sfSubmit = document.getElementById('sf-submit');
     if (sfSubmit) {
       sfSubmit.addEventListener('click', submitSolutionFinder);
@@ -2192,12 +2346,11 @@
         m.parentElement.querySelector('.dropdown-trigger').classList.remove('open');
       });
     }
-
-    document.addEventListener('click', closeOtherMenus);
   </script>
 
   <script src="./_shared/js/site-header.js" defer></script>
   <script src="./_shared/js/site-footer.js" defer></script>
+  <script src="./_shared/js/quote-modal.js" defer></script>
   <script src="./_shared/js/pjax.js" defer></script>
 </body>
 </html>

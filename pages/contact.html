@@ -289,6 +289,10 @@
     .dropdown-trigger:focus, .dropdown-trigger.open { outline: none; border-color: var(--c-primary); color: var(--c-primary); box-shadow: 0 0 0 3px rgba(8,79,50,0.15); }
     .dropdown-trigger:focus::after, .dropdown-trigger.open::after { border-color: var(--c-primary); transform: translateY(-35%) rotate(-135deg); }
     .dropdown-trigger.has-value { color: var(--c-n1); }
+    .dropdown-trigger.invalid,
+    .form-input.invalid { border-color: var(--c-error) !important; }
+    .form-err { color: var(--c-error); font-size: 13px; margin-top: 4px; display: none; }
+    .form-err.show { display: block; }
     .dropdown-menu { position: absolute; top: calc(100% + 6px); left: 0; right: 0; background: #fff; border: 1px solid var(--c-n6); border-radius: var(--r-md); box-shadow: var(--sh-lg); overflow: hidden; z-index: 100; max-height: 0; opacity: 0; visibility: hidden; transition: all 0.2s; }
     .dropdown-menu.open { max-height: 320px; opacity: 1; visibility: visible; }
     .dropdown-search .dropdown-menu { max-height: 400px; }
@@ -473,7 +477,7 @@
       <div class="cta-form reveal">
         <h3>Send Your Request</h3>
         <p class="form-sub">Fill in the form below — our team will respond within 24 hours.</p>
-        <form onsubmit="event.preventDefault(); alert('Thank you! Our team will contact you within 24 hours.');">
+        <form id="contact-form" novalidate>
           <div class="form-row">
             <div class="form-group">
               <label class="form-label" for="contact-country">Country/Region *</label>
@@ -483,7 +487,7 @@
                 </button>
                 <div class="dropdown-menu" role="listbox">
                   <div class="dd-search">
-                    <input type="text" class="dd-search-input" placeholder="Search country..." data-action="filter-country">
+                    <input type="text" class="dd-search-input" placeholder="Search country..." data-action="filter-country" aria-label="Search country">
                   </div>
                   <div class="dd-options" id="country-options">
                     <div class="dd-group-label">Southeast Asia</div>
@@ -676,6 +680,7 @@
                   </div>
                 </div>
                 <input type="hidden" name="country" id="contact-country" required>
+                <div class="form-err" id="err-country">Please select your country/region.</div>
               </div>
             </div>
             <div class="form-group">
@@ -696,6 +701,7 @@
                   </div>
                 </div>
                 <input type="hidden" name="business" id="contact-business" required>
+                <div class="form-err" id="err-business">Please select your business type.</div>
               </div>
             </div>
           </div>
@@ -717,6 +723,7 @@
                   </div>
                 </div>
                 <input type="hidden" name="crop" id="contact-crop" required>
+                <div class="form-err" id="err-crop">Please select your crop.</div>
               </div>
             </div>
             <div class="form-group">
@@ -734,6 +741,7 @@
                   </div>
                 </div>
                 <input type="hidden" name="capacity" id="contact-capacity" required>
+                <div class="form-err" id="err-capacity">Please select your required capacity.</div>
               </div>
             </div>
           </div>
@@ -759,6 +767,7 @@
           <div class="form-group full">
             <label class="form-label" for="contact-whatsapp">WhatsApp *</label>
             <input class="form-input" type="text" name="whatsapp" id="contact-whatsapp" placeholder="+880 1XXX XXXXXX" required>
+            <div class="form-err" id="err-whatsapp">Please enter your WhatsApp number.</div>
           </div>
           <div class="form-group full">
             <label class="form-label" for="contact-message">Message</label>
@@ -766,78 +775,6 @@
           </div>
           <button type="submit" class="btn btn-cta btn-lg btn-block">Send Request</button>
         </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== COMPANY CONTACT (SALES TEAM) ===== -->
-  <section class="block team-section" id="sales-team">
-    <div class="container">
-      <div class="section-head reveal">
-        <div class="eyebrow">OUR TEAM</div>
-        <h2>Speak to Our Sales Team</h2>
-        <p class="desc">Direct access to our international business development team. Reach out via email or WhatsApp.</p>
-      </div>
-      <div class="team-grid">
-        <div class="team-card reveal">
-          <div class="tc-avatar">SJ</div>
-          <div class="tc-name">Shawn Jin (靳振祥)</div>
-          <div class="tc-role">International Business Development Manager</div>
-          <div class="tc-contacts">
-            <a class="tc-contact" href="mailto:shawnjin@gxonagro.com">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
-              shawnjin@gxonagro.com
-            </a>
-            <a class="tc-contact" href="https://wa.me/8618567703190" target="_blank" rel="noopener">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M.05 24l1.69-6.16a11.87 11.87 0 0 1-1.59-5.95C.15 5.32 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.76 11.76 0 0 1 3.48 8.41c0 6.56-5.35 11.89-11.91 11.89a11.96 11.96 0 0 1-5.7-1.45L.05 24zM6.6 20.13c1.68.99 3.28 1.59 5.45 1.59 5.45 0 9.89-4.43 9.89-9.87a9.82 9.82 0 0 0-2.89-6.99 9.82 9.82 0 0 0-6.98-2.9c-5.46 0-9.9 4.43-9.9 9.87 0 2.28.67 3.99 1.79 5.78l-.99 3.62 3.63-.95z"/></svg>
-              +86 185 6770 3190
-            </a>
-          </div>
-        </div>
-        <div class="team-card reveal">
-          <div class="tc-avatar">PS</div>
-          <div class="tc-name">Paul Sun (孙东方)</div>
-          <div class="tc-role">International Commercial Manager</div>
-          <div class="tc-contacts">
-            <a class="tc-contact" href="mailto:paul.s@gxonagro.com">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
-              paul.s@gxonagro.com
-            </a>
-            <a class="tc-contact" href="https://wa.me/8618135726591" target="_blank" rel="noopener">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M.05 24l1.69-6.16a11.87 11.87 0 0 1-1.59-5.95C.15 5.32 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.76 11.76 0 0 1 3.48 8.41c0 6.56-5.35 11.89-11.91 11.89a11.96 11.96 0 0 1-5.7-1.45L.05 24zM6.6 20.13c1.68.99 3.28 1.59 5.45 1.59 5.45 0 9.89-4.43 9.89-9.87a9.82 9.82 0 0 0-2.89-6.99 9.82 9.82 0 0 0-6.98-2.9c-5.46 0-9.9 4.43-9.9 9.87 0 2.28.67 3.99 1.79 5.78l-.99 3.62 3.63-.95z"/></svg>
-              +86 181 3572 6591
-            </a>
-          </div>
-        </div>
-        <div class="team-card reveal">
-          <div class="tc-avatar">LY</div>
-          <div class="tc-name">Leo Yi (易秋帆)</div>
-          <div class="tc-role">International Sales Manager</div>
-          <div class="tc-contacts">
-            <a class="tc-contact" href="mailto:leoyi@gxonagro.com">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
-              leoyi@gxonagro.com
-            </a>
-            <a class="tc-contact" href="https://wa.me/8613626283477" target="_blank" rel="noopener">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M.05 24l1.69-6.16a11.87 11.87 0 0 1-1.59-5.95C.15 5.32 5.5 0 12.06 0a11.82 11.82 0 0 1 8.41 3.49 11.76 11.76 0 0 1 3.48 8.41c0 6.56-5.35 11.89-11.91 11.89a11.96 11.96 0 0 1-5.7-1.45L.05 24zM6.6 20.13c1.68.99 3.28 1.59 5.45 1.59 5.45 0 9.89-4.43 9.89-9.87a9.82 9.82 0 0 0-2.89-6.99 9.82 9.82 0 0 0-6.98-2.9c-5.46 0-9.9 4.43-9.9 9.87 0 2.28.67 3.99 1.79 5.78l-.99 3.62 3.63-.95z"/></svg>
-              +86 136 2628 3477
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="company-contact-info reveal">
-        <div class="cci-item">
-          <div class="cci-label">General Email</div>
-          <div class="cci-value"><a href="mailto:info@gxonagro.com" style="color:inherit;">info@gxonagro.com</a></div>
-        </div>
-        <div class="cci-item">
-          <div class="cci-label">Website</div>
-          <div class="cci-value">www.gxonagro.com</div>
-        </div>
-        <div class="cci-item">
-          <div class="cci-label">Company</div>
-          <div class="cci-value">Henan GXON AGRO Equipment Co., Ltd.</div>
-        </div>
       </div>
     </div>
   </section>
@@ -1043,7 +980,7 @@
         m.parentElement.querySelector('.dropdown-trigger').classList.remove('open');
       });
     }
-    document.addEventListener('click', closeOtherMenus);
+    window.closeOtherMenus = closeOtherMenus;
 
     // Country dropdown search filter
     function filterCountryDropdown(input) {
@@ -1066,13 +1003,100 @@
     }
     window.filterCountryDropdown = filterCountryDropdown;
 
-    /* ---------- Event delegation for data-action elements ----------
-     * Replaces inline oninput per AGENTS.md rule.
+    /* ---------- Document-level event delegation ----------
+     * Bound ONCE on document so it survives PJAX navigation; handlers call
+     * the latest function versions via window.* to avoid stale-closure
+     * duplication that broke dropdowns after navigating away and back.
      */
-    document.addEventListener('input', function(e) {
-      var el = e.target.closest ? e.target.closest('[data-action="filter-country"]') : null;
-      if (el) filterCountryDropdown(el);
-    });
+    if (!window._contactDelegated) {
+      window._contactDelegated = true;
+      document.addEventListener('click', function(e) {
+        if (window.closeOtherMenus) window.closeOtherMenus(e);
+      });
+      document.addEventListener('input', function(e) {
+        var el = e.target.closest ? e.target.closest('[data-action="filter-country"]') : null;
+        if (el && window.filterCountryDropdown) window.filterCountryDropdown(el);
+      });
+    }
+
+    /* ---------- Contact form submission → unified confirmation modal ---------- */
+    var contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        /* Validate required fields */
+        var firstInvalid = null;
+        function markInvalid(trigger, errEl) {
+          if (trigger) trigger.classList.add('invalid');
+          if (errEl) errEl.classList.add('show');
+          if (!firstInvalid) firstInvalid = trigger;
+        }
+        function markValid(trigger, errEl) {
+          if (trigger) trigger.classList.remove('invalid');
+          if (errEl) errEl.classList.remove('show');
+        }
+
+        /* Country */
+        var countryDD = document.getElementById('cta-country-dropdown');
+        var countryTrigger = countryDD ? countryDD.querySelector('.dropdown-trigger') : null;
+        var countryLabel = countryDD ? (countryDD.querySelector('.dd-value') ? countryDD.querySelector('.dd-value').textContent : '') : '';
+        var countryErr = document.getElementById('err-country');
+        if (!countryLabel || countryLabel === 'Select country/region') markInvalid(countryTrigger, countryErr);
+        else markValid(countryTrigger, countryErr);
+
+        /* Business */
+        var businessDD = document.getElementById('cta-business-dropdown');
+        var businessTrigger = businessDD ? businessDD.querySelector('.dropdown-trigger') : null;
+        var businessLabel = businessDD ? (businessDD.querySelector('.dd-value') ? businessDD.querySelector('.dd-value').textContent : '') : '';
+        var businessErr = document.getElementById('err-business');
+        if (!businessLabel || businessLabel === 'Select business type') markInvalid(businessTrigger, businessErr);
+        else markValid(businessTrigger, businessErr);
+
+        /* Crop */
+        var cropDD = document.getElementById('cta-crop-dropdown');
+        var cropTrigger = cropDD ? cropDD.querySelector('.dropdown-trigger') : null;
+        var cropLabel = cropDD ? (cropDD.querySelector('.dd-value') ? cropDD.querySelector('.dd-value').textContent : '') : '';
+        var cropErr = document.getElementById('err-crop');
+        if (!cropLabel || cropLabel === 'Select crop') markInvalid(cropTrigger, cropErr);
+        else markValid(cropTrigger, cropErr);
+
+        /* Capacity */
+        var capDD = document.getElementById('cta-capacity-dropdown');
+        var capTrigger = capDD ? capDD.querySelector('.dropdown-trigger') : null;
+        var capLabel = capDD ? (capDD.querySelector('.dd-value') ? capDD.querySelector('.dd-value').textContent : '') : '';
+        var capErr = document.getElementById('err-capacity');
+        if (!capLabel || capLabel === 'Select capacity') markInvalid(capTrigger, capErr);
+        else markValid(capTrigger, capErr);
+
+        /* WhatsApp */
+        var waInput = document.getElementById('contact-whatsapp');
+        var waErr = document.getElementById('err-whatsapp');
+        if (!waInput || !waInput.value.trim()) markInvalid(waInput, waErr);
+        else markValid(waInput, waErr);
+
+        if (firstInvalid) { firstInvalid.focus(); return; }
+
+        /* Collect form data */
+        var fields = [];
+        if (countryLabel && countryLabel !== 'Select country/region') fields.push({ label: 'Country', value: countryLabel });
+        if (businessLabel && businessLabel !== 'Select business type') fields.push({ label: 'Business Type', value: businessLabel });
+        if (cropLabel && cropLabel !== 'Select crop') fields.push({ label: 'Crop', value: cropLabel });
+        if (capLabel && capLabel !== 'Select capacity') fields.push({ label: 'Capacity', value: capLabel });
+
+        var fuelDD = document.getElementById('cta-fuel-dropdown');
+        var fuelLabel = fuelDD ? (fuelDD.querySelector('.dd-value') ? fuelDD.querySelector('.dd-value').textContent : '') : '';
+        if (fuelLabel && fuelLabel !== 'Select fuel (optional)') fields.push({ label: 'Fuel', value: fuelLabel });
+
+        if (waInput && waInput.value.trim()) fields.push({ label: 'WhatsApp', value: waInput.value.trim() });
+
+        var msgInput = document.getElementById('contact-message');
+        if (msgInput && msgInput.value.trim()) fields.push({ label: 'Message', value: msgInput.value.trim() });
+
+        if (window.GXONQuote) {
+          window.GXONQuote.showConfirmation(fields);
+        }
+      });
+    }
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(function(a) {
@@ -1092,6 +1116,7 @@
 
   <script src="../_shared/js/site-header.js" defer></script>
   <script src="../_shared/js/site-footer.js" defer></script>
+  <script src="../_shared/js/quote-modal.js" defer></script>
   <script src="../_shared/js/pjax.js" defer></script>
 </body>
 </html>
