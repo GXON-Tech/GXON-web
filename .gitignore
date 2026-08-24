@@ -22,3 +22,6 @@ dist/
 # Misc
 *.log
 .env
+
+# Dev temp image symlinks (do not deploy)
+_tmp_img/
