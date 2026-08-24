@@ -1,0 +1,5 @@
+# Netlify deployment configuration
+# Pure static site — no build step required. Serve the repo root directly.
+
+[build]
+  publish = "."
