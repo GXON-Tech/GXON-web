@@ -61,7 +61,6 @@
               '<a href="' + r + 'pages/contact.html" data-nav="contact"' + ac('contact') + '>Contact &#9662;</a>' +
               '<div class="nav-dropdown">' +
                 '<a href="' + r + 'pages/contact.html#sendquote">Request Solution</a>' +
-                '<a href="' + r + 'pages/contact.html#sales-team">Sales Team</a>' +
                 '<a href="' + r + 'pages/contact.html#partnership">Become Distributor</a>' +
                 '<a href="' + r + 'pages/contact.html#exhibition">Exhibition</a>' +
                 '<a href="' + r + 'pages/contact.html#social">Social Media</a>' +
