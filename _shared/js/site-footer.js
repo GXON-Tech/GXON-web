@@ -9,7 +9,10 @@
       return '../../../';
     }
     if (p.indexOf('/pages/products/') !== -1 ||
-        p.indexOf('/pages/solutions/') !== -1) {
+        p.indexOf('/pages/solutions/') !== -1 ||
+        p.indexOf('/pages/technology/') !== -1 ||
+        p.indexOf('/pages/company/') !== -1 ||
+        p.indexOf('/pages/contact/') !== -1) {
       return '../../';
     }
     if (p.indexOf('/pages/') !== -1) {
@@ -43,44 +46,44 @@
         '<div class="footer-col">' +
           '<h4>Solutions</h4>' +
           '<ul>' +
-            '<li><a href="' + r + 'pages/solutions.html">Regional Solutions</a></li>' +
-            '<li><a href="' + r + 'pages/solutions.html">Solution Finder</a></li>' +
+            '<li><a href="' + r + 'pages/solutions/">Regional Solutions</a></li>' +
+            '<li><a href="' + r + 'pages/solutions/">Solution Finder</a></li>' +
             '<li><a href="' + r + 'index.html#system">Post-Harvest System</a></li>' +
           '</ul>' +
         '</div>' +
         '<div class="footer-col">' +
           '<h4>Products</h4>' +
           '<ul>' +
-            '<li><a href="' + r + 'pages/products.html#mobile">Mobile Dryer</a></li>' +
-            '<li><a href="' + r + 'pages/products.html#batch">Batch Dryer</a></li>' +
-            '<li><a href="' + r + 'pages/products.html#continuous">Continuous Tower</a></li>' +
-            '<li><a href="' + r + 'pages/products.html#system">Complete System</a></li>' +
+            '<li><a href="' + r + 'pages/products/#mobile">Mobile Dryer</a></li>' +
+            '<li><a href="' + r + 'pages/products/#batch">Batch Dryer</a></li>' +
+            '<li><a href="' + r + 'pages/products/#continuous">Continuous Tower</a></li>' +
+            '<li><a href="' + r + 'pages/products/#system">Complete System</a></li>' +
           '</ul>' +
         '</div>' +
         '<div class="footer-col">' +
           '<h4>Technology</h4>' +
           '<ul>' +
-            '<li><a href="' + r + 'pages/technology.html#low-breakage">Low Breakage</a></li>' +
-            '<li><a href="' + r + 'pages/technology.html#multi-fuel">Multi-Fuel Heating</a></li>' +
-            '<li><a href="' + r + 'pages/technology.html#control-system">PLC Control</a></li>' +
-            '<li><a href="' + r + 'pages/technology.html#drying-efficiency">Drying Efficiency</a></li>' +
+            '<li><a href="' + r + 'pages/technology/#low-breakage">Low Breakage</a></li>' +
+            '<li><a href="' + r + 'pages/technology/#multi-fuel">Multi-Fuel Heating</a></li>' +
+            '<li><a href="' + r + 'pages/technology/#control-system">PLC Control</a></li>' +
+            '<li><a href="' + r + 'pages/technology/#drying-efficiency">Drying Efficiency</a></li>' +
           '</ul>' +
         '</div>' +
         '<div class="footer-col">' +
           '<h4>Resources</h4>' +
           '<ul>' +
-            '<li><a href="' + r + 'pages/resources.html#cases">Case Studies</a></li>' +
-            '<li><a href="' + r + 'pages/resources.html#downloads">Downloads</a></li>' +
-            '<li><a href="' + r + 'pages/resources.html#blog">Blog</a></li>' +
+            '<li><a href="' + r + 'pages/resources/#cases">Case Studies</a></li>' +
+            '<li><a href="' + r + 'pages/resources/#downloads">Downloads</a></li>' +
+            '<li><a href="' + r + 'pages/resources/#blog">Blog</a></li>' +
           '</ul>' +
         '</div>' +
         '<div class="footer-col">' +
           '<h4>Company</h4>' +
           '<ul>' +
-            '<li><a href="' + r + 'pages/company.html#about">About GXON</a></li>' +
-            '<li><a href="' + r + 'pages/company.html#manufacturing">Manufacturing</a></li>' +
-            '<li><a href="' + r + 'pages/contact.html#partnership">Become Distributor</a></li>' +
-            '<li><a href="' + r + 'pages/contact.html">Contact</a></li>' +
+            '<li><a href="' + r + 'pages/company/#about">About GXON</a></li>' +
+            '<li><a href="' + r + 'pages/company/#manufacturing">Manufacturing</a></li>' +
+            '<li><a href="' + r + 'pages/contact/#partnership">Become Distributor</a></li>' +
+            '<li><a href="' + r + 'pages/contact/">Contact</a></li>' +
           '</ul>' +
         '</div>' +
       '</div>' +

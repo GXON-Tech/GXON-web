@@ -59,7 +59,7 @@
     "@type": "BreadcrumbList",
     "itemListElement": [
       { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.gxonagro.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://www.gxonagro.com/pages/products.html" },
+      { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://www.gxonagro.com/pages/products/" },
       { "@type": "ListItem", "position": 3, "name": "Complete Grain System", "item": "https://www.gxonagro.com/pages/products/complete-grain-system.html" }
     ]
   }
@@ -82,6 +82,7 @@
   </script>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..800;1,14..32,300..800&family=JetBrains+Mono:wght@400;700&display=swap');
     @font-face { font-family:'BigShoulders'; src:url('../../_shared/fonts/BigShoulders-Bold.ttf') format('truetype'); font-weight:700; }
     @font-face { font-family:'BigShoulders'; src:url('../../_shared/fonts/BigShoulders-Regular.ttf') format('truetype'); font-weight:400; }
     @font-face { font-family:'WorkSans'; src:url('../../_shared/fonts/WorkSans-Regular.ttf') format('truetype'); font-weight:400; }
@@ -122,7 +123,7 @@
       --c-n6: #C8CBD0;
       --c-n7: #D6D9DC;
       --c-n8: #E2E5E8;
-      --font-body: 'WorkSans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       --font-heading: 'BigShoulders', 'Inter', sans-serif;
       --font-mono: 'JetBrainsMono', 'Courier New', monospace;
       --max-w: 1200px;
@@ -148,10 +149,10 @@
     .header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(226,229,232,0.78); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-bottom: 1px solid var(--c-n6); transition: box-shadow 0.3s; }
     .header.scrolled { box-shadow: var(--sh-md); }
     .header-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: var(--header-h); padding: 0 24px; }
-    .header-logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-heading); font-size: 28px; font-weight: 800; color: var(--c-dark); letter-spacing: 0.02em; }
+    .header-logo { display: flex; align-items: center; gap: 10px; font-family: 'WorkSans', 'Inter', sans-serif; font-size: 28px; font-weight: 800; color: var(--c-dark); letter-spacing: 0.02em; }
     .header-logo img { height: 48px; width: auto; }
     .header-nav { display: flex; gap: 4px; }
-    .header-nav a { font-size: 14px; font-weight: 700; color: var(--c-n1); padding: 8px 16px; border-radius: var(--r-sm); transition: all 0.2s; }
+    .header-nav a { font-size: 14px; font-weight: 700; color: var(--c-n1); padding: 8px 16px; border-radius: var(--r-sm); transition: all 0.2s; font-family: 'WorkSans', 'Inter', sans-serif;}
     .header-nav a:hover { background: var(--c-n7); color: var(--c-primary); }
     .nav-dropdown-wrap { position: relative; display: flex; align-items: center; }
     .nav-dropdown {
@@ -164,8 +165,7 @@
     .nav-dropdown-wrap:hover .nav-dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
     .nav-dropdown a {
       display: block; padding: 9px 14px; font-size: 13px; font-weight: 600;
-      color: var(--c-n2); border-radius: var(--r-sm); transition: all 0.15s; white-space: nowrap;
-    }
+      color: var(--c-n2); border-radius: var(--r-sm); transition: all 0.15s; white-space: nowrap; font-family: 'WorkSans', 'Inter', sans-serif;}
     .nav-dropdown a:hover { background: var(--c-primary-bg); color: var(--c-primary); }
     .header-nav a.active { background: var(--c-primary-bg); color: var(--c-primary); }
     .header-cta { display: flex; align-items: center; gap: 12px; }
@@ -388,7 +388,7 @@
     <div class="breadcrumb-inner">
       <a href="../../index.html">Home</a>
       <span class="sep">/</span>
-      <a href="../products.html">Products</a>
+      <a href="../products/">Products</a>
       <span class="sep">/</span>
       <span class="current">Complete Grain System</span>
     </div>
@@ -827,7 +827,7 @@
                 data-product-name="Complete Grain System"
                 data-product-model="Custom"
                 data-product-capacity="Custom configuration">Request Quote</button>
-        <a href="../products.html" class="btn btn-outline btn-lg" style="color:#fff;border-color:rgba(255,255,255,0.3);">← Back to Products</a>
+        <a href="../products/" class="btn btn-outline btn-lg" style="color:#fff;border-color:rgba(255,255,255,0.3);">← Back to Products</a>
       </div>
     </div>
   </section>
