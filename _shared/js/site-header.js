@@ -5,19 +5,14 @@
 
   function getRoot() {
     var p = window.location.pathname;
+    // Section index pages (/pages/products/, /pages/resources/, …) and
+    // their detail pages need ../../; resources sub-pages need ../../../.
     if (p.indexOf('/pages/resources/cases/') !== -1 ||
         p.indexOf('/pages/resources/blog/') !== -1) {
       return '../../../';
     }
-    if (p.indexOf('/pages/products/') !== -1 ||
-        p.indexOf('/pages/solutions/') !== -1 ||
-        p.indexOf('/pages/technology/') !== -1 ||
-        p.indexOf('/pages/company/') !== -1 ||
-        p.indexOf('/pages/contact/') !== -1) {
-      return '../../';
-    }
     if (p.indexOf('/pages/') !== -1) {
-      return '../';
+      return '../../';
     }
     return '';
   }

@@ -61,7 +61,7 @@
 | **文件名** | `hero-facility.jpg` |
 | **尺寸** | 3840×2160px（4K 横版）— 最低 1920×1080px |
 | **使用位置** | 首页全屏 Hero 背景 + 6 个子页面 Hero 背景 + Technology 页技术配图 |
-| **涉及页面** | index.html、solutions.html、company.html、resources.html、products.html、contact.html、technology.html |
+| **涉及页面** | index.html、solutions/、company/、resources/、products/、contact/、technology/ |
 
 **拍摄内容**：GXON 工厂外观或烘干机安装现场的宏观全景，体现工业制造规模感。
 

@@ -40,13 +40,20 @@ gxon-agro-web/
 ├── README.md              ← Human-readable project overview.
 ├── .gitignore
 ├── index.html             ← Homepage (primary entry point).
-├── pages/                 ← Subpages (future development).
-│   ├── solutions.html
-│   ├── products.html
-│   ├── technology.html
-│   ├── resources.html
-│   ├── company.html
-│   └── contact.html
+├── pages/                 ← Subpages — one folder per section, each with an index.html.
+│   ├── solutions/
+│   │   ├── index.html
+│   │   └── *-solution.html         ← regional solution detail pages
+│   ├── products/
+│   │   ├── index.html
+│   │   └── G-*.html                ← product detail pages (G-MR-5, G-SR-30, G-CT-120, …)
+│   ├── technology/index.html
+│   ├── resources/
+│   │   ├── index.html
+│   │   ├── cases/*.html
+│   │   └── blog/*.html
+│   ├── company/index.html
+│   └── contact/index.html
 ├── _shared/
 │   ├── fonts/             ← BigShoulders, WorkSans, JetBrainsMono (TTF).
 │   └── js/                ← Shared JS libraries (e.g., echarts.min.js if needed).
@@ -370,7 +377,7 @@ git push origin feature/solutions-page
 4. Keep the header and footer exactly as-is (only the nav `active` state changes).
 5. Replace the main content area (`<main>` or equivalent).
 6. Add page-specific JSON-LD (e.g., `BreadcrumbList`, `Product` with details).
-7. Test at http://localhost:3210/pages/[page-name].html.
+7. Test at http://localhost:3210/pages/[page-name]/ (each section is a folder served via its index.html).
 8. Verify all internal links point to correct relative paths.
 
 ## 14. Key Files Reference

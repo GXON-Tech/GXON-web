@@ -117,7 +117,7 @@ Project case studies from 30+ countries:
 
 ---
 
-## PRODUCTS Page — `/pages/products.html`
+## PRODUCTS Page — `/pages/products/`
 
 **Goal**: Showcase all 12 grain dryer models with filtering and individual detail pages.
 
@@ -191,7 +191,7 @@ Each of the 12 models has an individual detail page with:
 
 ---
 
-## CONTACT Page — `/pages/contact.html`
+## CONTACT Page — `/pages/contact/`
 
 **Goal**: Business Development Center — convert visitors into leads, distributors, and partners.
 
@@ -275,9 +275,9 @@ Country tag grid showing 15 representative customer countries:
 
 ### Navigation Links
 
-- Homepage header nav "Contact" → `pages/contact.html`
-- Homepage footer "Contact" → `pages/contact.html`
-- Homepage footer "Become Distributor" → `pages/contact.html#distributor`
-- Products page header/footer Contact → `contact.html`
-- Product detail pages header/footer Contact → `../contact.html`
+- Homepage header nav "Contact" → `pages/contact/`
+- Homepage footer "Contact" → `pages/contact/`
+- Homepage footer "Become Distributor" → `pages/contact/#distributor`
+- Products page header/footer Contact → `../contact/`
+- Product detail pages header/footer Contact → `../contact/`
 - Homepage hero/Solution Finder CTA buttons retain `#contact` (scroll to homepage CTA form for data sync)
