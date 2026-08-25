@@ -10,7 +10,10 @@
       return '../../../';
     }
     if (p.indexOf('/pages/products/') !== -1 ||
-        p.indexOf('/pages/solutions/') !== -1) {
+        p.indexOf('/pages/solutions/') !== -1 ||
+        p.indexOf('/pages/technology/') !== -1 ||
+        p.indexOf('/pages/company/') !== -1 ||
+        p.indexOf('/pages/contact/') !== -1) {
       return '../../';
     }
     if (p.indexOf('/pages/') !== -1) {
@@ -45,25 +48,25 @@
           '</a>' +
           '<nav class="header-nav">' +
             '<a href="' + r + 'index.html" data-nav="home"' + ac('home') + '>Home</a>' +
-            '<a href="' + r + 'pages/solutions.html" data-nav="solutions"' + ac('solutions') + '>Solutions</a>' +
-            '<a href="' + r + 'pages/products.html" data-nav="products"' + ac('products') + '>Products</a>' +
-            '<a href="' + r + 'pages/technology.html" data-nav="technology"' + ac('technology') + '>Technology</a>' +
+            '<a href="' + r + 'pages/solutions/" data-nav="solutions"' + ac('solutions') + '>Solutions</a>' +
+            '<a href="' + r + 'pages/products/" data-nav="products"' + ac('products') + '>Products</a>' +
+            '<a href="' + r + 'pages/technology/" data-nav="technology"' + ac('technology') + '>Technology</a>' +
             '<div class="nav-dropdown-wrap">' +
-              '<a href="' + r + 'pages/resources.html" data-nav="resources"' + ac('resources') + '>Resources &#9662;</a>' +
+              '<a href="' + r + 'pages/resources/" data-nav="resources"' + ac('resources') + '>Resources &#9662;</a>' +
               '<div class="nav-dropdown">' +
-                '<a href="' + r + 'pages/resources.html#cases">Case Studies</a>' +
-                '<a href="' + r + 'pages/resources.html#downloads">Downloads</a>' +
-                '<a href="' + r + 'pages/resources.html#blog">Blog &amp; Insights</a>' +
+                '<a href="' + r + 'pages/resources/#cases">Case Studies</a>' +
+                '<a href="' + r + 'pages/resources/#downloads">Downloads</a>' +
+                '<a href="' + r + 'pages/resources/#blog">Blog &amp; Insights</a>' +
               '</div>' +
             '</div>' +
-            '<a href="' + r + 'pages/company.html" data-nav="company"' + ac('company') + '>Company</a>' +
+            '<a href="' + r + 'pages/company/" data-nav="company"' + ac('company') + '>Company</a>' +
             '<div class="nav-dropdown-wrap">' +
-              '<a href="' + r + 'pages/contact.html" data-nav="contact"' + ac('contact') + '>Contact &#9662;</a>' +
+              '<a href="' + r + 'pages/contact/" data-nav="contact"' + ac('contact') + '>Contact &#9662;</a>' +
               '<div class="nav-dropdown">' +
-                '<a href="' + r + 'pages/contact.html#sendquote">Request Solution</a>' +
-                '<a href="' + r + 'pages/contact.html#partnership">Become Distributor</a>' +
-                '<a href="' + r + 'pages/contact.html#exhibition">Exhibition</a>' +
-                '<a href="' + r + 'pages/contact.html#social">Social Media</a>' +
+                '<a href="' + r + 'pages/contact/#sendquote">Request Solution</a>' +
+                '<a href="' + r + 'pages/contact/#partnership">Become Distributor</a>' +
+                '<a href="' + r + 'pages/contact/#exhibition">Exhibition</a>' +
+                '<a href="' + r + 'pages/contact/#social">Social Media</a>' +
               '</div>' +
             '</div>' +
           '</nav>' +
