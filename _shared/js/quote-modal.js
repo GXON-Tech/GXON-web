@@ -504,6 +504,7 @@
    */
   function showSuccess(fields, name) {
     var overlay = state.overlay;
+    deliverLead(fields || []);
     /* Hide form + product info, show success view */
     overlay.querySelector('#qmForm').style.display = 'none';
     overlay.querySelector('#qmProductInfo').style.display = 'none';
@@ -569,6 +570,31 @@
     state.overlay.querySelector('#qmProductInfo').style.display = 'none';
     /* Now show success/confirmation view */
     showSuccess(fields || [], '');
+  }
+
+  /* ---------- Deliver lead to backend (DingTalk robot) ----------
+   * Fire-and-forget POST to the Cloudflare Function /api/quote. Failures are
+   * reported to the console only; the visible success/WhatsApp fallback stays
+   * intact so the lead is never blocked for the customer.
+   */
+  function deliverLead(fields) {
+    try {
+      fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ source: 'web', items: fields })
+      }).then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      }).catch(function (err) {
+        /* Non-fatal: lead still available via the WhatsApp button. */
+        if (window.console && console.warn) {
+          console.warn('[GXON] Lead delivery to DingTalk failed:', err && err.message);
+        }
+      });
+    } catch (err) {
+      /* ignore */
+    }
   }
 
   /* ---------- Utils ---------- */

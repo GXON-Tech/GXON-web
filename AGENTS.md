@@ -28,9 +28,11 @@
 | JS | Vanilla JS, inline `<script>` | No jQuery, no React, no Vue |
 | Fonts | Self-hosted TTF in `./_shared/fonts/` | Loaded via `@font-face` |
 | Images | `assets/` directory, relative paths | No CDN URLs, no base64 in authoring |
-| Hosting | GitHub Pages | Deploy from `main` branch root |
+| Hosting | Cloudflare Pages | Deploy from `main` via GitHub. Functions in `functions/`. |
+| Serverless | Cloudflare Pages Functions | **Single exception** — `functions/api/quote.js` relays lead forms to a DingTalk robot webhook. No database, no CMS. |
 
 **Forbidden**: React, Vue, Angular, jQuery, Tailwind, Bootstrap, any npm dependency, any build step.
+**Functions scope (approved)**: `functions/` may contain stateless webhook relays only. No database, no CMS, no auth, no user accounts. The DingTalk full-webhook URL must stay server-side as the `DINGTALK_WEBHOOK` environment variable — never hardcode it into frontend code or commit it to Git.
 
 ## 3. Directory Structure
 
@@ -54,6 +56,9 @@ gxon-agro-web/
 │   │   └── blog/*.html
 │   ├── company/index.html
 │   └── contact/index.html
+├── functions/             ← Cloudflare Pages Functions (serverless webhook relay).
+│   └── api/
+│       └── quote.js       ← POST /api/quote → forwards lead to DingTalk robot.
 ├── _shared/
 │   ├── fonts/             ← BigShoulders, WorkSans, JetBrainsMono (TTF).
 │   └── js/                ← Shared JS libraries (e.g., echarts.min.js if needed).
@@ -320,7 +325,7 @@ Every page must include in `<head>`:
 
 ## 11. Out of Scope (Do NOT Do These)
 
-- Do NOT add a CMS, database, or server-side code.
+- Do NOT add a CMS, database, or general server-side code. **Approved exception**: the stateless lead relay in `functions/api/quote.js` (see §2 Functions scope).
 - Do NOT add multi-language content (hreflang tags are for future planning only; actual translated content is out of scope for MVP).
 - Do NOT add e-commerce functionality (cart, payment, checkout).
 - Do NOT add user accounts or authentication.
@@ -365,9 +370,10 @@ git push origin feature/solutions-page
 - `chore:` maintenance (e.g., `chore: update font files`)
 
 ### Deployment
-- Push to `main` branch → GitHub Actions auto-deploys to GitHub Pages.
-- Production URL: https://[username].github.io/gxon-agro-web/ (until custom domain is configured).
-- To configure custom domain: GitHub repo → Settings → Pages → Custom domain → `www.gxonagro.com`.
+- Push to `main` branch → Cloudflare Pages auto-deploys from the Git repo (Functions under `functions/` are compiled automatically).
+- Production URL: `https://www.gxonagro.com/` (or the assigned `.pages.dev` subdomain).
+- Custom domain: Cloudflare Pages project → Custom domains → `www.gxonagro.com`.
+- **Required env var**: set `DINGTALK_WEBHOOK` (full DingTalk robot webhook URL) in Cloudflare Pages → Settings → Environment variables for every environment, **before** letting the lead form run in production. Without it, `/api/quote` returns 500 and leads are not delivered (frontend degrades to the WhatsApp fallback).
 
 ## 13. When Adding a New Page
 
@@ -389,10 +395,11 @@ git push origin feature/solutions-page
 | `docs/brand-visual-spec.md` | Complete brand visual specification (10 chapters) |
 | `_shared/fonts/` | 7 TTF font files (BigShoulders, WorkSans, JetBrainsMono) |
 | `assets/` | Logo, hero image, product images, project case images |
+| `functions/api/quote.js` | Cloudflare Pages Function — relays lead forms to the DingTalk robot |
 | `.github/workflows/deploy.yml` | GitHub Pages auto-deploy configuration |
 
 ---
 
-**Last updated**: 2026-07-19
+**Last updated**: 2026-08-25
 **Maintained by**: GXON AGRO design team
 **AI agents**: Read this file before every task. If something is unclear, check `docs/` for detailed specs.
