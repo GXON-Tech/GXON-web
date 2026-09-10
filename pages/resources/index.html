@@ -73,8 +73,9 @@
     "name": "GXON AGRO Blog — Grain Drying Insights",
     "description": "Technical articles on grain dryer selection, multi-fuel operation, maintenance, and post-harvest best practices.",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "How to Choose the Right Grain Dryer for Your Harvest", "url": "https://www.gxonagro.com/pages/resources/blog/how-to-choose-grain-dryer.html" },
-      { "@type": "ListItem", "position": 2, "name": "Multi-Fuel Heating: Why Fuel Flexibility Matters in Grain Drying", "url": "https://www.gxonagro.com/pages/resources/blog/multi-fuel-heating-flexibility.html" }
+      { "@type": "ListItem", "position": 1, "name": "How to Choose a Suitable Grain Dryer", "url": "https://www.gxonagro.com/pages/resources/blog/how-to-choose-a-suitable-grain-dryer.html" },
+      { "@type": "ListItem", "position": 2, "name": "How to Choose the Right Grain Dryer for Your Harvest", "url": "https://www.gxonagro.com/pages/resources/blog/how-to-choose-grain-dryer.html" },
+      { "@type": "ListItem", "position": 3, "name": "Multi-Fuel Heating: Why Fuel Flexibility Matters in Grain Drying", "url": "https://www.gxonagro.com/pages/resources/blog/multi-fuel-heating-flexibility.html" }
     ]
   }
   </script>
@@ -176,6 +177,12 @@
     /* Tab-style switching: only active section is visible */
     .res-section { display: none; }
     .res-section.is-active { display: block; }
+    /* Draft content: visible in test (localhost/preview), hidden in production */
+    html.is-production .draft-content { display: none !important; }
+    html.is-production .prod-placeholder { display: block !important; }
+    .prod-placeholder { display: none; }
+    .prod-placeholder p { font-size: 16px; color: var(--c-n3); padding: 48px 24px; text-align: center; line-height: 1.7; }
+    .prod-placeholder p a { color: var(--c-primary); font-weight: 700; }
     .res-nav a { cursor: pointer; }
     .res-nav-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; display: flex; gap: 4px; overflow-x: auto; }
     .res-nav a { padding: 18px 20px; font-family: var(--font-mono); font-size: 13px; font-weight: 700; color: var(--c-n3); letter-spacing: 0.05em; text-transform: uppercase; border-bottom: 3px solid transparent; transition: all 0.2s; white-space: nowrap; }
@@ -266,8 +273,10 @@
       .header-nav { display: none; }
       .header-nav.open { display: flex; flex-direction: column; position: absolute; top: var(--header-h); left: 0; right: 0; background: rgba(226,229,232,0.98); padding: 16px; box-shadow: var(--sh-md); border-bottom: 1px solid var(--c-n6); border-radius: 0 0 var(--r-md) var(--r-md); max-height: calc(100vh - var(--header-h)); overflow-y: auto; }
       .header-nav.open a { padding: 12px 16px; }
-      .header-nav.open .nav-dropdown-wrap { width: 100%; }
-      .header-nav.open .nav-dropdown { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; padding-left: 16px; margin-top: 4px; }
+      .header-nav.open .nav-dropdown-wrap { width: 100%; flex-direction: column; align-items: stretch; }
+      .header-nav.open .nav-dropdown-wrap > a { width: 100%; }
+      .header-nav.open .nav-dropdown { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: none; background: transparent; padding: 0 0 4px 12px; margin-top: 0; }
+      .header-nav.open .nav-dropdown a { font-size: 14px; }
       .header-cta .lang { display: none; }
       .mobile-toggle { display: flex; }
       .page-hero h1 { font-size: 32px; }
@@ -285,6 +294,15 @@
   </style>
 </head>
 <body>
+  <script>
+    // Detect production environment: if hostname matches, add is-production class to <html>
+    // This hides .draft-content and shows .prod-placeholder via CSS (no flash)
+    (function() {
+      if (location.hostname === 'www.gxonagro.com' || location.hostname === 'gxonagro.com') {
+        document.documentElement.classList.add('is-production');
+      }
+    })();
+  </script>
 
   <!-- ===== HEADER ===== -->
   <div id="site-header"></div>
@@ -325,6 +343,7 @@
         <p class="desc">A representative selection of GXON grain drying installations across regions, climates, and scales. Customer names withheld for confidentiality — full project details available on request.</p>
       </div>
 
+      <div class="draft-content">
       <div class="case-grid">
 
         <!-- Case 1 -->
@@ -424,6 +443,11 @@
       <div class="section-head reveal">
         <a href="#cases" class="view-all">More case studies coming soon — contact us for region-specific references</a>
       </div>
+      </div>
+
+      <div class="prod-placeholder">
+        <p>Case study details are being finalized. <a href="../contact/">Contact us</a> for region-specific references.</p>
+      </div>
     </div>
   </section>
 
@@ -436,6 +460,7 @@
         <p class="desc">Operation manuals, installation guides, and maintenance videos for GXON dryer series. Documents will be populated as they are released — links below are placeholders for the documentation roadmap.</p>
       </div>
 
+      <div class="draft-content">
       <div class="download-grid">
 
         <!-- Download 1 -->
@@ -527,6 +552,11 @@
       <div class="section-head reveal">
         <a href="../contact/" class="view-all">Need a specific document? Request it from our team →</a>
       </div>
+      </div>
+
+      <div class="prod-placeholder">
+        <p>Documentation downloads are being prepared. <a href="../contact/">Contact us</a> to request specific manuals or guides.</p>
+      </div>
     </div>
   </section>
 
@@ -541,7 +571,24 @@
 
       <div class="blog-list">
 
-        <!-- Blog 1 -->
+        <!-- Blog 1 — newest first -->
+        <a href="./blog/how-to-choose-a-suitable-grain-dryer.html" class="blog-card reveal">
+          <div class="bc-img">
+            <img src="../../assets/blog-suitable-dryer-hero.jpg" alt="How to choose a suitable grain dryer — spoiled vs professionally dried grain comparison">
+          </div>
+          <div class="bc-body">
+            <div class="bc-meta">
+              <span class="bc-cat">Buyer Guide</span>
+              <span>Aug 30, 2026</span>
+              <span>10 min read</span>
+            </div>
+            <div class="bc-title">How to Choose a Suitable Grain Dryer</div>
+            <div class="bc-excerpt">Complete buyer's guide with crop-specific tables, TPD sizing, mobility, fuel, and power decisions — plus a scenario-to-model map across 5–500 TPD and 6 common mistakes to avoid.</div>
+            <span class="bc-cta">Read Article</span>
+          </div>
+        </a>
+
+        <!-- Blog 2 -->
         <a href="./blog/how-to-choose-grain-dryer.html" class="blog-card reveal">
           <div class="bc-img">
             <img src="../../assets/product-mobile.jpg" alt="How to choose a grain dryer">
@@ -558,7 +605,7 @@
           </div>
         </a>
 
-        <!-- Blog 2 -->
+        <!-- Blog 3 -->
         <a href="./blog/multi-fuel-heating-flexibility.html" class="blog-card reveal">
           <div class="bc-img">
             <img src="../../assets/component-burner.jpg" alt="Multi-fuel heating flexibility">
